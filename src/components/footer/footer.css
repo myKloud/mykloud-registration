@@ -1,0 +1,19 @@
+.inp {
+  width: 33.8vw;
+  height: 5vh;
+  padding-left: 20px;
+  border-color: rgb(169, 169, 169);
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  margin-top :-1px
+}
+
+.footer{
+  width: 35vw;
+  height: 5vh;
+  border-style: solid;
+  border-color: rgb(169, 169, 169);
+  border-top: none;
+}
+

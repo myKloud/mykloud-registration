@@ -1,0 +1,78 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftSide {
+  width: 9.7222222vw;
+  height: 4.49218vh;
+  margin: 4.78515625vh 0 0 3.9vw;
+  display: flex;
+}
+
+.logo {
+  width: 3.243vw;
+  height: 4.49218vh;
+  flex-grow: 0;
+  margin: 0 0.4027777777vw 0 0;
+}
+
+.logoText {
+  width: 6.076388888vw;
+  height: 1.91406vh;
+  margin: 2.30468vh 0 0.27343vh 0;
+  font-family: "Poppins";
+  font-weight: 800;
+  text-shadow: 0px 0px, 0px 0px, 0px 0px;
+  line-height: normal;
+  vertical-align: baseline;
+  letter-spacing: normal;
+  color: #445da7;
+  font-size: 1.02vw;
+  margin-top: 7%;
+}
+
+.rightSide {
+  display: flex;
+}
+
+.rightText {
+  width: 14.583333333vw;
+  height: 2.73437vh;
+  flex-grow: 0;
+  margin: 5.6640625vh 1.11111111111111vw 0 0;
+  font-family: "Roboto", Helvetica, sans-serif;
+  font-size: 1.1111111111111111111vw;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.75;
+  letter-spacing: normal;
+  text-align: right;
+  color: #45536c;
+}
+
+.signInBtn {
+  width: 8.125vw;
+  height: 4.6875vh;
+  margin-right: 3.889vw;
+  margin-top: 4.9875vh;
+  border-radius: 0.416667vw;
+  background-color: white;
+  border: solid 1px #1b73d1;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1111111111111111111vw;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.75;
+  letter-spacing: normal;
+  color: #1565d8;
+  text-align: center;
+  cursor: pointer;
+}
+:hover.signInBtn {
+  background-color: #1b73d1;
+  color: white;
+}
