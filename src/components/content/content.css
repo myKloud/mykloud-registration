@@ -44,7 +44,7 @@
   width: 31.66666666666vw;
   height: 5.46875vh;
   padding: 0 0 0 16px;
-  border-radius: 6px;
+  border-radius: 0.5vh;
   border: solid 1px #dcdce7;
   background-color: white;
   border-radius: 0.5vh;
@@ -103,7 +103,7 @@
   width: 31.66666666666vw;
   height: 5.46875vh;
   padding: 0 0 0 16px;
-  border-radius: 6px;
+  border-radius: 0.5vh;
   border: solid 1px #dcdce7;
   background-color: white;
   border-radius: 0.5vh;
@@ -123,7 +123,7 @@
   width: 31.66666666666vw;
   height: 5.46875vh;
   padding: 0 0 0 16px;
-  border-radius: 6px;
+  border-radius: 0.5vh;
   border: solid 1px #dcdce7;
   background-color: white;
   border-radius: 0.5vh;
@@ -158,11 +158,43 @@
 }
 
 .nextBtn {
-  width: 31.66666666666vw;
-  height: 64px;
-  flex-grow: 0;
-  margin: 0 0 8px;
-  padding: 20px 209px 20px 211px;
-  border-radius: 6px;
+  position: relative;
+  width: 32.7vw;
+  height: 6.25vh;
+  border: none;
+  border-radius: 0.5vh;
   background-color: #1b73d1;
+  flex-grow: 0;
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: white;
+  margin-top: 3.125vh;
+}
+
+.safeMessage {
+  display: flex;
+  justify-content: center;
+  gap: 0.5555555555555555555555vw;
+}
+
+.icon {
+  object-fit: contain;
+}
+
+.info {
+  font-family: "Open Sans";
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #45536c;
 }

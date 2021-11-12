@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { css } from "./content.css";
-
+import icon from "../../images/lock 1.svg";
 const Content = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -55,6 +55,12 @@ const Content = () => {
           </button>
         </div>
         <button className="nextBtn">Next</button>
+        <div className="safeMessage">
+          <img src={icon} class="icon" />
+          <p className="info">
+            Safe & secure via myKloud blockhain technologies.
+          </p>
+        </div>
       </div>
     </>
   );
