@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { css } from "./content.css";
+import { css } from "./register.css";
 import icon from "../../images/lock 1.svg";
-const Content = () => {
+const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [user, setUser] = useState("");
@@ -9,7 +9,7 @@ const Content = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   return (
     <>
-      <div className="content">
+      <div className="form">
         <h1 className="formTitle">Create your myKloud account</h1>
         <p className="normalText">Single access to all myKloud applications.</p>
         <div className="userName">
@@ -66,4 +66,4 @@ const Content = () => {
   );
 };
 
-export default Content;
+export default Register;
