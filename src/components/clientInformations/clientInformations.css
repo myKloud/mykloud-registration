@@ -45,7 +45,7 @@
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: #8692a6;
+  color: black;
   outline: none;
 }
 
@@ -55,7 +55,6 @@
   margin-top: 1.953125vh;
 }
 .Your-birthday {
-  width: 7.7777777777778vw;
   height: 2.34375vh;
   font-family: "Poppins";
   font-size: 16px;
@@ -95,6 +94,7 @@
 
 #year {
   width: 15.27777vw;
+  height: 5.46875vh;
   padding: 0 0 0 16px;
   border-radius: 0.5vh;
   border: solid 1px #dcdce7;
@@ -107,8 +107,16 @@
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: #8692a6;
+  color: black;
   outline: none;
+}
+
+::placeholder {
+  color: #8692a6;
+}
+
+.optionclasses {
+  color: black;
 }
 
 .note1 {
@@ -143,9 +151,8 @@
 }
 
 .recaptcha {
-  width: 450px;
-  height: 76px;
-  transform: scale(2.07, 1);
+  transform: scale(0.964, 1);
+  margin-left: 53.3%;
   transform-origin: left top;
   -webkit-transform-origin: left top;
 }
@@ -167,6 +174,7 @@
   letter-spacing: normal;
   text-align: right;
   color: #1565d8;
+  cursor: pointer;
 }
 
 .next {
@@ -185,6 +193,7 @@
   color: white;
   border: none;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .terms {

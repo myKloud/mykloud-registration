@@ -9,8 +9,8 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   return (
     <>
-      <div className="form">
-        <h1 className="formTitle">Create your myKloud account</h1>
+      <div className="registerForm">
+        <h1 className="registerFormTitle">Create your myKloud account</h1>
         <p className="normalText">Single access to all myKloud applications.</p>
         <div className="userName">
           <input
@@ -36,7 +36,11 @@ const Register = () => {
             className="show"
             onClick={() => setShowPassword(!showPassword)}
           >
-            <u style={{ color: "#1565d8" }}>Show</u>
+            {!showPassword ? (
+              <u style={{ color: "#1565d8" }}>Show</u>
+            ) : (
+              <u style={{ color: "#1565d8" }}>Hide</u>
+            )}
           </button>
         </div>
         <div>
@@ -51,7 +55,11 @@ const Register = () => {
             className="show"
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
           >
-            <u style={{ color: "#1565d8" }}>Show</u>
+            {!showConfirmPassword ? (
+              <u style={{ color: "#1565d8" }}>Show</u>
+            ) : (
+              <u style={{ color: "#1565d8" }}>Hide</u>
+            )}
           </button>
         </div>
         <button className="nextBtn">Next</button>

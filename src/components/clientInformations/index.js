@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { css } from "./clientInformations.css";
 import { MonthPicker } from "react-dropdown-date";
-import icon from "../../images/lock 1.svg";
 import img from "../../images/birthday-date.png";
 import Recaptcha from "react-google-recaptcha";
+
 const ClientInformations = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -48,6 +48,7 @@ const ClientInformations = () => {
         <div className="datePicker">
           <MonthPicker
             defaultValue={"Month"}
+            className="select-months"
             caps
             required={true}
             disabled={false}
@@ -57,7 +58,7 @@ const ClientInformations = () => {
             id={"month"}
             name={"month"}
             classes={"classes"}
-            optionClasses={"option classes"}
+            optionClasses={"optionclasses"}
           />
           <input
             type="number"
