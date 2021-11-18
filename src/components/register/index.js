@@ -1,12 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { css } from "./register.css";
 import icon from "../../images/lock 1.svg";
+import { useHistory, useLocation } from "react-router-dom";
+
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const history = useHistory();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state) {
+      setUser(location.state.backUser);
+      setPassword(location.state.backPassword);
+      setConfirmPassword(location.state.backPassword);
+    }
+  }, [location]);
+
+  const nextPage = () => {
+    history.push({
+      pathname: "/info",
+      state: { user: user, password: password },
+    });
+  };
+
   return (
     <>
       <div className="registerForm">
@@ -17,7 +38,10 @@ const Register = () => {
             type="text"
             placeholder="Username"
             className="userField"
-            onchange={(e) => setUser(e.value)}
+            value={user}
+            onChange={(e) => {
+              setUser(e.target.value);
+            }}
           ></input>
           <p className="domain">@mykloud.io</p>
         </div>
@@ -29,7 +53,8 @@ const Register = () => {
             type={showPassword ? "text" : "password"}
             placeholder="Create password"
             className="passwordField"
-            onchange={(e) => setPassword(e.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
           <button
@@ -48,7 +73,8 @@ const Register = () => {
             type={showConfirmPassword ? "text" : "password"}
             placeholder="Confirm password"
             className="confirmPasswordField"
-            onchange={(e) => setConfirmPassword(e.value)}
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
 
           <button
@@ -62,7 +88,9 @@ const Register = () => {
             )}
           </button>
         </div>
-        <button className="nextBtn">Next</button>
+        <button className="nextBtn" onClick={nextPage}>
+          Next
+        </button>
         <div className="safeMessage">
           <img src={icon} class="icon" />
           <p className="info">

@@ -141,8 +141,8 @@ const Recovery = () => {
               marginTop: "1.953125vh",
             }}
             inputStyle={{
-              width: "31.986111111111111111111111111111vw",
-              height: "5.46875vh",
+              width: "32.086111111111111111111111111111vw",
+              height: "5.86875vh",
               borderRadius: "0.7vh",
               fontFamily: "Poppins",
               fontSize: "14px",
@@ -154,11 +154,17 @@ const Recovery = () => {
           />
         )}
 
-        <p className="endText">
-          You’ll recieve an email with a cofnirmation code
-        </p>
+        {method == "email" ? (
+          <p className="endText">
+            You’ll recieve an email with a cofnirmation code
+          </p>
+        ) : (
+          <p className="endText">
+            You’ll recieve an sms with a cofnirmation code
+          </p>
+        )}
 
-        <button className="nextBtn">Send me code</button>
+        <button className="nextBtn1">Send me code</button>
       </div>
     </>
   );

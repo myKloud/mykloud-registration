@@ -152,7 +152,6 @@
 
 .recaptcha {
   transform: scale(0.964, 1);
-  margin-left: 53.3%;
   transform-origin: left top;
   -webkit-transform-origin: left top;
 }

@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { css } from "./clientInformations.css";
 import { MonthPicker } from "react-dropdown-date";
 import img from "../../images/birthday-date.png";
 import Recaptcha from "react-google-recaptcha";
+import { useHistory, useLocation } from "react-router-dom";
 
 const ClientInformations = () => {
+  const location = useLocation();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [month, setMonth] = useState("");
@@ -20,6 +23,25 @@ const ClientInformations = () => {
       setIsVerified(true);
     }
   };
+
+  const history = useHistory();
+
+  const previous = () => {
+    history.push({
+      pathname: "/",
+      state: {
+        backUser: location.state.user,
+        backPassword: location.state.password,
+      },
+    });
+  };
+
+  const next = () => {
+    history.push({
+      pathname: "/recovery",
+    });
+  };
+
   return (
     <>
       <div className="form">
@@ -30,7 +52,7 @@ const ClientInformations = () => {
             type="text"
             placeholder="First name"
             className="nameField"
-            onChange={(firstName) => setFirstName(firstName.value)}
+            onChange={(firstName) => setFirstName(firstName.target.value)}
           ></input>
         </div>
 
@@ -39,7 +61,7 @@ const ClientInformations = () => {
             type="text"
             placeholder="Last name"
             className="nameField"
-            onChange={(lastName) => setLastName(lastName.value)}
+            onChange={(lastName) => setLastName(lastName.target.value)}
           ></input>
         </div>
 
@@ -65,7 +87,7 @@ const ClientInformations = () => {
             id="year"
             name="year"
             placeholder="Year"
-            onChange={(year) => setYear(year.value)}
+            onChange={(year) => setYear(year.target.value)}
           ></input>
         </div>
 
@@ -85,8 +107,12 @@ const ClientInformations = () => {
         />
 
         <div className="buttonsContainer">
-          <p className="pre">Previous</p>
-          <button className="next">Create my account</button>
+          <p className="pre" onClick={previous}>
+            Previous
+          </p>
+          <button className="next" onClick={next}>
+            Create my account
+          </button>
         </div>
 
         <p className="terms">
