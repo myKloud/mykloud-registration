@@ -6,6 +6,8 @@ import ClientInformations from "./components/clientInformations";
 import Recovery from "./components/recovery";
 import { Route, Switch } from "react-router-dom";
 
+// process.env.REACT_APP_API_URL;
+
 function App() {
   return (
     <div className="app">
