@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import http from "./http";
 
-const apiEndPoint = `/${origin[3]}/user/users`;
+const apiEndPoint = `/user/users`;
 
 const refreshTokenTime = 600000;
 
