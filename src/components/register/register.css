@@ -8,7 +8,7 @@
   padding-top: 5.46875vh;
   padding-bottom: 5.46875vh;
   text-align: center;
-  border-radius: 1vh;
+  border-radius: 6px;
 }
 
 .registerFormTitle {
@@ -44,10 +44,9 @@
   width: 31.66666666666vw;
   height: 5.46875vh;
   padding: 0 0 0 16px;
-  border-radius: 0.5vh;
+  border-radius: 6px;
   border: solid 1px #dcdce7;
   background-color: white;
-  border-radius: 0.5vh;
   font-family: "Open Sans";
   font-size: 14px;
   font-weight: normal;
@@ -61,7 +60,7 @@
 
 .domain {
   width: 8.333333333333vw;
-  margin-left: -8.39vw;
+  margin-left: -8.3vw;
   border: solid 1px #dcdce7;
   background-color: #f2faff;
   font-family: "Open Sans";
@@ -72,12 +71,12 @@
   line-height: normal;
   letter-spacing: normal;
   position: relative;
-  border-top-right-radius: 0.5vh;
-  border-bottom-right-radius: 0.5vh;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   outline: none;
   bottom: 14px;
   font-size: 14px;
-  height: 3.7vh;
+  height: 3.8vh;
   padding-top: 16px;
 }
 
@@ -103,10 +102,9 @@
   width: 31.66666666666vw;
   height: 5.46875vh;
   padding: 0 0 0 16px;
-  border-radius: 0.5vh;
+  border-radius: 6px;
   border: solid 1px #dcdce7;
   background-color: white;
-  border-radius: 0.5vh;
   font-family: "Open Sans";
   font-size: 14px;
   font-weight: normal;
@@ -123,10 +121,9 @@
   width: 31.66666666666vw;
   height: 5.46875vh;
   padding: 0 0 0 16px;
-  border-radius: 0.5vh;
+  border-radius: 6px;
   border: solid 1px #dcdce7;
   background-color: white;
-  border-radius: 0.5vh;
   font-family: "Open Sans";
   font-size: 14px;
   font-weight: normal;
@@ -162,7 +159,7 @@
   width: 32.7vw;
   height: 6.25vh;
   border: none;
-  border-radius: 0.5vh;
+  border-radius: 6px;
   background-color: #1b73d1;
   flex-grow: 0;
   font-family: "Poppins";
@@ -203,4 +200,218 @@
 }
 ::placeholder {
   color: #8692a6;
+}
+
+@media only screen and (min-width: 1441px) {
+  .registerForm {
+  }
+
+  .registerFormTitle {
+    font-size: 34px;
+  }
+
+  .normalText {
+    font-size: 20px;
+  }
+
+  .userName {
+  }
+  .userField {
+    font-size: 16px;
+  }
+
+  .domain {
+    font-size: 16px;
+    bottom: 16.5px;
+  }
+}
+
+@media only screen and (max-width: 1112px) {
+  .registerForm {
+    width: 60.194444444444vw;
+    margin-left: 20%;
+  }
+  .registerFormTitle {
+    font-size: 30px;
+  }
+
+  .normalText {
+    font-size: 14px;
+  }
+
+  .userField {
+    width: 60%;
+    font-size: 14px;
+  }
+
+  .domain {
+    display: flex;
+    height: 5.5vh;
+    padding: 0 0 0 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    bottom: 14px;
+  }
+  .note {
+    margin-left: 18.5%;
+  }
+
+  .passwordField {
+    width: 60.5%;
+    font-size: 14px;
+  }
+
+  .confirmPasswordField {
+    width: 60.5%;
+    font-size: 14px;
+  }
+
+  .nextBtn {
+    width: 63.5%;
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 1030px) {
+  .registerForm {
+    width: 100vw;
+    margin-left: 0%;
+    margin-top: 8%;
+  }
+  .registerFormTitle {
+    font-size: 30px;
+  }
+
+  .normalText {
+    font-size: 18px;
+  }
+
+  .userField {
+    width: 60%;
+    font-size: 14px;
+  }
+
+  .domain {
+    display: flex;
+    height: 5.5vh;
+    padding: 0 0 0 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 14%;
+    font-size: 14px;
+    bottom: 14px;
+  }
+  .note {
+    margin-left: 16.2%;
+  }
+
+  .passwordField {
+    width: 66.3%;
+    font-size: 14px;
+  }
+
+  .confirmPasswordField {
+    width: 66.3%;
+    font-size: 14px;
+  }
+  .show {
+  }
+
+  .nextBtn {
+    width: 68.5%;
+    font-size: 16px;
+  }
+
+  .safeMessage {
+  }
+
+  .icon {
+  }
+
+  .info {
+  }
+}
+
+@media only screen and (max-width: 765px) {
+  body {
+    background-image: none;
+  }
+  .registerForm {
+    width: 100vw;
+    margin-left: 0%;
+    margin-top: -6%;
+    border: none;
+  }
+  .registerFormTitle {
+    font-size: 20px;
+    text-align: left;
+    margin-left: 5vw;
+  }
+
+  .normalText {
+    font-size: 14px;
+    text-align: left;
+    margin-left: 5vw;
+  }
+
+  .userField {
+    width: 63%;
+    font-size: 14px;
+  }
+
+  .domain {
+    display: flex;
+    width: 32%;
+    height: 5.5vh;
+    padding: 0 0 0 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    bottom: 14.1px;
+    font-weight: normal;
+    margin-bottom: 2vh;
+  }
+  .note {
+    margin-left: 5.2%;
+    height: 3vh;
+    font-size: 12px;
+    margin-bottom: 1.5vh;
+  }
+
+  .passwordField {
+    width: 87.3%;
+    font-size: 14px;
+  }
+
+  .confirmPasswordField {
+    width: 87.3%;
+    font-size: 14px;
+  }
+
+  .passwordField:focus {
+    outline: solid 1px #445da7;
+  }
+
+  .confirmPasswordField:focus {
+    outline: solid 1px #445da7;
+  }
+
+  .nextBtn {
+    width: 90.8%;
+    font-size: 16px;
+  }
+  .icon {
+    object-fit: contain;
+    width: 14px;
+    height: 14px;
+    margin-top: 13px;
+  }
+
+  .info {
+    font-size: 12px;
+  }
 }

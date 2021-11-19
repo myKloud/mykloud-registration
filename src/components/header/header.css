@@ -9,19 +9,19 @@
   height: 4.49218vh;
   margin: 4.78515625vh 0 0 3.9vw;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo {
-  width: 3.243vw;
-  height: 4.49218vh;
+  width: 46.7px;
+  height: 46px;
   flex-grow: 0;
-  margin: 0 0.4027777777vw 0 0;
 }
 
 .logoText {
   width: 6.076388888vw;
   height: 1.91406vh;
-  margin: 2.30468vh 0 0.27343vh 0;
   font-family: "Poppins";
   font-weight: 800;
   text-shadow: 0px 0px, 0px 0px, 0px 0px;
@@ -29,8 +29,8 @@
   vertical-align: baseline;
   letter-spacing: normal;
   color: #445da7;
-  font-size: 1.02vw;
-  margin-top: 7%;
+  font-size: 16px;
+  margin-top: 14%;
 }
 
 .rightSide {
@@ -38,12 +38,11 @@
 }
 
 .rightText {
-  width: 14.583333333vw;
   height: 2.73437vh;
   flex-grow: 0;
   margin: 5.6640625vh 1.11111111111111vw 0 0;
   font-family: "Roboto", Helvetica, sans-serif;
-  font-size: 1.1111111111111111111vw;
+  font-size: 16px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -54,15 +53,15 @@
 }
 
 .signInBtn {
-  width: 8.125vw;
+  width: 9.125vw;
   height: 4.6875vh;
   margin-right: 3.889vw;
   margin-top: 4.9875vh;
   border-radius: 0.416667vw;
   background-color: white;
   border: solid 1px #1b73d1;
-  font-family: "Roboto", sans-serif;
-  font-size: 1.1111111111111111111vw;
+  font-family: "Poppins";
+  font-size: 16px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
@@ -75,4 +74,47 @@
 :hover.signInBtn {
   background-color: #1b73d1;
   color: white;
+}
+
+@media only screen and (min-width: 1441px) {
+  .logo {
+    width: 54.7px;
+    height: 54px;
+  }
+  .logoText {
+    font-size: 18px;
+  }
+  .rightText {
+    font-size: 18px;
+  }
+  .signInBtn {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 765px) {
+  .logo {
+    width: 32.5px;
+    height: 32px;
+    margin-left: 20px;
+  }
+  .logoText {
+    font-size: 14px;
+    display: none;
+  }
+  .rightText {
+    font-size: 14px;
+    display: none;
+  }
+  .signInBtn {
+    width: 84px;
+    height: 20px;
+    font-size: 14px;
+    margin-top: 53px;
+    border: none;
+  }
+  :hover.signInBtn {
+    background-color: white;
+    color: #1b73d1;
+  }
 }
