@@ -15,10 +15,11 @@
 
 .rightSide {
   display: flex;
+  align-items: center;
 }
 
 .rightText {
-  height: 2.73437vh;
+  height: 28px;
   flex-grow: 0;
   margin: 5.6640625vh 1.11111111111111vw 0 0;
   font-family: "Poppins";
@@ -34,7 +35,7 @@
 
 .signInBtn {
   width: 9.125vw;
-  height: 4.6875vh;
+  height: 48px;
   margin-right: 3.889vw;
   margin-top: 4.9875vh;
   border-radius: 0.416667vw;

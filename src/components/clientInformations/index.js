@@ -47,7 +47,7 @@ const ClientInformations = () => {
       <div className="form">
         <h1 className="formTitle">Fill in some basic info</h1>
 
-        <div className="userName">
+        <div className="userName1">
           <input
             type="text"
             placeholder="First name"
