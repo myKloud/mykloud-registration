@@ -1,13 +1,16 @@
+.register-container {
+  display: flex;
+  height: 100vh;
+}
+
 .registerForm {
   width: 622px;
   border: solid 1px #dcdce7;
   background-color: #ffffff;
-  margin-top: 124px;
-  margin-bottom: 221px;
-  margin-left: 30%;
   padding-top: 56px;
   padding-bottom: 56px;
   border-radius: 6px;
+  margin: auto;
 }
 
 .registerFormTitle {
@@ -206,23 +209,99 @@
 
 @media only screen and (min-width: 1441px) {
   .registerForm {
+    width: 820px;
   }
 
   .registerFormTitle {
-    font-size: 34px;
+    font-size: 38px;
+    width: 700px;
+    text-align: center;
   }
 
   .normalText {
-    font-size: 20px;
+    width: 590px;
+    font-size: 21px;
+    text-align: center;
   }
 
+  .userName {
+    margin-left: 0px;
+    justify-content: center;
+  }
   .userField {
-    font-size: 16px;
+    width: 520px;
   }
 
   .domain {
-    font-size: 16px;
-    bottom: 16.5px;
+    width: 114px;
+    margin-left: -130px;
+    padding-right: 0px;
+  }
+
+  .note {
+    width: 450px;
+    font-size: 13px;
+    margin-left: 92px;
+    text-align: center;
+  }
+
+  .passwordField {
+    width: 521px;
+    margin-left: 140px;
+  }
+
+  .confirmPasswordField {
+    width: 521px;
+    margin-left: 140px;
+  }
+  .show {
+    margin-left: -38px;
+    position: relative;
+    right: 24px;
+    width: 37px;
+    height: 19px;
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #1565d8;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+  }
+
+  .nextBtn {
+    width: 540px;
+    margin-left: 140px;
+  }
+
+  .safeMessage {
+    display: flex;
+    justify-content: center;
+    gap: 0.5555555555555555555555vw;
+  }
+
+  .icon {
+    object-fit: contain;
+    width: 14px;
+    height: 14px;
+    margin-top: 13px;
+  }
+
+  .info {
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #45536c;
   }
 }
 

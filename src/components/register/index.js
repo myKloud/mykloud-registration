@@ -30,72 +30,76 @@ const Register = () => {
 
   return (
     <>
-      <div className="registerForm">
-        <h1 className="registerFormTitle">Create your myKloud account</h1>
-        <p className="normalText">Single access to all myKloud applications.</p>
-        <div className="userName">
-          <input
-            type="text"
-            placeholder="Username"
-            className="userField"
-            value={user}
-            onChange={(e) => {
-              setUser(e.target.value);
-            }}
-          ></input>
-          <p className="domain">@mykloud.io</p>
-        </div>
-        <p className="note">
-          Only letters (a-z), numbers (0-9) and periods(.) are allowed
-        </p>
-        <div>
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Create password"
-            className="passwordField"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <button
-            className="show"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            {!showPassword ? (
-              <u style={{ color: "#1565d8" }}>Show</u>
-            ) : (
-              <u style={{ color: "#1565d8" }}>Hide</u>
-            )}
-          </button>
-        </div>
-        <div>
-          <input
-            type={showConfirmPassword ? "text" : "password"}
-            placeholder="Confirm password"
-            className="confirmPasswordField"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-
-          <button
-            className="show"
-            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-          >
-            {!showConfirmPassword ? (
-              <u style={{ color: "#1565d8" }}>Show</u>
-            ) : (
-              <u style={{ color: "#1565d8" }}>Hide</u>
-            )}
-          </button>
-        </div>
-        <button className="nextBtn" onClick={nextPage}>
-          Next
-        </button>
-        <div className="safeMessage">
-          <img src={icon} class="icon" />
-          <p className="info">
-            Safe & secure via myKloud blockhain technologies.
+      <div className="register-container">
+        <div className="registerForm">
+          <h1 className="registerFormTitle">Create your myKloud account</h1>
+          <p className="normalText">
+            Single access to all myKloud applications.
           </p>
+          <div className="userName">
+            <input
+              type="text"
+              placeholder="Username"
+              className="userField"
+              value={user}
+              onChange={(e) => {
+                setUser(e.target.value);
+              }}
+            ></input>
+            <p className="domain">@mykloud.io</p>
+          </div>
+          <p className="note">
+            Only letters (a-z), numbers (0-9) and periods(.) are allowed
+          </p>
+          <div>
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Create password"
+              className="passwordField"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <button
+              className="show"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {!showPassword ? (
+                <u style={{ color: "#1565d8" }}>Show</u>
+              ) : (
+                <u style={{ color: "#1565d8" }}>Hide</u>
+              )}
+            </button>
+          </div>
+          <div>
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              placeholder="Confirm password"
+              className="confirmPasswordField"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+
+            <button
+              className="show"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            >
+              {!showConfirmPassword ? (
+                <u style={{ color: "#1565d8" }}>Show</u>
+              ) : (
+                <u style={{ color: "#1565d8" }}>Hide</u>
+              )}
+            </button>
+          </div>
+          <button className="nextBtn" onClick={nextPage}>
+            Next
+          </button>
+          <div className="safeMessage">
+            <img src={icon} class="icon" />
+            <p className="info">
+              Safe & secure via myKloud blockhain technologies.
+            </p>
+          </div>
         </div>
       </div>
     </>
