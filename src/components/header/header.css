@@ -5,7 +5,7 @@
 }
 
 .leftSide {
-  margin: 4.78515625vh 0 0 3.9vw;
+  margin: 49px 0 0 0;
 }
 
 .logo1 {
@@ -21,7 +21,7 @@
 .rightText {
   height: 28px;
   flex-grow: 0;
-  margin: 5.6640625vh 1.11111111111111vw 0 0;
+  margin: 58px 16px 0 0;
   font-family: "Poppins";
   font-size: 16px;
   font-weight: normal;
@@ -36,9 +36,8 @@
 .signInBtn {
   width: 9.125vw;
   height: 48px;
-  margin-right: 3.889vw;
-  margin-top: 4.9875vh;
-  border-radius: 0.416667vw;
+  margin-top: 48px;
+  border-radius: 6px;
   background-color: white;
   border: solid 1px #1b73d1;
   font-family: "Poppins";
@@ -64,6 +63,8 @@
   .logo1 {
     width: 32.5px;
     height: 32px;
+    margin-top: 0px !important;
+    margin-top: 24px;
     margin-left: 20px;
   }
 
@@ -75,7 +76,7 @@
     width: 84px;
     height: 20px;
     font-size: 14px;
-    margin-top: 47.5px;
+    margin-top: 37.5px;
     border: none;
   }
   :hover.signInBtn {

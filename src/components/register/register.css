@@ -265,22 +265,28 @@
   body {
     background-image: none;
   }
+  .register-container {
+    margin: 0px;
+  }
   .registerForm {
-    width: 100vw;
-    margin-left: 0%;
-    margin-top: -6%;
+    padding-top: 0px;
+    margin: 0;
+    margin-top: 24px;
     border: none;
   }
   .registerFormTitle {
+    width: 338px;
+    height: 30px;
+    margin: 0px;
+    margin: 0 20px 8px;
     font-size: 20px;
     text-align: left;
-    margin-left: 5vw;
   }
 
   .normalText {
     font-size: 14px;
     text-align: left;
-    margin-left: 5vw;
+    margin: 0 20px 24px;
   }
 
   .userField {
