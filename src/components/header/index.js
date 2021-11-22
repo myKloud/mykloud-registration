@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { css } from "./header.css";
 import img from "../../images/myKloud_logo.png";
 import phoneImg from "../../images/app-logo.png";
+import useSize from "@react-hook/size";
+import useWindowDimensions from "./useWindowDimensions";
+
 const Header = () => {
-  const [width, setWidth] = React.useState(window.innerWidth);
   const breakpoint = 768;
-  console.log(width);
+  const { height, width } = useWindowDimensions();
+
   return (
     <div className="header">
       <div className="leftSide">
