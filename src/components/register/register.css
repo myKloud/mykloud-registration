@@ -69,7 +69,7 @@
   height: 19px;
   margin: 0 0 0 252px;
   padding: 19px 16px 18px;
-  margin-left: -8.3vw;
+  margin-left: -120px;
   border: solid 1px #dcdce7;
   background-color: #f2faff;
   font-family: "Open Sans";
@@ -254,167 +254,14 @@
     width: 521px;
     margin-left: 140px;
   }
-  .show {
-    margin-left: -38px;
-    position: relative;
-    right: 24px;
-    width: 37px;
-    height: 19px;
-    font-family: "Open Sans";
-    font-size: 14px;
-    font-weight: 600;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #1565d8;
-    cursor: pointer;
-    border: none;
-    background-color: white;
-  }
 
   .nextBtn {
     width: 540px;
     margin-left: 140px;
   }
-
-  .safeMessage {
-    display: flex;
-    justify-content: center;
-    gap: 0.5555555555555555555555vw;
-  }
-
-  .icon {
-    object-fit: contain;
-    width: 14px;
-    height: 14px;
-    margin-top: 13px;
-  }
-
-  .info {
-    font-family: "Open Sans";
-    font-size: 12px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: center;
-    color: #45536c;
-  }
 }
 
-@media only screen and (max-width: 1112px) {
-  .registerForm {
-    width: 60.194444444444vw;
-    margin-left: 20%;
-  }
-  .registerFormTitle {
-    font-size: 30px;
-  }
-
-  .normalText {
-    font-size: 14px;
-  }
-
-  .userField {
-    width: 60%;
-    font-size: 14px;
-  }
-
-  .domain {
-    display: flex;
-    height: 5.5vh;
-    padding: 0 0 0 0;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 14px;
-    bottom: 14px;
-  }
-  .note {
-    margin-left: 18.5%;
-  }
-
-  .passwordField {
-    width: 60.5%;
-    font-size: 14px;
-  }
-
-  .confirmPasswordField {
-    width: 60.5%;
-    font-size: 14px;
-  }
-
-  .nextBtn {
-    width: 63.5%;
-    font-size: 16px;
-  }
-}
-
-@media only screen and (max-width: 1030px) {
-  .registerForm {
-    width: 100vw;
-    margin-left: 0%;
-    margin-top: 8%;
-  }
-  .registerFormTitle {
-    font-size: 30px;
-  }
-
-  .normalText {
-    font-size: 18px;
-  }
-
-  .userField {
-    width: 60%;
-    font-size: 14px;
-  }
-
-  .domain {
-    display: flex;
-    height: 5.5vh;
-    padding: 0 0 0 0;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 14%;
-    font-size: 14px;
-    bottom: 14px;
-  }
-  .note {
-    margin-left: 16.2%;
-  }
-
-  .passwordField {
-    width: 66.3%;
-    font-size: 14px;
-  }
-
-  .confirmPasswordField {
-    width: 66.3%;
-    font-size: 14px;
-  }
-  .show {
-  }
-
-  .nextBtn {
-    width: 68.5%;
-    font-size: 16px;
-  }
-
-  .safeMessage {
-  }
-
-  .icon {
-  }
-
-  .info {
-  }
-}
-
-@media only screen and (max-width: 765px) {
+@media only screen and (max-width: 768px) {
   body {
     background-image: none;
   }
