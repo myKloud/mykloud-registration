@@ -203,6 +203,21 @@
   text-align: center;
   color: #45536c;
 }
+
+.userField:focus + .domain {
+  border: solid 1px #445da7;
+}
+.userField:focus {
+  border: solid 1px #445da7;
+}
+
+.passwordField:focus {
+  border: solid 1px #445da7;
+}
+
+.confirmPasswordField:focus {
+  border: solid 1px #445da7;
+}
 ::placeholder {
   color: #8692a6;
 }
@@ -286,64 +301,122 @@
   .normalText {
     font-size: 14px;
     text-align: left;
+    margin-bottom: 0px;
     margin: 0 20px 24px;
   }
 
+  .userName {
+    margin-top: 0px;
+    margin-left: 0px;
+    justify-content: flex-start;
+  }
   .userField {
-    width: 63%;
-    font-size: 14px;
+    width: 500px;
+    height: 56px;
+    flex-grow: 0;
+    margin-left: 20px;
+    padding: 0 0 0 15px;
+    border-radius: 6px;
   }
 
   .domain {
-    display: flex;
-    width: 32%;
-    height: 5.5vh;
-    padding: 0 0 0 0;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 14px;
-    bottom: 14.1px;
+    width: 114px;
+    margin-left: -130px;
+    padding-right: 0px;
     font-weight: normal;
-    margin-bottom: 2vh;
+    background-color: #e2f4ff;
   }
+
   .note {
-    margin-left: 5.2%;
-    height: 3vh;
+    width: 324px;
+    height: 16px;
+    flex-grow: 0;
+    font-family: "Open Sans";
     font-size: 12px;
-    margin-bottom: 1.5vh;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    margin: 8px 0 0 0;
+    margin-left: 20px;
   }
 
   .passwordField {
-    width: 87.3%;
-    font-size: 14px;
+    width: 500px;
+    height: 56px;
+    flex-grow: 0;
+    margin: 0;
+    padding: 0;
+    margin: 20px 20px 20px;
+    padding-left: 16px;
+    border-radius: 6px;
+  }
+
+  u {
+    text-decoration: none;
+    margin-left: -16px;
   }
 
   .confirmPasswordField {
-    width: 87.3%;
-    font-size: 14px;
-  }
-
-  .passwordField:focus {
-    outline: solid 1px #445da7;
-  }
-
-  .confirmPasswordField:focus {
-    outline: solid 1px #445da7;
+    width: 500px;
+    height: 56px;
+    flex-grow: 0;
+    margin: 0;
+    padding: 0;
+    margin: 0px 20px 20px;
+    padding-left: 16px;
+    border-radius: 6px;
   }
 
   .nextBtn {
-    width: 90.8%;
-    font-size: 16px;
-  }
-  .icon {
-    object-fit: contain;
-    width: 14px;
-    height: 14px;
-    margin-top: 13px;
+    width: 518px;
+    height: 56px;
+    margin-left: 20px;
+    margin-top: 0px;
   }
 
-  .info {
-    font-size: 12px;
+  .safeMessage {
+    justify-content: flex-start;
+    margin-left: 120px;
+  }
+}
+
+@media only screen and (max-width: 556px) {
+  .userName {
+    margin-top: 0px;
+    margin-left: 0px;
+    justify-content: flex-start;
+  }
+  .userField {
+    width: 315px;
+  }
+
+  .domain {
+  }
+
+  .note {
+  }
+
+  .passwordField {
+    width: 315px;
+  }
+
+  u {
+    text-decoration: none;
+    margin-left: -16px;
+  }
+
+  .confirmPasswordField {
+    width: 315px;
+  }
+
+  .nextBtn {
+    width: 333px;
+  }
+
+  .safeMessage {
+    margin-left: 39px;
   }
 }
