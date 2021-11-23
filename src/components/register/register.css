@@ -222,60 +222,6 @@
   color: #8692a6;
 }
 
-@media only screen and (min-width: 1441px) {
-  .registerForm {
-    width: 820px;
-  }
-
-  .registerFormTitle {
-    font-size: 38px;
-    width: 700px;
-    text-align: center;
-  }
-
-  .normalText {
-    width: 590px;
-    font-size: 21px;
-    text-align: center;
-  }
-
-  .userName {
-    margin-left: 0px;
-    justify-content: center;
-  }
-  .userField {
-    width: 520px;
-  }
-
-  .domain {
-    width: 114px;
-    margin-left: -130px;
-    padding-right: 0px;
-  }
-
-  .note {
-    width: 450px;
-    font-size: 13px;
-    margin-left: 92px;
-    text-align: center;
-  }
-
-  .passwordField {
-    width: 521px;
-    margin-left: 140px;
-  }
-
-  .confirmPasswordField {
-    width: 521px;
-    margin-left: 140px;
-  }
-
-  .nextBtn {
-    width: 540px;
-    margin-left: 140px;
-  }
-}
-
 @media only screen and (max-width: 768px) {
   body {
     background-image: none;
@@ -387,11 +333,10 @@
 @media only screen and (max-width: 556px) {
   .userName {
     margin-top: 0px;
-    margin-left: 0px;
     justify-content: flex-start;
   }
   .userField {
-    width: 315px;
+    width: 86%;
   }
 
   .domain {
@@ -401,7 +346,7 @@
   }
 
   .passwordField {
-    width: 315px;
+    width: 86%;
   }
 
   u {
@@ -410,14 +355,32 @@
   }
 
   .confirmPasswordField {
-    width: 315px;
+    width: 86%;
   }
 
   .nextBtn {
-    width: 333px;
+    width: 89.7%;
   }
 
   .safeMessage {
     margin-left: 39px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .userField {
+    width: 75%;
+  }
+
+  .passwordField {
+    width: 75%;
+  }
+
+  .confirmPasswordField {
+    width: 75%;
+  }
+
+  .nextBtn {
+    width: 78.7%;
   }
 }

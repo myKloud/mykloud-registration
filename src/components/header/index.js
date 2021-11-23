@@ -10,19 +10,29 @@ const Header = () => {
   const { height, width } = useWindowDimensions();
 
   return (
-    <div className="header">
-      <div className="leftSide">
-        {width > breakpoint ? (
-          <img src={img} alt="Logo image" className="logo1"></img>
-        ) : (
-          <img src={phoneImg} alt="Logo image" className="logo1"></img>
-        )}
-      </div>
-      <div className="rightSide">
-        <p className="rightText">Already have an account?</p>
-        <button className="signInBtn">Sign in</button>
-      </div>
-    </div>
+    <>
+      {width > breakpoint ? (
+        <div className="header">
+          <div className="leftSide">
+            <img src={img} alt="Logo image" className="logo1"></img>
+          </div>
+          <div className="rightSide">
+            <p className="rightText">Already have an account?</p>
+            <button className="signInBtn">Sign in</button>
+          </div>
+        </div>
+      ) : (
+        <div className="header" style={{ width: width }}>
+          <div className="leftSide">
+            <img src={phoneImg} alt="Logo image" className="logo1"></img>
+          </div>
+          <div className="rightSide">
+            <p className="rightText">Already have an account?</p>
+            <button className="signInBtn">Sign in</button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
