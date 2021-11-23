@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { css } from "./recovery.css";
 import blackEmailImg from "../../images/email1.png";
 import whiteEmailImg from "../../images/email2.png";
 import blackPhoneImg from "../../images/phone1.png";
@@ -26,7 +25,7 @@ const Recovery = () => {
           For now , let’s select your recovery method
         </p>
 
-        {method == "email" ? (
+        {method === "email" ? (
           <div className="buttonContainer">
             <div
               className="email"
@@ -46,7 +45,7 @@ const Recovery = () => {
                   border: "solid 2px #1b73d1",
                 }}
               >
-                <img src={whiteEmailImg}></img>
+                <img src={whiteEmailImg} alt="email logo"></img>
               </div>
 
               <p className="text" style={{ color: "#1b73d1" }}>
@@ -65,7 +64,7 @@ const Recovery = () => {
               }}
             >
               <div className="imgBorder" style={{ border: "solid 2px" }}>
-                <img src={blackPhoneImg}></img>
+                <img src={blackPhoneImg} alt="phone"></img>
               </div>
 
               <p className="text">Phone number</p>
@@ -84,7 +83,7 @@ const Recovery = () => {
               }}
             >
               <div className="imgBorder" style={{ border: "solid 2px" }}>
-                <img src={blackEmailImg}></img>
+                <img src={blackEmailImg} alt="email logo"></img>
               </div>
               <p className="text">Email address</p>{" "}
             </div>
@@ -107,7 +106,7 @@ const Recovery = () => {
                   border: "solid 2px #1b73d1",
                 }}
               >
-                <img src={whitePhoneImg}></img>
+                <img src={whitePhoneImg} alt="phone logo"></img>
               </div>
 
               <p className="text" style={{ color: "#1b73d1" }}>
@@ -117,7 +116,7 @@ const Recovery = () => {
           </div>
         )}
 
-        {method == "email" ? (
+        {method === "email" ? (
           <input
             type="text"
             placeholder="Recovery email address"
@@ -154,7 +153,7 @@ const Recovery = () => {
           />
         )}
 
-        {method == "email" ? (
+        {method === "email" ? (
           <p className="endText">
             You’ll recieve an email with a cofnirmation code
           </p>

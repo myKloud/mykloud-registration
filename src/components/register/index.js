@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { css } from "./register.css";
 import icon from "../../images/lock 1.svg";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -95,7 +94,7 @@ const Register = () => {
             Next
           </button>
           <div className="safeMessage">
-            <img src={icon} class="icon" />
+            <img src={icon} class="icon" alt="icon" />
             <p className="info">
               Safe & secure via myKloud blockhain technologies.
             </p>

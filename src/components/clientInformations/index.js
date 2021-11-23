@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { css } from "./clientInformations.css";
+import React, { useState } from "react";
 import { MonthPicker } from "react-dropdown-date";
 import img from "../../images/birthday-date.png";
 import Recaptcha from "react-google-recaptcha";
@@ -99,7 +98,7 @@ const ClientInformations = () => {
               onChange={(month) => {
                 setMonth(month);
               }}
-              id={month == "" || month == "Month" ? "defaultMonth" : "month"}
+              id={month === "" || month === "Month" ? "defaultMonth" : "month"}
               name={"month"}
               classes={"classes"}
               optionClasses={"optionclasses"}
@@ -114,7 +113,7 @@ const ClientInformations = () => {
           </div>
 
           <div className="note1">
-            <img src={img} alt="birhtday image" className="image"></img>
+            <img src={img} alt="birhtday" className="image" />
             <p className="imageDiscription">
               Here goe a short sentence taht can goes on two lines describing
               why we asking for date of birth.
@@ -194,7 +193,7 @@ const ClientInformations = () => {
               onChange={(month) => {
                 setMonth(month);
               }}
-              id={month == "" || month == "Month" ? "defaultMonth" : "month"}
+              id={month === "" || month === "Month" ? "defaultMonth" : "month"}
               name={"month"}
               classes={"classes"}
               optionClasses={"optionclasses"}
@@ -209,7 +208,7 @@ const ClientInformations = () => {
           </div>
 
           <div className="note1">
-            <img src={img} alt="birhtday image" className="image"></img>
+            <img src={img} alt="birhtday" className="image"></img>
             <p className="imageDiscription">
               Here goe a short sentence taht can goes on two lines describing
               why we asking for date of birth.
