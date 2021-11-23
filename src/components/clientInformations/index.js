@@ -77,7 +77,7 @@ const ClientInformations = () => {
             onChange={(month) => {
               setMonth(month);
             }}
-            id={"month"}
+            id={month == "" || month == "Month" ? "defaultMonth" : "month"}
             name={"month"}
             classes={"classes"}
             optionClasses={"optionclasses"}

@@ -63,7 +63,8 @@
 
 @media only screen and (max-width: 768px) {
   .header {
-    gap: 240px;
+    background-color: rgba(235, 247, 255, 0.7);
+    gap: 70%;
   }
   .logo1 {
     width: 32.5px;
@@ -79,13 +80,38 @@
   }
   .signInBtn {
     width: 84px;
-    height: 20px;
+    height: 30px;
     font-size: 14px;
     margin-top: 37.5px;
     border: none;
+    background-color: rgba(235, 247, 255, 0.7);
   }
   :hover.signInBtn {
-    background-color: white;
+    background-color: rgba(235, 247, 255, 0.7);
     color: #1b73d1;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .header {
+    gap: 67%;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .header {
+    gap: 73%;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .header {
+    gap: 85%;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .header {
+    gap: 95%;
   }
 }
