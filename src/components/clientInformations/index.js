@@ -115,10 +115,10 @@ const ClientInformations = () => {
           </button>
         </div>
 
-        <p className="terms">
-          By clicking "create my account", you agree to the Terms and Privacy
-          Policy
-        </p>
+        <pre className="terms">
+          By clicking "create my account", you agree to the <span>Terms</span>{" "}
+          and <span>Privacy Policy</span>
+        </pre>
       </div>
     </>
   );
