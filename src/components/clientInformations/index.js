@@ -4,6 +4,7 @@ import img from "../../images/birthday-date.png";
 import Recaptcha from "react-google-recaptcha";
 import { useHistory, useLocation } from "react-router-dom";
 import useWindowDimensions from "../header/useWindowDimensions";
+import "./clientInformations.css";
 
 const ClientInformations = () => {
   const location = useLocation();

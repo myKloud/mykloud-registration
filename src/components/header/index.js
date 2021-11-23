@@ -2,7 +2,7 @@ import React from "react";
 import img from "../../images/myKloud_logo.png";
 import phoneImg from "../../images/app-logo.png";
 import useWindowDimensions from "./useWindowDimensions";
-
+import "./header.css";
 const Header = () => {
   const breakpoint = 768;
   const { height, width } = useWindowDimensions();
