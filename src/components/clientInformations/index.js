@@ -184,7 +184,7 @@ const ClientInformations = () => {
 
           <p className="Your-birthday">Your birthday</p>
 
-          <div className="datePicker">
+          <div className="userName1">
             <MonthPicker
               defaultValue={"Month"}
               className="select-months"
@@ -233,8 +233,8 @@ const ClientInformations = () => {
           </div>
 
           <pre className="terms">
-            By clicking "create my account", you agree to the <span>Terms</span>{" "}
-            and <span>Privacy Policy</span>
+            By clicking "create my account", you agree to the{" "}
+            <span>Terms </span> and <span>Privacy Policy</span>
           </pre>
         </div>
       )}
