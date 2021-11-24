@@ -4,8 +4,6 @@ import ClientInformations from "./components/clientInformations";
 import Recovery from "./components/recovery";
 import { Route, Switch } from "react-router-dom";
 
-import "./css/global.css";
-
 function App() {
   return (
     <div className="app">
