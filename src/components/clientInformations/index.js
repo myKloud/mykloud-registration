@@ -122,7 +122,7 @@ const ClientInformations = () => {
           </div>
 
           <Recaptcha
-            sitekey="6LfgMzcdAAAAADfqK0z6yvTZfqEz0ozhUucnf9PQ"
+            sitekey="6Ld94lYdAAAAAD2oJ3xOQFzAQb0QNSM_t70ypxHx"
             onloadCallback={recaptchaLoaded()}
             verifyCallback={verifyCallback()}
             className="recaptcha"
@@ -137,10 +137,11 @@ const ClientInformations = () => {
             </button>
           </div>
 
-          <pre className="terms">
-            By clicking "create my account", you agree to the <span>Terms</span>{" "}
-            and <span>Privacy Policy</span>
-          </pre>
+          <p className="terms">
+            By clicking "create my account", you agree to the&#160; <u>Terms</u>
+            &#160;and&#160;
+            <u>Privacy Policy</u>
+          </p>
         </div>
       ) : (
         <div className="form" style={{ width: width }}>
@@ -217,7 +218,7 @@ const ClientInformations = () => {
           </div>
 
           <Recaptcha
-            sitekey="6LfgMzcdAAAAADfqK0z6yvTZfqEz0ozhUucnf9PQ"
+            sitekey="6Ld94lYdAAAAAD2oJ3xOQFzAQb0QNSM_t70ypxHx"
             onloadCallback={recaptchaLoaded()}
             verifyCallback={verifyCallback()}
             className="recaptcha"
@@ -232,10 +233,11 @@ const ClientInformations = () => {
             </button>
           </div>
 
-          <pre className="terms">
-            By clicking "create my account", you agree to the{" "}
-            <span>Terms </span> and <span>Privacy Policy</span>
-          </pre>
+          <p className="terms">
+            By clicking "create my account", you agree to the&#160; <u>Terms</u>
+            &#160;and&#160;
+            <u>Privacy Policy</u>
+          </p>
         </div>
       )}
     </>
