@@ -3,7 +3,7 @@ import { MonthPicker } from "react-dropdown-date";
 import img from "../../images/birthday-date.png";
 import Recaptcha from "react-google-recaptcha";
 import { useHistory, useLocation } from "react-router-dom";
-import useWindowDimensions from "../header/useWindowDimensions";
+import useWindowDimensions from "../../config/useWindowDimensions";
 import "./style.css";
 
 const ClientInformations = () => {

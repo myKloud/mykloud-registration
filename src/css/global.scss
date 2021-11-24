@@ -1,8 +1,16 @@
+@import "./variables.scss";
+
 body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
   background-image: url("../images/back.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+
+  color: $text_color;
+  font-family: "Poppins";
+  font-size: 18px;
+  line-height: 1.56;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
 }

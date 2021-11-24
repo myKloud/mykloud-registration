@@ -6,7 +6,7 @@ import { Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div className="app">
+    <div className="app m-8">
       <Header />
       <Switch>
         <Route exact path="/" render={() => <Register />} />
