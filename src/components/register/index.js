@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import icon from "../../images/lock 1.svg";
 import { useHistory, useLocation } from "react-router-dom";
-import "./register.css";
+import "./style.css";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);

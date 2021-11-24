@@ -5,7 +5,7 @@ import blackPhoneImg from "../../images/phone1.png";
 import whitePhoneImg from "../../images/phone2.png";
 import ReactPhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import "./recovery.css";
+import "./style.css";
 
 const Recovery = () => {
   const [method, setMethod] = useState("email");
