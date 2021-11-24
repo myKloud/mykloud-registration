@@ -10,6 +10,30 @@
 @media only screen and (max-width: 768px) {
 }
 
+@media only screen and (max-width: 767px) {
+  body {
+    background-image: linear-gradient(
+      to bottom,
+      #ffffff,
+      rgba(235, 247, 255, 0.7)
+    );
+    background-size: auto;
+  }
+
+  .form_container {
+    height: 100%;
+
+    .form_wrapper {
+      width: 100%;
+      background-color: transparent;
+      margin: auto;
+      padding: 0;
+
+      border: 0 none;
+    }
+  }
+}
+
 @media only screen and (max-width: 500px) {
 }
 

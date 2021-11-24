@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import icon from "../../images/lock 1.svg";
 import { useHistory, useLocation } from "react-router-dom";
-import "./style.css";
+import "./style.scss";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -30,38 +30,41 @@ const Register = () => {
 
   return (
     <>
-      <div className="register-container">
-        <div className="registerForm">
-          <h1 className="registerFormTitle">Create your myKloud account</h1>
-          <p className="normalText">
+      <div className="form_container">
+        <div className="form_wrapper">
+          <h1 className="register_form_title">Create your myKloud account</h1>
+          <p className="normal_text mb-10">
             Single access to all myKloud applications.
           </p>
-          <div className="userName">
-            <input
-              type="text"
-              placeholder="Username"
-              className="userField"
-              value={user}
-              onChange={(e) => {
-                setUser(e.target.value);
-              }}
-            ></input>
-            <p className="domain">@mykloud.io</p>
+          <div className="mb-4">
+            <div className="user_name">
+              <input
+                type="text"
+                placeholder="username"
+                className="form_field"
+                autofocus="true"
+                value={user}
+                onChange={(e) => {
+                  setUser(e.target.value);
+                }}
+              ></input>
+              <span className="domain">@mykloud.io</span>
+            </div>
+            <p className="note mt-1">
+              Only letters (a-z), numbers (0-9) and periods(.) are allowed
+            </p>
           </div>
-          <p className="note">
-            Only letters (a-z), numbers (0-9) and periods(.) are allowed
-          </p>
-          <div>
+          <div className="mb-4 relative">
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Create password"
-              className="passwordField"
+              className="form_field extra-padding"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
 
             <button
-              className="show"
+              className="input_visibilty"
               onClick={() => setShowPassword(!showPassword)}
             >
               {!showPassword ? (
@@ -71,17 +74,17 @@ const Register = () => {
               )}
             </button>
           </div>
-          <div>
+          <div className="mb-4 relative">
             <input
               type={showConfirmPassword ? "text" : "password"}
               placeholder="Confirm password"
-              className="confirmPasswordField"
+              className="form_field extra-padding"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
 
             <button
-              className="show"
+              className="input_visibilty"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             >
               {!showConfirmPassword ? (
@@ -91,12 +94,12 @@ const Register = () => {
               )}
             </button>
           </div>
-          <button className="nextBtn" onClick={nextPage}>
+          <button className="next_btn mt-10" onClick={nextPage}>
             Next
           </button>
-          <div className="safeMessage">
-            <img src={icon} class="icon" alt="icon" />
-            <p className="info">
+          <div className="safe_message mt-3">
+            <img src={icon} alt="icon" />
+            <p className="info ml-2">
               Safe & secure via myKloud blockhain technologies.
             </p>
           </div>

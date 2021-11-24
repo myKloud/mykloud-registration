@@ -7,7 +7,7 @@ const refreshTokenTime = 600000;
 
 export async function login(user) {
   const info = {
-    email: user.username,
+    email: user.user_name,
     password: user.password,
   };
   const { headers, data } = await http.post(apiEndPoint, info);

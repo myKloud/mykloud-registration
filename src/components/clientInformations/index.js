@@ -52,7 +52,7 @@ const ClientInformations = () => {
           <h1 className="formTitle">Fill in some basic info</h1>
           {width > breakpoint ? (
             <div>
-              <div className="userName1">
+              <div className="user_name1">
                 <input
                   type="text"
                   placeholder="First name"
@@ -71,7 +71,7 @@ const ClientInformations = () => {
               </div>
             </div>
           ) : (
-            <div className="userName1">
+            <div className="user_name1">
               <input
                 type="text"
                 placeholder="First name"
@@ -148,7 +148,7 @@ const ClientInformations = () => {
           <h1 className="formTitle">Fill in some basic info</h1>
           {width > breakpoint ? (
             <div>
-              <div className="userName1">
+              <div className="user_name1">
                 <input
                   type="text"
                   placeholder="First name"
@@ -167,7 +167,7 @@ const ClientInformations = () => {
               </div>
             </div>
           ) : (
-            <div className="userName1">
+            <div className="user_name1">
               <input
                 type="text"
                 placeholder="First name"
@@ -185,7 +185,7 @@ const ClientInformations = () => {
 
           <p className="Your-birthday">Your birthday</p>
 
-          <div className="userName1">
+          <div className="user_name1">
             <MonthPicker
               defaultValue={"Month"}
               className="select-months"

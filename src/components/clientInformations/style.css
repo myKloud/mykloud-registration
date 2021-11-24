@@ -25,7 +25,7 @@
   margin-bottom: 0px;
 }
 
-.userName1 {
+.user_name1 {
   display: flex;
   justify-content: center;
   margin-top: 32px;
@@ -268,7 +268,7 @@ u {
     margin-left: 20px;
   }
 
-  .userName1 {
+  .user_name1 {
     display: flex;
     justify-content: space-between;
     margin-left: 18px;

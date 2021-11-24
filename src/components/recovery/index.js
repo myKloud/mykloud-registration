@@ -164,7 +164,7 @@ const Recovery = () => {
           </p>
         )}
 
-        <button className="nextBtn1">Send me code</button>
+        <button className="next_btn1">Send me code</button>
       </div>
     </>
   );
