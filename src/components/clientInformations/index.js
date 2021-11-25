@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { MonthPicker } from "react-dropdown-date";
 import img from "../../images/birthday-date.png";
 import Recaptcha from "react-google-recaptcha";
 import { useHistory, useLocation } from "react-router-dom";
@@ -71,6 +70,7 @@ const ClientInformations = () => {
           <p className="form_sub_title">Your birthday</p>
           <div className="datePicker mb-4">
             <MonthPickerWrapper
+              value={month}
               placeholder="Month"
               required={true}
               disabled={false}
