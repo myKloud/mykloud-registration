@@ -1,0 +1,74 @@
+@import "../../css/variables.scss";
+
+.your_birthday {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.datePicker {
+  display: flex;
+  justify-content: center;
+}
+
+.note {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;
+  background-color: #e2f4ff;
+  border-radius: 6px;
+}
+
+.image_description {
+  font-family: "Open Sans";
+  font-size: 14px;
+  color: #45536c;
+}
+
+.buttons_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pre {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: $primary_color;
+  cursor: pointer;
+}
+
+.next {
+  width: 220px;
+  height: 64px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  background-color: $primary_color;
+  color: $primary_color_visa;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.terms {
+  font-family: "Open Sans";
+  font-size: 13px;
+  color: $text_bold_color;
+}
+
+u {
+  font-family: "Open Sans";
+  font-size: 13px;
+  color: $primary_color;
+}
+
+@media only screen and (max-width: 767px) {
+  .name_container {
+    display: flex;
+
+    .first_name {
+      margin-right: 1rem;
+    }
+  }
+}

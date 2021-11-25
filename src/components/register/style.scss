@@ -1,11 +1,5 @@
 @import "../../css/variables.scss";
 
-.register_form_title {
-  color: $text_bold_color;
-  font-size: 32px;
-  font-weight: bold;
-}
-
 .normal_text {
   font-size: 18px;
   line-height: 1.56;
@@ -100,10 +94,6 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .register_form_title {
-    font-size: 20px;
-  }
-
   .normal_text {
     text-align: left;
     font-size: 14px;
