@@ -45,7 +45,7 @@ const ClientInformations = () => {
 
   return (
     <>
-      <div className="form_container">
+      <div className="form_container client_container">
         <div className="form_wrapper">
           <h1 className="form_title mb-10">Fill in some basic info</h1>
           <div className="name_container">

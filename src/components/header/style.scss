@@ -1,63 +1,63 @@
 @import "../../css/variables.scss";
 
-.header {
+.header_container {
   display: flex;
   justify-content: space-between;
-}
 
-.mykloud_logo {
-  width: 150px;
-  height: 50px;
-
-  background-image: url(../../images/myKloud_logo.png);
-  background-repeat: no-repeat;
-  background-size: 150px;
-  cursor: pointer;
-}
-
-.right_side {
-  display: flex;
-  align-items: center;
-}
-
-.right_text {
-  font-size: 16px;
-  line-height: 1.75;
-  color: $text_color;
-}
-
-.signin_btn {
-  width: 120px;
-  height: 48px;
-  border-radius: 6px;
-  background-color: $primary_color_visa;
-  border: solid 1px $primary_color;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.75;
-
-  color: $primary_color;
-  text-align: center;
-  cursor: pointer;
-}
-:hover.signin_btn {
-  background-color: $primary_color;
-  color: $primary_color_visa;
-}
-
-@media only screen and (max-width: 768px) {
   .mykloud_logo {
-    background-image: url(../../images/app-logo.png);
-    background-size: 45px;
+    width: 150px;
+    height: 50px;
+
+    background-image: url(../../images/myKloud_logo.png);
+    background-repeat: no-repeat;
+    background-size: 150px;
+    cursor: pointer;
+  }
+
+  .right_side {
+    display: flex;
+    align-items: center;
   }
 
   .right_text {
-    display: none;
+    font-size: 16px;
+    line-height: 1.75;
+    color: $text_color;
   }
 
   .signin_btn {
-    width: 84px;
-    font-size: 14px;
-    border: none;
+    width: 120px;
+    height: 48px;
+    border-radius: 6px;
+    background-color: $primary_color_visa;
+    border: solid 1px $primary_color;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.75;
+
+    color: $primary_color;
+    text-align: center;
+    cursor: pointer;
+  }
+  :hover.signin_btn {
+    background-color: $primary_color;
+    color: $primary_color_visa;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .mykloud_logo {
+      background-image: url(../../images/app-logo.png);
+      background-size: 45px;
+    }
+
+    .right_text {
+      display: none;
+    }
+
+    .signin_btn {
+      width: 84px;
+      font-size: 14px;
+      border: none;
+    }
   }
 }

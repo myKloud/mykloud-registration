@@ -30,7 +30,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="form_container">
+      <div className="form_container register_container">
         <div className="form_wrapper">
           <h1 className="form_title">Create your myKloud account</h1>
           <p className="normal_text mb-10">

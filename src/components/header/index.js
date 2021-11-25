@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="header mb-8">
+      <div className="header_container mb-8">
         <div className="left_side">
           <div className="mykloud_logo" onClick={redirect_url} />
         </div>

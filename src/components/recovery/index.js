@@ -13,7 +13,7 @@ const Recovery = () => {
   const [number, setNumber] = useState("");
   return (
     <>
-      <div className="form_container">
+      <div className="form_container recovery_container">
         <div className="form_wrapper">
           <h1 className="form_title mb-2">
             Welcome, Monica! <span className="ml-1">👋</span>
