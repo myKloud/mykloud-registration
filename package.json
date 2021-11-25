@@ -32,7 +32,9 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docker": "docker build -t register .",
+    "react-docker": "docker run -p 3000:3000 register"
   },
   "eslintConfig": {
     "extends": [
