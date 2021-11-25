@@ -20,7 +20,7 @@ const Input = (props) => {
         <input
           type={props.type}
           className={`form_field ${props.className ? props.className : ""}`}
-          autofocus={props.focus || false}
+          autofocus={props.autofocus || false}
           value={props.value}
           onChange={(e) => {
             setValueHandler(e);

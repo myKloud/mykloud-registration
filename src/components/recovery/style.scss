@@ -1,127 +1,165 @@
+@import "../../css/variables.scss";
+
 .recovery_container {
   .form_subtitle {
     font-family: "Poppins";
-    font-size: 400;
-    font-size: 14px;
+    font-weight: 400;
+    font-size: 18px;
     line-height: 1.56;
-    text-align: left;
     color: #41b48b;
   }
-
-  .form_subtitle2 {
-    height: 2.34375vh;
-    flex-grow: 0;
-    font-family: "Poppins";
-    font-size: 1.111111111111vw;
-    font-weight: 600;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    margin-top: 4.125vh;
-    margin-left: 5.7638888888888888vw;
+  .form_sub_content {
+    width: 100%;
+    padding-left: 1.6875rem;
+    padding-right: 1.6875rem;
+  }
+  .form_sub_title {
+    margin-bottom: 1rem !important;
+    font-weight: 700 !important;
   }
 
-  .buttonContainer {
+  .button_container {
     display: flex;
-    gap: 1.11111111111111111111vw;
-    margin-left: 5.7638888888888888vw;
-    margin-top: 1.5625vh;
   }
 
-  .email {
+  .select_button {
     border-style: solid;
-    width: 15.2777777777777vw;
-    height: 8.203125vh;
-    border-radius: 0.7vh;
-    border-color: white;
-    display: flex;
-  }
-
-  .phone {
-    border-style: solid;
-    width: 15.2777777777777vw;
-    height: 8.203125vh;
-    border-radius: 0.7vh;
-    border-color: white;
-    display: flex;
-  }
-
-  .imgBorder {
+    width: 50%;
+    height: 84px;
+    border-radius: 6px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 2.5vw;
-    height: 3.515625vh;
+    color: $text_bold_color;
+    box-shadow: 0 4px 14px 1px rgba(0, 0, 0, 0.06);
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
     border-radius: 4px;
-    margin-left: 1.944444444444vw;
-    margin-top: 2.34375vh;
+    margin-right: 0.8125rem;
+    border: solid 2px;
+  }
+  .selected {
+    box-shadow: 0 4px 14px 1px rgba(27, 115, 209, 0.12);
+    background-color: #f5f9ff;
+    border: solid 1px $primary_color;
+    color: $primary_color;
+  }
+
+  .white_img {
+    background-color: $primary_color;
+    border: solid 2px $primary_color;
   }
 
   .text {
-    height: 24px;
-    flex-grow: 0;
-    margin: 2.90734375vh 0 0px 0.90277777777vw;
-    font-family: "Poppins";
     font-size: 16px;
     font-weight: 600;
-    font-stretch: normal;
-    font-style: normal;
     line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
+    font-family: "open sans";
   }
 
-  .recoveryInput {
-    width: 30.986111111111111111111111111111vw;
-    height: 5.46875vh;
-    border-radius: 0.7vh;
-    font-family: "Poppins";
+  .recovery_input {
+    width: 100%;
+    height: 56px;
+    border-radius: 6px;
+    font-family: "open sans";
     font-size: 14px;
     border: solid 1px #dcdce7;
     outline: none;
-    margin-top: 1.953125vh;
-    margin-left: 5.7638888888888888vw;
-    padding-left: 17px;
+    padding-left: 1.0625rem;
+    color: black;
+    font-weight: 600;
   }
 
-  .next_btn1 {
-    position: relative;
-    width: 32.7vw;
-    height: 6.25vh;
-    border: none;
-    border-radius: 0.5vh;
-    background-color: #1b73d1;
-    flex-grow: 0;
-    font-family: "Poppins";
+  .phone_input {
+    width: 100%;
+    height: 56px;
+    border: solid 1px #dcdce7;
+    font-family: "open sans";
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+  }
+
+  .note {
+    font-size: 14px;
+    font-family: "open Sans";
+  }
+
+  .next_btn {
+    width: 100%;
+    height: 64px;
+    border-radius: 6px;
+    background-color: $primary_color;
     font-size: 16px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: center;
-    color: white;
-    margin-top: 3.125vh;
-    margin-left: 5.7638888888888888vw;
-  }
-
-  .endText {
-    height: 19px;
-    flex-grow: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.9722222222222vw;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: #45536c;
-    margin-left: 5.7638888888888888vw;
+    color: $primary_color_visa;
   }
 
   ::placeholder {
     color: #8692a6;
+    font-weight: 400;
+  }
+
+  .recovery_input:focus {
+    border: solid 1px #445da7;
+  }
+
+  .phone_input:focus {
+    border: solid 1px #445da7;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .form_subtitle {
+      text-align: left;
+      line-height: normal;
+      font-size: 14px;
+      margin-bottom: 1.25rem;
+    }
+    .form_sub_content {
+      padding: 0;
+    }
+
+    .form_sub_title {
+      font-size: 14px !important;
+      line-height: normal !important;
+    }
+
+    .select_button {
+      height: 56px;
+    }
+    .mr-4 {
+      margin-right: 10px;
+    }
+
+    .logo {
+      width: 26px;
+      height: 26px;
+      margin-right: 9px !important;
+    }
+
+    .text {
+      font-size: 14px;
+    }
+    .recovery_input {
+      font-size: 12px;
+    }
+
+    .phone_input {
+      font-size: 12px;
+    }
+
+    .note {
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .next_btn {
+      height: 56px;
+    }
   }
 }
