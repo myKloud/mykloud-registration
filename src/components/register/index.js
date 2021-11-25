@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import icon from "../../images/lock 1.svg";
 import { useHistory, useLocation } from "react-router-dom";
+import Input from "../common/input";
+
 import "./style.scss";
 
 const Register = () => {
@@ -36,18 +38,16 @@ const Register = () => {
           <p className="normal_text mb-10">
             Single access to all myKloud applications.
           </p>
+
           <div className="mb-4">
             <div className="user_name">
-              <input
+              <Input
                 type="text"
-                placeholder="username"
-                className="form_field"
                 autofocus="true"
                 value={user}
-                onChange={(e) => {
-                  setUser(e.target.value);
-                }}
-              ></input>
+                onChange={setUser}
+                placeholder="username"
+              />
               <span className="domain">@mykloud.io</span>
             </div>
             <p className="note mt-1">
@@ -55,12 +55,12 @@ const Register = () => {
             </p>
           </div>
           <div className="mb-4 relative">
-            <input
+            <Input
               type={showPassword ? "text" : "password"}
-              placeholder="Create password"
-              className="form_field extra-padding"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={setPassword}
+              className="extra-padding"
+              placeholder="Create password"
             />
 
             <button
@@ -75,12 +75,12 @@ const Register = () => {
             </button>
           </div>
           <div className="mb-4 relative">
-            <input
+            <Input
               type={showConfirmPassword ? "text" : "password"}
-              placeholder="Confirm password"
-              className="form_field extra-padding"
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={setPassword}
+              className="extra-padding"
+              placeholder="Confirm password"
             />
 
             <button
