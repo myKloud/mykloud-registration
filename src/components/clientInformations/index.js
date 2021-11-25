@@ -63,7 +63,7 @@ const ClientInformations = () => {
               onChange={(lastName) => setLastName(lastName.target.value)}
             ></input>
           </div>
-          <p className="your_birthday">Your birthday</p>
+          <p className="form_sub_title">Your birthday</p>
           <div className="datePicker mb-4">
             <MonthPicker
               defaultValue={"Month"}

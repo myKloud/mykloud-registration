@@ -41,6 +41,13 @@ body {
     text-align: center;
   }
 
+  .form_sub_title {
+    font-size: 16px;
+    font-weight: 600;
+    color: $text_bold_color;
+    margin-bottom: 0.5rem;
+  }
+
   .form_field {
     width: 100%;
     height: 56px;
