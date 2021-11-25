@@ -3,6 +3,8 @@ import { MonthPicker } from "react-dropdown-date";
 import img from "../../images/birthday-date.png";
 import Recaptcha from "react-google-recaptcha";
 import { useHistory, useLocation } from "react-router-dom";
+import Input from "../common/input";
+import MonthPickerWrapper from "../common/monthPickerWrapper";
 
 import "./style.scss";
 
@@ -49,42 +51,39 @@ const ClientInformations = () => {
         <div className="form_wrapper">
           <h1 className="form_title mb-10">Fill in some basic info</h1>
           <div className="name_container">
-            <input
+            <Input
               type="text"
+              value={firstName}
+              onChange={setFirstName}
+              autofocus={true}
               placeholder="First name"
-              className="form_field mb-4 first_name"
-              onChange={(firstName) => setFirstName(firstName.target.value)}
-            ></input>
+              containerClassName="mb-4 first_name"
+            />
 
-            <input
+            <Input
               type="text"
+              value={lastName}
+              onChange={setLastName}
               placeholder="Last name"
-              className="form_field mb-4"
-              onChange={(lastName) => setLastName(lastName.target.value)}
-            ></input>
+              containerClassName="mb-4"
+            />
           </div>
           <p className="form_sub_title">Your birthday</p>
           <div className="datePicker mb-4">
-            <MonthPicker
-              defaultValue={"Month"}
-              classes={`select-months form_field mr-4 ${
-                !month ? "placeholder" : ""
-              }`}
-              caps
+            <MonthPickerWrapper
+              placeholder="Month"
               required={true}
               disabled={false}
-              onChange={(month) => {
-                setMonth(month);
-              }}
-              name={"month"}
+              onChange={setMonth}
+              containerClassName="mr-4"
             />
-            <input
+
+            <Input
               type="number"
-              name="year"
+              value={year}
+              onChange={setYear}
               placeholder="Year"
-              className="form_field"
-              onChange={(year) => setYear(year.target.value)}
-            ></input>
+            />
           </div>
           <div className="note mb-4">
             <img src={img} alt="birhtday" className="mr-3" />

@@ -12,7 +12,11 @@ const Input = (props) => {
 
   return (
     <>
-      <div className="input-container">
+      <div
+        className={`input-container ${
+          props.containerClassName ? props.containerClassName : ""
+        }`}
+      >
         <input
           type={props.type}
           className={`form_field ${props.className ? props.className : ""}`}

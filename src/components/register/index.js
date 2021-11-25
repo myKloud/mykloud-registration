@@ -43,7 +43,7 @@ const Register = () => {
             <div className="user_name">
               <Input
                 type="text"
-                autofocus="true"
+                autofocus={true}
                 value={user}
                 onChange={setUser}
                 placeholder="username"
