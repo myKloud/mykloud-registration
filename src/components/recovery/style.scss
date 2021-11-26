@@ -112,6 +112,9 @@
   .phone_input:focus {
     border: solid 1px #445da7;
   }
+  .phone_input:focus + .country_dropdown {
+    border: solid 1px #445da7;
+  }
 
   @media only screen and (max-width: 767px) {
     .form_subtitle {

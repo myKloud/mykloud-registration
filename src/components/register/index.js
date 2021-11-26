@@ -46,7 +46,7 @@ const Register = () => {
                 autofocus={true}
                 value={user}
                 onChange={setUser}
-                placeholder="username"
+                placeholder="Username"
               />
               <span className="domain">@mykloud.io</span>
             </div>
@@ -74,12 +74,12 @@ const Register = () => {
               )}
             </button>
           </div>
-          <div className="mb-4 relative">
+          <div className=" relative ">
             <Input
               type={showConfirmPassword ? "text" : "password"}
               value={confirmPassword}
-              onChange={setPassword}
-              className="extra-padding"
+              onChange={setConfirmPassword}
+              className="extra-padding1"
               placeholder="Confirm password"
             />
 

@@ -26,13 +26,14 @@
 
   .form_container {
     height: 100%;
+    display: block !important;
+    min-height: 82vh !important;
 
     .form_wrapper {
       width: 100%;
       background-color: transparent;
       margin: auto;
       padding: 0;
-
       border: 0 none;
     }
 

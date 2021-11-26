@@ -10,7 +10,6 @@
   .user_name {
     display: flex;
     position: relative;
-
     .form_field {
       padding-right: 7rem !important;
     }
@@ -36,7 +35,6 @@
     align-items: center;
     padding: 0 8px;
   }
-
   .note {
     font-family: "Open Sans";
     font-size: 13px;
@@ -89,15 +87,24 @@
     color: $text_color;
   }
 
-  .form_field:focus + .domain {
+  .user_name:focus-within > .domain {
     border: solid 1px #445da7;
   }
 
   @media only screen and (max-width: 767px) {
+    .form_title {
+      margin-bottom: 0.5rem;
+    }
     .normal_text {
       text-align: left;
       font-size: 14px;
       margin-bottom: 1.5rem !important;
+    }
+
+    .next_btn {
+      height: 56px !important;
+      margin-top: 1.25rem !important;
+      font-weight: normal !important;
     }
   }
 }

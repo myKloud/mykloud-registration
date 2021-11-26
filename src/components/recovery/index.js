@@ -5,6 +5,7 @@ import blackPhoneImg from "../../images/phone1.png";
 import whitePhoneImg from "../../images/phone2.png";
 import ReactPhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import Input from "../common/input";
 import "./style.scss";
 
 const Recovery = () => {
@@ -25,74 +26,64 @@ const Recovery = () => {
             <p className="form_sub_title">
               For now , let’s select your recovery method
             </p>
+
+            <div className="button_container mb-5">
+              <div
+                className={
+                  method === "email"
+                    ? "select_button mr-4 selected"
+                    : "select_button mr-4"
+                }
+                onClick={() => {
+                  setMethod("email");
+                }}
+              >
+                <div className={method === "email" ? "logo white_img" : "logo"}>
+                  <img
+                    src={method === "email" ? whiteEmailImg : blackEmailImg}
+                    alt="email logo"
+                  />
+                </div>
+
+                <p className="text">Email address</p>
+              </div>
+
+              <div
+                className={
+                  method === "email"
+                    ? "select_button"
+                    : "select_button selected"
+                }
+                onClick={() => {
+                  setMethod("phone");
+                }}
+              >
+                <div className={method === "email" ? "logo" : "logo white_img"}>
+                  <img
+                    src={method === "email" ? blackPhoneImg : whitePhoneImg}
+                    alt="phone"
+                  />
+                </div>
+
+                <p className="text">Phone number</p>
+              </div>
+            </div>
+
             {method === "email" ? (
               <>
-                <div className="button_container mb-5">
-                  <div
-                    className="select_button mr-4 selected"
-                    onClick={() => {
-                      setMethod("email");
-                    }}
-                  >
-                    <div className="logo white_img">
-                      <img src={whiteEmailImg} alt="email logo" />
-                    </div>
-
-                    <p className="text">Email address</p>
-                  </div>
-
-                  <div
-                    className="select_button"
-                    onClick={() => {
-                      setMethod("phone");
-                    }}
-                  >
-                    <div className="logo">
-                      <img src={blackPhoneImg} alt="phone" />
-                    </div>
-
-                    <p className="text">Phone number</p>
-                  </div>
+                <div className="user_name">
+                  <Input
+                    type="text"
+                    autofocus={true}
+                    value={email}
+                    onChange={setEmail}
+                    className="recovery_input mb-2"
+                    placeholder="Recovery email address"
+                  />
                 </div>
-                <input
-                  type="text"
-                  value={email}
-                  placeholder="Recovery email address"
-                  className="recovery_input mb-2"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <p className="note mb-8">
-                  You’ll recieve an email with a cofnirmation code
-                </p>
               </>
             ) : (
               <>
-                <div className="button_container mb-5">
-                  <div
-                    className="select_button mr-4"
-                    onClick={() => {
-                      setMethod("email");
-                    }}
-                  >
-                    <div className="logo">
-                      <img src={blackEmailImg} alt="email logo" />
-                    </div>
-                    <p className="text">Email address</p>
-                  </div>
-
-                  <div
-                    className="select_button selected"
-                    onClick={() => {
-                      setMethod("phone");
-                    }}
-                  >
-                    <div className="logo white_img">
-                      <img src={whitePhoneImg} alt="phone logo" />
-                    </div>
-
-                    <p className="text">Phone number</p>
-                  </div>
-                </div>
                 <ReactPhoneInput
                   inputExtraProps={{
                     name: "phone",
@@ -100,7 +91,8 @@ const Recovery = () => {
                     autoFocus: true,
                   }}
                   inputClass="phone_input"
-                  containerClass="mb-2 dd"
+                  containerClass="mb-2"
+                  buttonClass="country_dropdown"
                   value={number}
                   onChange={(e) => {
                     setNumber(e);
@@ -108,11 +100,14 @@ const Recovery = () => {
                   }}
                   country={"us"}
                 />
-                <p className="note mb-8">
-                  You’ll recieve an sms with a cofnirmation code
-                </p>
               </>
             )}
+
+            <p className="note mb-8">
+              {method === "email"
+                ? "You’ll recieve an email with a cofnirmation code"
+                : "You’ll recieve an sms with a cofnirmation code"}
+            </p>
 
             <button className="next_btn">Send me code</button>
           </div>
