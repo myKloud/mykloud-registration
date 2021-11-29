@@ -3,9 +3,6 @@ import VerificationInput from "../common/verificationInput";
 import "./style.scss";
 
 const CodeVerification = () => {
-  const [method, setMethod] = useState("email");
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
   return (
     <>
       <div className="form_container verification_container">
