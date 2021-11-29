@@ -3,6 +3,7 @@ import Register from "./components/register/index";
 import ClientInformations from "./components/clientInformations";
 import Recovery from "./components/recovery";
 import Footer from "./components/footer";
+import Verification from "./components/codeVerification";
 import { Route, Switch } from "react-router-dom";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="/" render={() => <Register />} />
           <Route exact path="/info" render={() => <ClientInformations />} />
           <Route exact path="/recovery" render={() => <Recovery />} />
+          <Route exact path="/verification" render={() => <Verification />} />
         </Switch>
       </div>
       <Footer />

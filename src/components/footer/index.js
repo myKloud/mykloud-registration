@@ -4,6 +4,15 @@ import twitter from "../../images/twitter.png";
 import linked from "../../images/linked in.png";
 
 const Footer = () => {
+  const generateLink = (name) => {
+    if (name == "twitter") {
+      window.location = "https://twitter.com/mykloudplatform";
+    } else if (name == "linked") {
+      window.location = "https://www.linkedin.com/company/mykloud/mycompany/";
+    } else {
+      window.location = "localhost:3000";
+    }
+  };
   return (
     <>
       <div className="footer">
@@ -22,8 +31,12 @@ const Footer = () => {
 
           <div className="flex">
             <p className="join mr-6">Join our community</p>
-            <img src={twitter} className="mr-3" />
-            <img src={linked} />
+            <img
+              src={twitter}
+              className="mr-3"
+              onClick={() => generateLink("twitter")}
+            />
+            <img src={linked} onClick={() => generateLink("linked")} />
           </div>
         </div>
       </div>

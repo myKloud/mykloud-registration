@@ -1,0 +1,111 @@
+@import "../../css/variables.scss";
+
+.verification_container {
+  .form_wrapper {
+    width: 584px !important;
+    margin-bottom: 31px !important;
+  }
+
+  .container {
+    height: 80px;
+  }
+
+  .character {
+    line-height: 80px;
+    font-size: 36px;
+    color: $primary_color;
+    border: solid 1px #dcdce7;
+    border-radius: 6px;
+    margin-left: 14px;
+  }
+
+  .character:first-child {
+    margin-left: 0;
+  }
+
+  .character--selected {
+    border: 1px solid #445da7;
+  }
+
+  .info {
+    font-size: 16px !important;
+    font-family: "open sans" !important;
+  }
+
+  .action {
+    font-size: 16px !important;
+    color: #1565d8 !important;
+    font-weight: 500 !important;
+  }
+
+  .pre {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: #1565d8;
+    cursor: pointer;
+  }
+
+  .verify {
+    width: 220px;
+    height: 64px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    background-color: $primary_color;
+    color: $primary_color_visa;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  ::placeholder {
+    color: #8692a6;
+    font-weight: 400;
+  }
+
+  .recovery_input:focus {
+    border: solid 1px #445da7;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .form_wrapper {
+      width: 100% !important;
+    }
+
+    .form_title {
+      margin-bottom: 1.5rem !important;
+    }
+
+    .container {
+      height: 56px;
+    }
+
+    .character {
+      cursor: pointer;
+      line-height: 56px;
+      font-size: 16px;
+      margin-left: 8px;
+    }
+
+    .flex {
+      margin-top: 21px !important;
+    }
+
+    .info {
+      font-size: 14px !important;
+    }
+
+    .action {
+      font-size: 14px !important;
+    }
+
+    .pre {
+      font-size: 14px;
+    }
+
+    .verify {
+      width: 143px;
+      height: 56px;
+    }
+  }
+}
