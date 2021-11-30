@@ -1,35 +1,29 @@
 import React from "react";
-import img from "../../images/myKloud_logo.png";
-import phoneImg from "../../images/app-logo.png";
-import useWindowDimensions from "./useWindowDimensions";
-import "./header.css";
-const Header = () => {
-  const breakpoint = 768;
-  const { height, width } = useWindowDimensions();
+import "./style.scss";
 
+const Header = () => {
+  const redirect_url = () => {
+    window.location = "http://www.mykloud.io";
+  };
+
+  let description = "Don’t have an account?";
+  let action = "Register";
+
+  if (window.location.pathname !== "/") {
+    description = "Already have an account?";
+    action = "Sign in";
+  }
   return (
     <>
-      {width > breakpoint ? (
-        <div className="header">
-          <div className="leftSide">
-            <img src={img} alt="Logo" className="logo1"></img>
-          </div>
-          <div className="rightSide">
-            <p className="rightText">Already have an account?</p>
-            <button className="signInBtn">Sign in</button>
-          </div>
+      <div className="header_container mb-8">
+        <div className="left_side">
+          <div className="mykloud_logo" onClick={redirect_url} />
         </div>
-      ) : (
-        <div className="header" style={{ width: width }}>
-          <div className="leftSide">
-            <img src={phoneImg} alt="Logo" className="logo1"></img>
-          </div>
-          <div className="rightSide">
-            <p className="rightText">Already have an account?</p>
-            <button className="signInBtn">Sign in</button>
-          </div>
+        <div className="right_side">
+          <p className="right_text mr-2">{description}</p>
+          <button className="signin_btn">{action}</button>{" "}
         </div>
-      )}
+      </div>
     </>
   );
 };

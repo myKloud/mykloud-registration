@@ -1,0 +1,168 @@
+@import "../../css/variables.scss";
+
+.recovery_container {
+  .form_subtitle {
+    font-family: "Poppins";
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.56;
+    color: #41b48b;
+  }
+  .form_sub_content {
+    width: 100%;
+    padding-left: 1.6875rem;
+    padding-right: 1.6875rem;
+  }
+  .form_sub_title {
+    margin-bottom: 1rem !important;
+    font-weight: 700 !important;
+  }
+
+  .button_container {
+    display: flex;
+  }
+
+  .select_button {
+    border-style: solid;
+    width: 50%;
+    height: 84px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $text_bold_color;
+    box-shadow: 0 4px 14px 1px rgba(0, 0, 0, 0.06);
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    margin-right: 0.8125rem;
+    border: solid 2px;
+  }
+  .selected {
+    box-shadow: 0 4px 14px 1px rgba(27, 115, 209, 0.12);
+    background-color: #f5f9ff;
+    border: solid 1px $primary_color;
+    color: $primary_color;
+  }
+
+  .white_img {
+    background-color: $primary_color;
+    border: solid 2px $primary_color;
+  }
+
+  .text {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    font-family: "open sans";
+  }
+
+  .recovery_input {
+    width: 100%;
+    height: 56px;
+    border-radius: 6px;
+    font-family: "open sans";
+    font-size: 14px;
+    border: solid 1px #dcdce7;
+    outline: none;
+    padding-left: 1.0625rem;
+    color: black;
+    font-weight: 600;
+  }
+
+  .phone_input {
+    width: 100%;
+    height: 56px;
+    border: solid 1px #dcdce7;
+    font-family: "open sans";
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+  }
+
+  .note {
+    font-size: 14px;
+    font-family: "open Sans";
+  }
+
+  .next_btn {
+    width: 100%;
+    height: 64px;
+    border-radius: 6px;
+    background-color: $primary_color;
+    font-size: 16px;
+    color: $primary_color_visa;
+  }
+
+  ::placeholder {
+    color: #8692a6;
+    font-weight: 400;
+  }
+
+  .recovery_input:focus {
+    border: solid 1px #445da7;
+  }
+
+  .phone_input:focus {
+    border: solid 1px #445da7;
+  }
+  .phone_input:focus + .country_dropdown {
+    border: solid 1px #445da7;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .form_subtitle {
+      text-align: left;
+      line-height: normal;
+      font-size: 14px;
+      margin-bottom: 1.25rem;
+    }
+    .form_sub_content {
+      padding: 0;
+    }
+
+    .form_sub_title {
+      font-size: 14px !important;
+      line-height: normal !important;
+    }
+
+    .select_button {
+      height: 56px;
+    }
+    .mr-4 {
+      margin-right: 10px;
+    }
+
+    .logo {
+      width: 26px;
+      height: 26px;
+      margin-right: 9px !important;
+    }
+
+    .text {
+      font-size: 14px;
+    }
+    .recovery_input {
+      font-size: 12px;
+    }
+
+    .phone_input {
+      font-size: 12px;
+    }
+
+    .note {
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .next_btn {
+      height: 56px;
+    }
+  }
+}

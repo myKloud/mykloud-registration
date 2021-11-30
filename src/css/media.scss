@@ -1,0 +1,51 @@
+@media only screen and (max-width: 1440px) {
+}
+
+@media only screen and (max-width: 1240px) {
+}
+
+@media only screen and (max-width: 1024px) {
+}
+
+@media only screen and (max-width: 768px) {
+}
+
+@media only screen and (max-width: 767px) {
+  .app {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
+  body {
+    background-image: linear-gradient(
+      to bottom,
+      #ffffff,
+      rgba(235, 247, 255, 0.7)
+    );
+    background-size: auto;
+  }
+
+  .form_container {
+    height: 100%;
+    display: block !important;
+    // min-height: 82vh !important;
+
+    .form_wrapper {
+      width: 100%;
+      background-color: transparent;
+      margin: auto;
+      padding: 0;
+      border: 0 none;
+    }
+
+    .form_title {
+      text-align: left;
+      font-size: 20px;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+}
+
+@media only screen and (max-width: 375px) {
+}

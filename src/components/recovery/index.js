@@ -5,7 +5,8 @@ import blackPhoneImg from "../../images/phone1.png";
 import whitePhoneImg from "../../images/phone2.png";
 import ReactPhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import "./recovery.css";
+import Input from "../common/input";
+import "./style.scss";
 
 const Recovery = () => {
   const [method, setMethod] = useState("email");
@@ -13,158 +14,104 @@ const Recovery = () => {
   const [number, setNumber] = useState("");
   return (
     <>
-      <div className="recoveryForm">
-        <div className="title">
-          <p className="recoveryFormTitle">Welcome, Monica!</p>
-          <p>👋</p>
+      <div className="form_container recovery_container">
+        <div className="form_wrapper">
+          <h1 className="form_title mb-1">
+            Welcome, Monica! <span>👋</span>
+          </h1>
+          <p className="form_subtitle mb-8 text-center">
+            Your myKloud account has been created succesfully.
+          </p>
+          <div className="form_sub_content">
+            <p className="form_sub_title">
+              For now , let’s select your recovery method
+            </p>
+
+            <div className="button_container mb-5">
+              <div
+                className={
+                  method === "email"
+                    ? "select_button mr-4 selected"
+                    : "select_button mr-4"
+                }
+                onClick={() => {
+                  setMethod("email");
+                }}
+              >
+                <div className={method === "email" ? "logo white_img" : "logo"}>
+                  <img
+                    src={method === "email" ? whiteEmailImg : blackEmailImg}
+                    alt="email logo"
+                  />
+                </div>
+
+                <p className="text">Email address</p>
+              </div>
+
+              <div
+                className={
+                  method === "email"
+                    ? "select_button"
+                    : "select_button selected"
+                }
+                onClick={() => {
+                  setMethod("phone");
+                }}
+              >
+                <div className={method === "email" ? "logo" : "logo white_img"}>
+                  <img
+                    src={method === "email" ? blackPhoneImg : whitePhoneImg}
+                    alt="phone"
+                  />
+                </div>
+
+                <p className="text">Phone number</p>
+              </div>
+            </div>
+
+            {method === "email" ? (
+              <>
+                <div className="user_name">
+                  <Input
+                    type="text"
+                    autofocus={true}
+                    value={email}
+                    onChange={setEmail}
+                    className="recovery_input mb-2"
+                    placeholder="Recovery email address"
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <ReactPhoneInput
+                  inputExtraProps={{
+                    name: "phone",
+                    required: true,
+                    autoFocus: true,
+                  }}
+                  inputClass="phone_input"
+                  containerClass="mb-2"
+                  buttonClass="country_dropdown"
+                  value={number}
+                  onChange={(e) => {
+                    setNumber(e);
+                    console.log(number);
+                  }}
+                  country={"us"}
+                />
+              </>
+            )}
+
+            <p className="note mb-8">
+              {method === "email"
+                ? "You’ll recieve an email with a cofnirmation code"
+                : "You’ll recieve an sms with a cofnirmation code"}
+            </p>
+
+            <button className="next_btn">Send me code</button>
+          </div>
         </div>
-        <p className="recoveryFormSubtitle">
-          Your myKloud account has been created succesfully.
-        </p>
-
-        <p className="recoveryFormSubtitle2">
-          For now , let’s select your recovery method
-        </p>
-
-        {method === "email" ? (
-          <div className="buttonContainer">
-            <div
-              className="email"
-              style={{
-                boxShadow: "0 4px 14px 1px rgba(27, 115, 209, 0.12)",
-                backgroundColor: "#f5f9ff",
-                border: "solid 1px #1b73d1",
-              }}
-              onClick={() => {
-                setMethod("email");
-              }}
-            >
-              <div
-                className="imgBorder"
-                style={{
-                  backgroundColor: "#1b73d1",
-                  border: "solid 2px #1b73d1",
-                }}
-              >
-                <img src={whiteEmailImg} alt="email logo"></img>
-              </div>
-
-              <p className="text" style={{ color: "#1b73d1" }}>
-                Email address
-              </p>
-            </div>
-
-            <div
-              className="phone"
-              style={{
-                boxShadow: "0 4px 14px 1px rgba(0, 0, 0, 0.06)",
-                backgroundColor: "white",
-              }}
-              onClick={() => {
-                setMethod("phone");
-              }}
-            >
-              <div className="imgBorder" style={{ border: "solid 2px" }}>
-                <img src={blackPhoneImg} alt="phone"></img>
-              </div>
-
-              <p className="text">Phone number</p>
-            </div>
-          </div>
-        ) : (
-          <div className="buttonContainer">
-            <div
-              className="email"
-              style={{
-                boxShadow: "0 4px 14px 1px rgba(0, 0, 0, 0.06)",
-                backgroundColor: "white",
-              }}
-              onClick={() => {
-                setMethod("email");
-              }}
-            >
-              <div className="imgBorder" style={{ border: "solid 2px" }}>
-                <img src={blackEmailImg} alt="email logo"></img>
-              </div>
-              <p className="text">Email address</p>{" "}
-            </div>
-
-            <div
-              className="phone"
-              style={{
-                boxShadow: "0 4px 14px 1px rgba(27, 115, 209, 0.12)",
-                backgroundColor: "#f5f9ff",
-                border: "solid 1px #1b73d1",
-              }}
-              onClick={() => {
-                setMethod("phone");
-              }}
-            >
-              <div
-                className="imgBorder"
-                style={{
-                  backgroundColor: "#1b73d1",
-                  border: "solid 2px #1b73d1",
-                }}
-              >
-                <img src={whitePhoneImg} alt="phone logo"></img>
-              </div>
-
-              <p className="text" style={{ color: "#1b73d1" }}>
-                Phone number
-              </p>
-            </div>
-          </div>
-        )}
-
-        {method === "email" ? (
-          <input
-            type="text"
-            placeholder="Recovery email address"
-            className="recoveryInput"
-            onchange={(e) => setEmail(e.value)}
-          ></input>
-        ) : (
-          <ReactPhoneInput
-            inputExtraProps={{
-              name: "phone",
-              required: true,
-              autoFocus: true,
-            }}
-            value={number}
-            onChange={(e) => {
-              setNumber(e);
-              console.log(number);
-            }}
-            style={{
-              marginLeft: "5.7638888888888888vw",
-              marginTop: "1.953125vh",
-            }}
-            inputStyle={{
-              width: "32.086111111111111111111111111111vw",
-              height: "5.86875vh",
-              borderRadius: "0.7vh",
-              fontFamily: "Poppins",
-              fontSize: "14px",
-              border: "solid 1px #dcdce7",
-              outline: "none",
-              marginTop: "1.953125vh",
-            }}
-            country={"us"}
-          />
-        )}
-
-        {method === "email" ? (
-          <p className="endText">
-            You’ll recieve an email with a cofnirmation code
-          </p>
-        ) : (
-          <p className="endText">
-            You’ll recieve an sms with a cofnirmation code
-          </p>
-        )}
-
-        <button className="nextBtn1">Send me code</button>
       </div>
     </>
   );
