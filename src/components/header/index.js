@@ -1,18 +1,30 @@
-import React, { useState } from "react";
-import { css } from "./header.css";
-import img from "../../images/app-logo.png";
+import React from "react";
+import "./style.scss";
+
 const Header = () => {
+  const redirect_url = () => {
+    window.location = "http://www.mykloud.io";
+  };
+
+  let description = "Don’t have an account?";
+  let action = "Register";
+
+  if (window.location.pathname !== "/") {
+    description = "Already have an account?";
+    action = "Sign in";
+  }
   return (
-    <div className="header">
-      <div className="leftSide">
-        <img src={img} alt="Logo image" className="logo"></img>
-        <h1 className="logoText">myKloud</h1>
+    <>
+      <div className="header_container mb-8">
+        <div className="left_side">
+          <div className="mykloud_logo" onClick={redirect_url} />
+        </div>
+        <div className="right_side">
+          <p className="right_text mr-2">{description}</p>
+          <button className="signin_btn">{action}</button>{" "}
+        </div>
       </div>
-      <div className="rightSide">
-        <p className="rightText">Already have an account?</p>
-        <button className="signInBtn">Sign in</button>
-      </div>
-    </div>
+    </>
   );
 };
 

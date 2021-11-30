@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { css } from "./register.css";
 import icon from "../../images/lock 1.svg";
 import { useHistory, useLocation } from "react-router-dom";
+import Input from "../common/input";
+
+import "./style.scss";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -30,72 +32,77 @@ const Register = () => {
 
   return (
     <>
-      <div className="registerForm">
-        <h1 className="registerFormTitle">Create your myKloud account</h1>
-        <p className="normalText">Single access to all myKloud applications.</p>
-        <div className="userName">
-          <input
-            type="text"
-            placeholder="Username"
-            className="userField"
-            value={user}
-            onChange={(e) => {
-              setUser(e.target.value);
-            }}
-          ></input>
-          <p className="domain">@mykloud.io</p>
-        </div>
-        <p className="note">
-          Only letters (a-z), numbers (0-9) and periods(.) are allowed
-        </p>
-        <div>
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Create password"
-            className="passwordField"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <button
-            className="show"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            {!showPassword ? (
-              <u style={{ color: "#1565d8" }}>Show</u>
-            ) : (
-              <u style={{ color: "#1565d8" }}>Hide</u>
-            )}
-          </button>
-        </div>
-        <div>
-          <input
-            type={showConfirmPassword ? "text" : "password"}
-            placeholder="Confirm password"
-            className="confirmPasswordField"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-
-          <button
-            className="show"
-            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-          >
-            {!showConfirmPassword ? (
-              <u style={{ color: "#1565d8" }}>Show</u>
-            ) : (
-              <u style={{ color: "#1565d8" }}>Hide</u>
-            )}
-          </button>
-        </div>
-        <button className="nextBtn" onClick={nextPage}>
-          Next
-        </button>
-        <div className="safeMessage">
-          <img src={icon} class="icon" />
-          <p className="info">
-            Safe & secure via myKloud blockhain technologies.
+      <div className="form_container register_container">
+        <div className="form_wrapper">
+          <h1 className="form_title">Create your myKloud account</h1>
+          <p className="normal_text mb-10">
+            Single access to all myKloud applications.
           </p>
+
+          <div className="mb-4">
+            <div className="user_name">
+              <Input
+                type="text"
+                autofocus={true}
+                value={user}
+                onChange={setUser}
+                placeholder="Username"
+              />
+              <span className="domain">@mykloud.io</span>
+            </div>
+            <p className="note mt-1">
+              Only letters (a-z), numbers (0-9) and periods(.) are allowed
+            </p>
+          </div>
+          <div className="mb-4 relative">
+            <Input
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={setPassword}
+              className="extra-padding"
+              placeholder="Create password"
+            />
+
+            <button
+              className="input_visibilty"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {!showPassword ? (
+                <u style={{ color: "#1565d8" }}>Show</u>
+              ) : (
+                <u style={{ color: "#1565d8" }}>Hide</u>
+              )}
+            </button>
+          </div>
+          <div className=" relative ">
+            <Input
+              type={showConfirmPassword ? "text" : "password"}
+              value={confirmPassword}
+              onChange={setConfirmPassword}
+              className="extra-padding1"
+              placeholder="Confirm password"
+            />
+
+            <button
+              className="input_visibilty"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            >
+              {!showConfirmPassword ? (
+                <u style={{ color: "#1565d8" }}>Show</u>
+              ) : (
+                <u style={{ color: "#1565d8" }}>Hide</u>
+              )}
+            </button>
+          </div>
+          <button className="next_btn mt-10" onClick={nextPage}>
+            Next
+          </button>
+          <div className="safe_message mt-3">
+            <img src={icon} alt="icon" />
+            <p className="info ml-2">
+              Safe & secure via myKloud blockhain technologies.
+            </p>
+          </div>
         </div>
       </div>
     </>

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { css } from "./clientInformations.css";
-import { MonthPicker } from "react-dropdown-date";
+import React, { useState } from "react";
 import img from "../../images/birthday-date.png";
 import Recaptcha from "react-google-recaptcha";
 import { useHistory, useLocation } from "react-router-dom";
+import Input from "../common/input";
+import MonthPickerWrapper from "../common/monthPickerWrapper";
+
+import "./style.scss";
 
 const ClientInformations = () => {
   const location = useLocation();
@@ -44,81 +46,77 @@ const ClientInformations = () => {
 
   return (
     <>
-      <div className="form">
-        <h1 className="formTitle">Fill in some basic info</h1>
+      <div className="form_container client_container">
+        <div className="form_wrapper">
+          <h1 className="form_title mb-10">Fill in some basic info</h1>
+          <div className="name_container">
+            <Input
+              type="text"
+              value={firstName}
+              onChange={setFirstName}
+              autofocus={true}
+              placeholder="First name"
+              containerClassName="mb-4 first_name"
+            />
 
-        <div className="userName">
-          <input
-            type="text"
-            placeholder="First name"
-            className="nameField"
-            onChange={(firstName) => setFirstName(firstName.target.value)}
-          ></input>
-        </div>
+            <Input
+              type="text"
+              value={lastName}
+              onChange={setLastName}
+              placeholder="Last name"
+              containerClassName="mb-4"
+            />
+          </div>
+          <p className="form_sub_title">Your birthday</p>
+          <div className="datePicker mb-4">
+            <MonthPickerWrapper
+              value={month}
+              placeholder="Month"
+              required={true}
+              disabled={false}
+              onChange={setMonth}
+              containerClassName="mr-4"
+            />
 
-        <div className="lastName">
-          <input
-            type="text"
-            placeholder="Last name"
-            className="nameField"
-            onChange={(lastName) => setLastName(lastName.target.value)}
-          ></input>
-        </div>
+            <Input
+              type="number"
+              value={year}
+              onChange={setYear}
+              placeholder="Year"
+            />
+          </div>
+          <div className="note mb-4">
+            <img src={img} alt="birhtday" className="mr-3" />
+            <p className="image_description">
+              Here goe a short sentence taht can goes on two lines describing
+              why we asking for date of birth.
+            </p>
+          </div>
 
-        <p className="Your-birthday">Your birthday</p>
-
-        <div className="datePicker">
-          <MonthPicker
-            defaultValue={"Month"}
-            className="select-months"
-            caps
-            required={true}
-            disabled={false}
-            onChange={(month) => {
-              setMonth(month);
-            }}
-            id={"month"}
-            name={"month"}
-            classes={"classes"}
-            optionClasses={"optionclasses"}
+          <Recaptcha
+            sitekey="6Ld94lYdAAAAAD2oJ3xOQFzAQb0QNSM_t70ypxHx"
+            onloadCallback={recaptchaLoaded()}
+            verifyCallback={verifyCallback()}
+            className="mb-4"
+            data-size="compact"
           />
-          <input
-            type="number"
-            id="year"
-            name="year"
-            placeholder="Year"
-            onChange={(year) => setYear(year.target.value)}
-          ></input>
-        </div>
 
-        <div className="note1">
-          <img src={img} alt="birhtday image" className="image"></img>
-          <p className="imageDiscription">
-            Here goe a short sentence taht can goes on two lines describing why
-            we asking for date of birth.
+          <div className="buttons_container mb-4">
+            <p className="pre" onClick={previous}>
+              Previous
+            </p>
+            <button className="next" onClick={next}>
+              Create my account
+            </button>
+          </div>
+
+          <p className="terms">
+            By clicking "create my account", you agree to the
+            <u className="mx-1">Terms</u>
+            and
+            <u className="mx-1">Privacy Policy</u>
           </p>
         </div>
-
-        <Recaptcha
-          sitekey="6LfgMzcdAAAAADfqK0z6yvTZfqEz0ozhUucnf9PQ"
-          onloadCallback={recaptchaLoaded()}
-          verifyCallback={verifyCallback()}
-          className="recaptcha"
-        />
-
-        <div className="buttonsContainer">
-          <p className="pre" onClick={previous}>
-            Previous
-          </p>
-          <button className="next" onClick={next}>
-            Create my account
-          </button>
-        </div>
-
-        <p className="terms">
-          By clicking "create my account", you agree to the Terms and Privacy
-          Policy
-        </p>
       </div>
     </>
   );
