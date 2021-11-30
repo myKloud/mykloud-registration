@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import VerificationInput from "../common/verificationInput";
+import { useHistory } from "react-router-dom";
 import "./style.scss";
 
 const CodeVerification = () => {
+  const history = useHistory();
+  const pre = () => {
+    history.push({
+      pathname: "/recovery",
+    });
+  };
   return (
     <>
       <div className="form_container verification_container">
@@ -24,7 +31,9 @@ const CodeVerification = () => {
           </div>
 
           <div className="flex mt-4 justify-between ...">
-            <button className="pre">Previous</button>
+            <button className="pre" onClick={pre}>
+              Previous
+            </button>
             <button className="verify">Verify</button>
           </div>
         </div>
