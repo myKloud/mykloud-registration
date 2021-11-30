@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import "./style.scss";
 
 const Header = () => {
@@ -6,13 +7,18 @@ const Header = () => {
     window.location = "http://www.mykloud.io";
   };
 
+  const history = useHistory();
+
   let description = "Don’t have an account?";
   let action = "Register";
+  let path = "/register";
 
   if (window.location.pathname !== "/") {
     description = "Already have an account?";
     action = "Sign in";
+    path = "/";
   }
+
   return (
     <>
       <div className="header_container mb-8">
@@ -21,7 +27,12 @@ const Header = () => {
         </div>
         <div className="right_side">
           <p className="right_text mr-2">{description}</p>
-          <button className="signin_btn">{action}</button>{" "}
+          <button
+            className="signin_btn"
+            onClick={() => (window.location.pathname = path)}
+          >
+            {action}
+          </button>{" "}
         </div>
       </div>
     </>

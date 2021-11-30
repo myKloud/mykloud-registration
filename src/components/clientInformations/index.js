@@ -30,7 +30,7 @@ const ClientInformations = () => {
 
   const previous = () => {
     history.push({
-      pathname: "/",
+      pathname: "/register",
       state: {
         backUser: location.state.user,
         backPassword: location.state.password,

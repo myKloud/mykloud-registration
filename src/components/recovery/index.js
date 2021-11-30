@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import blackEmailImg from "../../images/email1.png";
 import whiteEmailImg from "../../images/email2.png";
 import blackPhoneImg from "../../images/phone1.png";
@@ -12,6 +13,13 @@ const Recovery = () => {
   const [method, setMethod] = useState("email");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
+  const history = useHistory();
+  const next = () => {
+    history.push({
+      pathname: "/verification",
+    });
+  };
+
   return (
     <>
       <div className="form_container recovery_container">
@@ -109,7 +117,9 @@ const Recovery = () => {
                 : "You’ll recieve an sms with a cofnirmation code"}
             </p>
 
-            <button className="next_btn">Send me code</button>
+            <button className="next_btn" onClick={next}>
+              Send me code
+            </button>
           </div>
         </div>
       </div>
