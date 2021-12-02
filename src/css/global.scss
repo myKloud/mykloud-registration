@@ -103,5 +103,9 @@ body {
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: #b4414c;
+  color: $error;
+}
+
+.validation {
+  border-color: $error !important;
 }
