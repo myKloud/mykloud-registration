@@ -7,17 +7,28 @@ import whitePhoneImg from "../../images/phone2.png";
 import ReactPhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Input from "../common/input";
+import { isValidPhoneNumber } from "react-phone-number-input";
 import "./style.scss";
 
 const Recovery = () => {
   const [method, setMethod] = useState("email");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
+  const [submit, setSubmit] = useState(false);
   const history = useHistory();
+  const validEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
   const next = () => {
-    history.push({
-      pathname: "/verification",
-    });
+    setSubmit(true);
+    if (
+      (isValidPhoneNumber(`+${number}`) && method !== "email") ||
+      (validEmail.test(email) &&
+        method === "email" &&
+        !(email.slice(-10).toLowerCase() === "mykloud.io"))
+    )
+      history.push({
+        pathname: "/verification",
+      });
   };
 
   return (
@@ -82,7 +93,7 @@ const Recovery = () => {
                 <div className="user_name">
                   <Input
                     type="text"
-                    autofocus={true}
+                    autoFocus={true}
                     value={email}
                     onChange={setEmail}
                     className="recovery_input mb-2"
@@ -104,11 +115,50 @@ const Recovery = () => {
                   value={number}
                   onChange={(e) => {
                     setNumber(e);
-                    console.log(number);
                   }}
                   country={"us"}
                 />
               </>
+            )}
+
+            {!isValidPhoneNumber(`+${number}`) &&
+            method !== "email" &&
+            submit ? (
+              <>
+                <div className="error mb-2">
+                  <p>
+                    Please enter valid phone number or change the country code
+                  </p>
+                </div>
+              </>
+            ) : (
+              ""
+            )}
+
+            {!validEmail.test(email) && method === "email" && submit ? (
+              <>
+                <div className="error mb-2">
+                  <p>Please enter valid email address ”name@</p>
+                </div>
+              </>
+            ) : (
+              ""
+            )}
+
+            {validEmail.test(email) &&
+            email.slice(-10).toLowerCase() === "mykloud.io" &&
+            method === "email" &&
+            submit ? (
+              <>
+                <div className="error mb-2">
+                  <p>
+                    Please enter secondary email address, that is not myKloud
+                    email
+                  </p>
+                </div>
+              </>
+            ) : (
+              ""
             )}
 
             <p className="note mb-8">

@@ -64,6 +64,7 @@ body {
       font-weight: 600;
       color: $text_bold_color;
       outline: none;
+      padding-top: 7px;
 
       &:focus {
         border: solid 1px #445da7;
@@ -91,4 +92,16 @@ body {
       transform: translate(0, 5px) scale(0.8);
     }
   }
+}
+
+.error {
+  margin-top: 11px !important;
+  font-family: "Open sans";
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #b4414c;
 }

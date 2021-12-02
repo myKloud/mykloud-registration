@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import React, { useState } from "react";
 import "./style.scss";
 import Input from "../common/input";
 
@@ -8,8 +7,6 @@ const Login = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
-  const history = useHistory();
 
   const emailLogin = () => {
     return (
@@ -20,7 +17,7 @@ const Login = () => {
           <div className="user_name">
             <Input
               type="text"
-              autofocus={true}
+              autoFocus={true}
               value={user}
               onChange={setUser}
               placeholder="Username"

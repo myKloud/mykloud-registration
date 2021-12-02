@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import VerificationInput from "../common/verificationInput";
 import { useHistory } from "react-router-dom";
 import "./style.scss";

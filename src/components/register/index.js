@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import icon from "../../images/lock 1.svg";
 import { useHistory, useLocation } from "react-router-dom";
 import Input from "../common/input";
-
 import "./style.scss";
 
 const Register = () => {
@@ -11,7 +10,10 @@ const Register = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
+  const [submit, setSubmit] = useState(false);
+  const [checkUser, setCheckUser] = useState(false);
+  const [checkPass, setCheckPass] = useState(false);
+  const [checkConfirmPass, setCheckConfirmPass] = useState(false);
   const history = useHistory();
   const location = useLocation();
 
@@ -24,10 +26,13 @@ const Register = () => {
   }, [location]);
 
   const nextPage = () => {
-    history.push({
-      pathname: "/info",
-      state: { user: user, password: password },
-    });
+    setSubmit(true);
+    if (checkUser && checkPass && checkConfirmPass) {
+      history.push({
+        pathname: "/info",
+        state: { user: user, password: password },
+      });
+    }
   };
 
   return (
@@ -43,16 +48,30 @@ const Register = () => {
             <div className="user_name">
               <Input
                 type="text"
-                autofocus={true}
+                autoFocus={true}
                 value={user}
                 onChange={setUser}
                 placeholder="Username"
+                check={setCheckUser}
+                submitRegister={submit}
+                message={{
+                  name: "username",
+                  required: "Choose a myKmail address",
+                  length:
+                    "Your username must be between 4 and 30 characters long",
+                  pattern:
+                    "Sorry, only letters (a-z), numbers (0-9) and periods (.) are allowed.",
+                }}
               />
               <span className="domain">@mykloud.io</span>
             </div>
-            <p className="note mt-1">
-              Only letters (a-z), numbers (0-9) and periods(.) are allowed
-            </p>
+            {!submit ? (
+              <p className="note mt-1">
+                Only letters (a-z), numbers (0-9) and periods(.) are allowed
+              </p>
+            ) : (
+              ""
+            )}
           </div>
           <div className="mb-4 relative">
             <Input
@@ -61,6 +80,16 @@ const Register = () => {
               onChange={setPassword}
               className="extra-padding"
               placeholder="Create password"
+              check={setCheckPass}
+              submitRegister={submit}
+              message={{
+                name: "password",
+                required: "Enter password",
+                length:
+                  "Use 8 or more characters with a mix of letters, numbers & symbols",
+                pattern:
+                  "Use 8 or more characters with a mix of letters, numbers & symbols",
+              }}
             />
 
             <button
@@ -81,6 +110,15 @@ const Register = () => {
               onChange={setConfirmPassword}
               className="extra-padding1"
               placeholder="Confirm password"
+              check={setCheckConfirmPass}
+              submitRegister={submit}
+              password={password}
+              confirmPassword={confirmPassword}
+              message={{
+                name: "confirmPassword",
+                required: "Confirm your password",
+                match: "Those passwords didn’t match. Try again.",
+              }}
             />
 
             <button

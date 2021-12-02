@@ -1,13 +1,10 @@
-import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
 import "./style.scss";
 
 const Header = () => {
   const redirect_url = () => {
     window.location = "http://www.mykloud.io";
   };
-
-  const history = useHistory();
 
   let description = "Don’t have an account?";
   let action = "Register";
