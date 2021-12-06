@@ -9,44 +9,6 @@ const Input = (props) => {
     props.onChange(e.target.value);
   };
 
-  const validateInputClient = (input) => {
-    if (input.name === "name") {
-      if (!props.firstName.length && !props.lastName.length) {
-        props.error(input.requiredBoth);
-        props.check(false);
-      } else if (!props.firstName.length) {
-        props.error(input.requiredFirst);
-        props.check(false);
-      } else if (!props.lastName.length) {
-        props.error(input.requiredLast);
-        props.check(false);
-      } else {
-        props.check(true);
-      }
-    }
-
-    if (input.name === "birth") {
-      if (!props.month.length) {
-        props.error(input.required);
-        props.check(false);
-      } else if (!props.year.length) {
-        props.error(input.required);
-        props.check(false);
-      } else {
-        props.check(true);
-      }
-    }
-  };
-
-  // {props.submitRegister ?  : ""}
-  // {props.submitClientInfo ? validateInputClient(props.message) : ""}
-
-  // if (props.submitRegister) {
-  //   validateInputRegister(props.message);
-  // } else if (props.submitClientInfo) {
-  //   validateInputClient(props.message);
-  // }
-
   return (
     <>
       <div
@@ -61,6 +23,9 @@ const Input = (props) => {
           value={props.value}
           onChange={(e) => {
             setValueHandler(e);
+          }}
+          onBlur={(e) => {
+            if (props.onBlur) props.onBlur(e.currentTarget.value);
           }}
         />
 

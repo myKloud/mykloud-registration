@@ -158,7 +158,7 @@ const Register = () => {
                 setPassword(e);
                 validate(form_validation.password, e);
               }}
-              className="extra-padding"
+              className={`extra-padding ${passMessage && "validation"}`}
               placeholder="Create password"
             />
 
@@ -183,7 +183,7 @@ const Register = () => {
                 setConfirmPassword(e);
                 validate(form_validation.confirmPassword, e);
               }}
-              className="extra-padding"
+              className={`extra-padding ${passConfirmMessage && "validation"}`}
               placeholder="Create password"
             />
             <button

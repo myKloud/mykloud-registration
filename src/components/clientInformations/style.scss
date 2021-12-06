@@ -59,12 +59,17 @@
     color: $primary_color;
   }
 
+  .first_name {
+    margin-bottom: 1rem;
+  }
+
   @media only screen and (max-width: 767px) {
     .name_container {
       display: flex;
 
       .first_name {
         margin-right: 1rem;
+        margin-bottom: 0;
       }
     }
 
