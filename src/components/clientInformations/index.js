@@ -297,7 +297,7 @@ const ClientInformations = (props) => {
 
           <div className="wrapper mb-4">
             <Recaptcha
-              sitekey="6Ld94lYdAAAAAD2oJ3xOQFzAQb0QNSM_t70ypxHx"
+              sitekey={process.env.REACT_APP_SITE_KEY}
               onChange={verifyCallback}
               data-size="compact"
             />

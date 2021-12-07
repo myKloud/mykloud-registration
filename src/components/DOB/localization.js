@@ -7,7 +7,7 @@ const Localization = new LocalizedStrings({
     age: "you must meet certain age requirements.",
     learn_more: "To learn more, please visit our ",
     terms: "Terms of Service",
-    or: "or the ",
+    or: " or the ",
     safety_portal: "FTC's Kids' Online Safety portal",
   },
 });
