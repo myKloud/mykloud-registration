@@ -1,36 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { connect } from "react-redux";
 import "./style.scss";
 import Input from "../common/input";
+import Localization from "./localization";
 
-const Login = () => {
+const Login = (props) => {
   const [login, setLogin] = useState("email");
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const history = useHistory();
-
   const emailLogin = () => {
     return (
       <>
-        <h1 className="form_title">Login to your account</h1>
-        <p className="normal_text mb-10">Enter your username</p>
+        <h1 className="form_title">{Localization.title}</h1>
+        <p className="normal_text mb-10">{Localization.username_label}</p>
         <div className="mb-5">
           <div className="user_name">
             <Input
               type="text"
-              autofocus={true}
+              autoFocus={true}
               value={user}
               onChange={setUser}
-              placeholder="Username"
+              placeholder={Localization.username_placeholder}
             />
             <span className="domain">@mykloud.io</span>
           </div>
-          <p className="note mt-3">Forgot your username?</p>
+          <p className="note mt-3">{Localization.forget_username}</p>
         </div>
         <button className="next_btn" onClick={() => setLogin("password")}>
-          Next
+          {Localization.next}
         </button>
       </>
     );
@@ -39,15 +38,15 @@ const Login = () => {
   const passwordLogin = () => {
     return (
       <>
-        <h1 className="form_title">Welcome back!</h1>
-        <p className="normal_text mb-10">{`${user}@mykloud.io`}</p>
+        <h1 className="form_title">{Localization.welcome_back}</h1>
+        <p className="normal_text mb-10">{`memad@mykloud.io`}</p>
         <div className="mb-5 relative">
           <Input
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={setPassword}
             className="extra-padding"
-            placeholder="password"
+            placeholder={Localization.password_placeholder}
           />
 
           <button
@@ -55,17 +54,20 @@ const Login = () => {
             onClick={() => setShowPassword(!showPassword)}
           >
             {!showPassword ? (
-              <u style={{ color: "#1565d8" }}>Show</u>
+              <u style={{ color: "#1565d8" }}>{Localization.show}</u>
             ) : (
-              <u style={{ color: "#1565d8" }}>Hide</u>
+              <u style={{ color: "#1565d8" }}>{Localization.hide}</u>
             )}
           </button>
-          <p className="note mt-3">Forgot your password?</p>
+          <p className="note mt-3">{Localization.forget_password}</p>
         </div>
-        <button className="next_btn">Login</button>
+        <button className="next_btn">{Localization.login}</button>
       </>
     );
   };
+
+  const { lang } = props.languageReducer;
+  Localization.setLanguage(lang);
 
   return (
     <>
@@ -78,4 +80,12 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = ({ languageReducer }) => ({
+  languageReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

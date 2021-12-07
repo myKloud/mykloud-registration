@@ -59,11 +59,12 @@ body {
       border-radius: 6px;
       border: solid 1px #dcdce7;
       background-color: white;
-      font-family: "Open Sans";
-      font-size: 14px;
+      font-family: "Poppins";
+      font-size: 18px;
       font-weight: 600;
       color: $text_bold_color;
       outline: none;
+      padding-top: 7px;
 
       &:focus {
         border: solid 1px #445da7;
@@ -91,4 +92,27 @@ body {
       transform: translate(0, 5px) scale(0.8);
     }
   }
+}
+
+.error {
+  margin-top: 11px !important;
+  font-family: "Open sans";
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: $error;
+}
+
+.validation {
+  border-color: $error !important;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
