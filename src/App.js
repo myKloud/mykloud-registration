@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
-import Header from "./components/header/index";
-import Register from "./components/register/index";
+import Header from "./components/header";
+import Register from "./components/register";
 import ClientInformations from "./components/clientInformations";
 import Recovery from "./components/recovery";
 import Footer from "./components/footer";
