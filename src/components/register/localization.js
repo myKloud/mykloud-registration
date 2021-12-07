@@ -19,7 +19,7 @@ const Localization = new LocalizedStrings({
 
     validation: {
       username: {
-        required: "Choose a myKmail address",
+        required: "Choose Kmail address",
         length: "Your username must be between 4 and 30 characters long",
         pattern:
           "Sorry, only letters (a-z), numbers (0-9) and periods (.) are allowed.",

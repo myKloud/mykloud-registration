@@ -39,7 +39,7 @@ const Login = (props) => {
     return (
       <>
         <h1 className="form_title">{Localization.welcome_back}</h1>
-        <p className="normal_text mb-10">{`${user}@mykloud.io`}</p>
+        <p className="normal_text mb-10">{`memad@mykloud.io`}</p>
         <div className="mb-5 relative">
           <Input
             type={showPassword ? "text" : "password"}
