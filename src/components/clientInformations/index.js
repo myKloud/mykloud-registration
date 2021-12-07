@@ -5,7 +5,9 @@ import Recaptcha from "react-google-recaptcha";
 import { useHistory, useLocation } from "react-router-dom";
 import Input from "../common/input";
 import Validation from "../common/validation";
+import { setUserObj } from "../../actions/userAction";
 import Localization from "./localization";
+import { setStorage } from "../../config/storage";
 
 import MonthPickerWrapper from "../common/monthPickerWrapper";
 
@@ -68,6 +70,7 @@ const ClientInformations = (props) => {
   const history = useHistory();
 
   const previous = () => {
+    setStorage("register");
     history.push({
       pathname: "/register",
       state: {
@@ -83,11 +86,20 @@ const ClientInformations = (props) => {
     if (is_valid) {
       const is_valid_dob = dobValidation();
       if (is_valid_dob) {
+        const user_obj = props.userReducer;
+        user_obj.firstname = firstName;
+        user_obj.lastname = lastName;
+        setUserObj(user_obj);
+        setStorage("recovery");
+
         history.push({
           pathname: "/recovery",
         });
       } else {
-        alert("redirect to dob page");
+        setStorage("dob");
+        history.push({
+          pathname: "/dob",
+        });
       }
     }
   };
@@ -312,8 +324,9 @@ const ClientInformations = (props) => {
   );
 };
 
-const mapStateToProps = ({ languageReducer }) => ({
+const mapStateToProps = ({ languageReducer, userReducer }) => ({
   languageReducer,
+  userReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({

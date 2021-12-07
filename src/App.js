@@ -1,3 +1,4 @@
+import { useHistory } from "react-router-dom";
 import Header from "./components/header/index";
 import Register from "./components/register/index";
 import ClientInformations from "./components/clientInformations";
@@ -8,8 +9,22 @@ import Login from "./components/login";
 import Dob from "./components/DOB/";
 import ForgetUserName from "./components/forgetUserName";
 import { Route, Switch } from "react-router-dom";
+import { getStorage } from "../src/config/storage";
 
 function App() {
+  const history = useHistory();
+  const storage = getStorage();
+
+  if (storage === null) {
+    history.push({
+      pathname: "/register",
+    });
+  } else {
+    history.push({
+      pathname: `${storage}`,
+    });
+  }
+
   return (
     <>
       <div className="app m-8">

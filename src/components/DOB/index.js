@@ -1,26 +1,38 @@
 import React from "react";
+import { connect } from "react-redux";
 import "./style.scss";
 import blockImg from "../../images/block-user 1.png";
+import Localization from "./localization";
 
-const Dob = () => {
+const Dob = (props) => {
+  const { lang } = props.languageReducer;
+  Localization.setLanguage(lang);
+
   return (
     <>
       <div className="grid justify-items-center mt-56 mb-28 ">
         <img src={blockImg} alt="block" className="block_img" />
-        <h1 className="title mt-7">
-          Sorry we’re not able to complete your registration at this time.
-        </h1>
+        <h1 className="title mt-7">{Localization.title}</h1>
         <p className="sub_title mt-4 mb-4">
-          To sign up for a myKloud account,
-          <p className="text-left">you must meet certain age requirements.</p>
+          {Localization.sub_title}
+          <p className="text-left">{Localization.age}</p>
         </p>
         <p className="sub_title2">
-          To learn more, please visit our <u>Terms of Service</u> or the{" "}
-          <u>FTC's Kids' Online Safety portal</u>.
+          {Localization.learn_more} <u>{Localization.terms}</u>
+          {Localization.or}
+          <u>{Localization.safety_portal}</u>
         </p>
       </div>
     </>
   );
 };
 
-export default Dob;
+const mapStateToProps = ({ languageReducer }) => ({
+  languageReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dob);

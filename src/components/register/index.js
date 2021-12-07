@@ -4,7 +4,9 @@ import icon from "../../images/lock 1.svg";
 import { useHistory, useLocation } from "react-router-dom";
 import Input from "../common/input";
 import Validation from "../common/validation";
+import { setUserObj } from "../../actions/userAction";
 import Localization from "./localization";
+import { setStorage } from "../../config/storage";
 import "./style.scss";
 
 const Register = (props) => {
@@ -107,6 +109,12 @@ const Register = (props) => {
     const is_valid = validateHandler();
 
     if (is_valid) {
+      const user_obj = props.userReducer;
+      user_obj.username = user;
+      user_obj.password = password;
+      setUserObj(user_obj);
+      setStorage("info");
+
       history.push({
         pathname: "/info",
         state: { user: user, password: password },
@@ -210,8 +218,9 @@ const Register = (props) => {
   );
 };
 
-const mapStateToProps = ({ languageReducer }) => ({
+const mapStateToProps = ({ languageReducer, userReducer }) => ({
   languageReducer,
+  userReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
