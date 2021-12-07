@@ -23,7 +23,7 @@ const Localization = new LocalizedStrings({
 
     validation: {
       firstName: {
-        required: "Enter first names",
+        required: "Enter first name",
       },
       lastName: {
         required: "Enter last name",
@@ -39,7 +39,7 @@ const Localization = new LocalizedStrings({
         notValid: "sorry",
       },
       captcha: {
-        required: "Check the captcha",
+        required: "I am not a Robot",
       },
     },
   },
