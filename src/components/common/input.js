@@ -6,7 +6,6 @@ const Input = (props) => {
   const setValueHandler = (e) => {
     if (e.target.value) set_value(true);
     else set_value(false);
-
     props.onChange(e.target.value);
   };
 
@@ -20,13 +19,19 @@ const Input = (props) => {
         <input
           type={props.type}
           className={`form_field ${props.className ? props.className : ""}`}
-          autofocus={props.autofocus || false}
+          autoFocus={props.autoFocus || false}
           value={props.value}
           onChange={(e) => {
             setValueHandler(e);
           }}
+          onBlur={(e) => {
+            if (props.onBlur) props.onBlur(e.currentTarget.value);
+          }}
         />
-        <label className={`form_label ${has_value ? "filled" : ""}`}>
+
+        <label
+          className={`form_label ${has_value || props.value ? "filled" : ""} `}
+        >
           {props.placeholder}
         </label>
       </div>
