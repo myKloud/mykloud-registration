@@ -29,7 +29,9 @@ const Input = (props) => {
           }}
         />
 
-        <label className={`form_label ${has_value ? "filled" : ""}`}>
+        <label
+          className={`form_label ${has_value || props.value ? "filled" : ""} `}
+        >
           {props.placeholder}
         </label>
       </div>
