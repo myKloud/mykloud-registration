@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import blackEmailImg from "../../images/email1.png";
 import whiteEmailImg from "../../images/email2.png";
@@ -8,106 +7,44 @@ import whitePhoneImg from "../../images/phone2.png";
 import ReactPhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Input from "../common/input";
-import Validation from "../common/validation";
-import Localization from "./localization";
-
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "./style.scss";
 
-const Recovery = (props) => {
+const Recovery = () => {
   const [method, setMethod] = useState("email");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
-
-  const [emailMessage, setEmailMessage] = useState("");
-  const [numberMessage, setNumberMessage] = useState("");
-
+  const [submit, setSubmit] = useState(false);
   const history = useHistory();
   const validEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
-  const form_validation = {
-    email: {
-      name: "email",
-      required: Localization.validation.email.required,
-      redundant: Localization.validation.email.redundant,
-    },
-    number: {
-      name: "number",
-      required: Localization.validation.number.required,
-    },
-  };
-
-  const nextPage = () => {
-    const is_valid = validateHandler();
-
-    if (is_valid) {
+  const next = () => {
+    setSubmit(true);
+    if (
+      (isValidPhoneNumber(`+${number}`) && method !== "email") ||
+      (validEmail.test(email) &&
+        method === "email" &&
+        !(email.slice(-10).toLowerCase() === "mykloud.io"))
+    )
       history.push({
         pathname: "/verification",
       });
-    }
   };
-
-  const validate = (input, value) => {
-    let is_valid = true;
-
-    if (input.name === "email") {
-      setEmailMessage("");
-
-      if (!value.length) {
-        setEmailMessage(input.required);
-        is_valid = false;
-      } else if (!validEmail.test(email)) {
-        setEmailMessage(input.required);
-        is_valid = false;
-      } else if (email.slice(-10).toLowerCase() === "mykloud.io") {
-        setEmailMessage(input.redundant);
-        is_valid = false;
-      }
-    }
-
-    if (input.name === "number") {
-      setNumberMessage("");
-
-      if (!value.length) {
-        setNumberMessage(input.required);
-        is_valid = false;
-      } else if (!isValidPhoneNumber(`+${number}`)) {
-        setNumberMessage(input.required);
-        is_valid = false;
-      }
-    }
-
-    return is_valid;
-  };
-
-  const validateHandler = () => {
-    const is_valid_email = validate(form_validation.email, email);
-    const is_valid_number = validate(form_validation.number, number);
-
-    return is_valid_email && is_valid_number;
-  };
-
-  const handleSetMethod = (type) => {
-    setNumberMessage("");
-    setEmailMessage("");
-    setMethod(type);
-  };
-
-  const { lang } = props.languageReducer;
-  Localization.setLanguage(lang);
 
   return (
     <>
       <div className="form_container recovery_container">
         <div className="form_wrapper">
           <h1 className="form_title mb-1">
-            {Localization.title}, Monica! <span>👋</span>
+            Welcome, Monica! <span>👋</span>
           </h1>
           <p className="form_subtitle mb-8 text-center">
-            {Localization.sub_title}
+            Your myKloud account has been created succesfully.
           </p>
           <div className="form_sub_content">
-            <p className="form_sub_title">{Localization.select_recovery}</p>
+            <p className="form_sub_title">
+              For now , let’s select your recovery method
+            </p>
 
             <div className="button_container mb-5">
               <div
@@ -117,7 +54,7 @@ const Recovery = (props) => {
                     : "select_button mr-4"
                 }
                 onClick={() => {
-                  handleSetMethod("email");
+                  setMethod("email");
                 }}
               >
                 <div className={method === "email" ? "logo white_img" : "logo"}>
@@ -127,7 +64,7 @@ const Recovery = (props) => {
                   />
                 </div>
 
-                <p className="text">{Localization.email_address}</p>
+                <p className="text">Email address</p>
               </div>
 
               <div
@@ -137,7 +74,7 @@ const Recovery = (props) => {
                     : "select_button selected"
                 }
                 onClick={() => {
-                  handleSetMethod("phone");
+                  setMethod("phone");
                 }}
               >
                 <div className={method === "email" ? "logo" : "logo white_img"}>
@@ -147,61 +84,91 @@ const Recovery = (props) => {
                   />
                 </div>
 
-                <p className="text">{Localization.phone_number}</p>
+                <p className="text">Phone number</p>
               </div>
             </div>
 
             {method === "email" ? (
               <>
-                <div className="user_name mb-2">
+                <div className="user_name">
                   <Input
                     type="text"
                     autoFocus={true}
                     value={email}
-                    onChange={(e) => {
-                      setEmail(e);
-                      // validate(form_validation.email, e);
-                    }}
-                    className={`recovery_input ${emailMessage && "validation"}`}
-                    placeholder={Localization.email_placeholder}
+                    onChange={setEmail}
+                    className="recovery_input mb-2"
+                    placeholder="Recovery email address"
                   />
-                  {emailMessage && <Validation error={emailMessage} />}
                 </div>
               </>
             ) : (
               <>
-                <div className="wrapper mb-2">
-                  <ReactPhoneInput
-                    inputExtraProps={{
-                      name: "phone",
-                      required: true,
-                      autoFocus: true,
-                    }}
-                    inputClass={`phone_input ${numberMessage && "validation"}`}
-                    buttonClass={`country_dropdown ${
-                      numberMessage && "validation"
-                    }`}
-                    value={number}
-                    onChange={(e) => {
-                      setNumber(e);
-                      // validate(form_validation.number, e);
-                    }}
-                    country={"us"}
-                  />
+                <ReactPhoneInput
+                  inputExtraProps={{
+                    name: "phone",
+                    required: true,
+                    autoFocus: true,
+                  }}
+                  inputClass="phone_input"
+                  containerClass="mb-2"
+                  buttonClass="country_dropdown"
+                  value={number}
+                  onChange={(e) => {
+                    setNumber(e);
+                  }}
+                  country={"us"}
+                />
+              </>
+            )}
 
-                  {numberMessage && <Validation error={numberMessage} />}
+            {!isValidPhoneNumber(`+${number}`) &&
+            method !== "email" &&
+            submit ? (
+              <>
+                <div className="error mb-2">
+                  <p>
+                    Please enter valid phone number or change the country code
+                  </p>
                 </div>
               </>
+            ) : (
+              ""
+            )}
+
+            {!validEmail.test(email) && method === "email" && submit ? (
+              <>
+                <div className="error mb-2">
+                  <p>Please enter valid email address ”name@</p>
+                </div>
+              </>
+            ) : (
+              ""
+            )}
+
+            {validEmail.test(email) &&
+            email.slice(-10).toLowerCase() === "mykloud.io" &&
+            method === "email" &&
+            submit ? (
+              <>
+                <div className="error mb-2">
+                  <p>
+                    Please enter secondary email address, that is not myKloud
+                    email
+                  </p>
+                </div>
+              </>
+            ) : (
+              ""
             )}
 
             <p className="note mb-8">
               {method === "email"
-                ? Localization.email_msg
-                : Localization.sms_msg}
+                ? "You’ll recieve an email with a cofnirmation code"
+                : "You’ll recieve an sms with a cofnirmation code"}
             </p>
 
-            <button className="next_btn" onClick={nextPage}>
-              {Localization.send_code}
+            <button className="next_btn" onClick={next}>
+              Send me code
             </button>
           </div>
         </div>
@@ -210,12 +177,4 @@ const Recovery = (props) => {
   );
 };
 
-const mapStateToProps = ({ languageReducer }) => ({
-  languageReducer,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  dispatch,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Recovery);
+export default Recovery;

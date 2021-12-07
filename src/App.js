@@ -6,6 +6,7 @@ import Footer from "./components/footer";
 import Verification from "./components/codeVerification";
 import Login from "./components/login";
 import Dob from "./components/DOB/";
+import ForgetUserName from "./components/forgetUserName";
 import { Route, Switch } from "react-router-dom";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/recovery" render={() => <Recovery />} />
           <Route exact path="/verification" render={() => <Verification />} />
           <Route exact path="/dob" render={() => <Dob />} />
+          <Route exact path="/forgetUser" render={() => <ForgetUserName />} />
         </Switch>
       </div>
       <Footer />
