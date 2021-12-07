@@ -4,13 +4,19 @@ import VerificationInput from "../common/verificationInput";
 import { useHistory } from "react-router-dom";
 import "./style.scss";
 import Localization from "./localization";
+import { removeStorage, setStorage } from "../../config/storage";
 
 const CodeVerification = (props) => {
   const history = useHistory();
   const pre = () => {
+    setStorage("recovery");
     history.push({
       pathname: "/recovery",
     });
+  };
+
+  const verifyCode = () => {
+    removeStorage();
   };
 
   const { lang } = props.languageReducer;
@@ -40,7 +46,9 @@ const CodeVerification = (props) => {
             <button className="pre" onClick={pre}>
               {Localization.previous}
             </button>
-            <button className="verify">{Localization.verify}</button>
+            <button className="verify" onClick={verifyCode}>
+              {Localization.verify}
+            </button>
           </div>
         </div>
       </div>

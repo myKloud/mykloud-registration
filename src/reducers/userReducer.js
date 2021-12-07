@@ -7,6 +7,7 @@ const intitalState = {
   lastname: "",
   method: "",
   recovery: "",
+  isvalid: false,
 };
 
 const UserReducer = (state = intitalState, action) => {

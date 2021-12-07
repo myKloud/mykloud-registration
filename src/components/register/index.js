@@ -112,6 +112,7 @@ const Register = (props) => {
       const user_obj = props.userReducer;
       user_obj.username = user;
       user_obj.password = password;
+      user_obj.is_valid = true;
       setUserObj(user_obj);
       setStorage("info");
 
