@@ -1,20 +1,25 @@
 import React from "react";
+import { connect } from "react-redux";
 import "./style.scss";
+import Localization from "./localization";
 
-const Header = () => {
+const Header = (props) => {
   const redirect_url = () => {
     window.location = "http://www.mykloud.io";
   };
 
-  let description = "Don’t have an account?";
-  let action = "Register";
+  let description = Localization.account_not_exist;
+  let action = Localization.register;
   let path = "/register";
 
   if (window.location.pathname !== "/") {
-    description = "Already have an account?";
-    action = "Sign in";
+    description = Localization.account_exist;
+    action = Localization.sign_in;
     path = "/";
   }
+
+  const { lang } = props.languageReducer;
+  Localization.setLanguage(lang);
 
   return (
     <>
@@ -36,4 +41,12 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = ({ languageReducer }) => ({
+  languageReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

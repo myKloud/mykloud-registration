@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import icon from "../../images/lock 1.svg";
 import { useHistory, useLocation } from "react-router-dom";
 import Input from "../common/input";
 import Validation from "../common/validation";
+import Localization from "./localization";
 import "./style.scss";
 
-const Register = () => {
+const Register = (props) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [user, setUser] = useState("");
@@ -23,25 +25,22 @@ const Register = () => {
   const form_validation = {
     username: {
       name: "username",
-      required: "Choose a myKmail address",
-      length: "Your username must be between 4 and 30 characters long",
-      pattern:
-        "Sorry, only letters (a-z), numbers (0-9) and periods (.) are allowed.",
+      required: Localization.validation.username.required,
+      length: Localization.validation.username.length,
+      pattern: Localization.validation.username.pattern,
     },
 
     password: {
       name: "password",
-      required: "Enter password",
-      length:
-        "Use 8 or more characters with a mix of letters, numbers & symbols",
-      pattern:
-        "Use 8 or more characters with a mix of letters, numbers & symbols",
+      required: Localization.validation.password.required,
+      length: Localization.validation.password.length,
+      pattern: Localization.validation.password.patteren,
     },
 
     confirmPassword: {
       name: "confirmPassword",
-      required: "Confirm your password",
-      match: "Those passwords didn’t match. Try again.",
+      required: Localization.validation.confirmPassword.required,
+      match: Localization.validation.confirmPassword.match,
     },
   };
 
@@ -115,14 +114,14 @@ const Register = () => {
     }
   };
 
+  const { lang } = props.languageReducer;
+  Localization.setLanguage(lang);
   return (
     <>
       <div className="form_container register_container">
         <div className="form_wrapper">
-          <h1 className="form_title">Create your myKloud account</h1>
-          <p className="normal_text mb-10">
-            Single access to all myKloud applications.
-          </p>
+          <h1 className="form_title">{Localization.title}</h1>
+          <p className="normal_text mb-10">{Localization.sub_title}</p>
 
           <div className="mb-4">
             <div className="user_name">
@@ -134,7 +133,7 @@ const Register = () => {
                   setUser(e);
                   validate(form_validation.username, e);
                 }}
-                placeholder="Username"
+                placeholder={Localization.username_placeholder}
                 className={userMessage && "validation"}
               />
               <span className={`domain ${userMessage && "validation"}`}>
@@ -144,7 +143,7 @@ const Register = () => {
             {userMessage && <Validation error={userMessage} />}
             {!submit ? (
               <p className="note mt-1">
-                Only letters (a-z), numbers (0-9) and periods(.) are allowed
+                {Localization.username_validation_general}
               </p>
             ) : (
               ""
@@ -159,7 +158,7 @@ const Register = () => {
                 validate(form_validation.password, e);
               }}
               className={`extra-padding ${passMessage && "validation"}`}
-              placeholder="Create password"
+              placeholder={Localization.passowrd_placeholder}
             />
 
             <button
@@ -167,9 +166,9 @@ const Register = () => {
               onClick={() => setShowPassword(!showPassword)}
             >
               {!showPassword ? (
-                <u style={{ color: "#1565d8" }}>Show</u>
+                <u style={{ color: "#1565d8" }}>{Localization.show}</u>
               ) : (
-                <u style={{ color: "#1565d8" }}>Hide</u>
+                <u style={{ color: "#1565d8" }}>{Localization.hide}</u>
               )}
             </button>
 
@@ -184,28 +183,26 @@ const Register = () => {
                 validate(form_validation.confirmPassword, e);
               }}
               className={`extra-padding ${passConfirmMessage && "validation"}`}
-              placeholder="Create password"
+              placeholder={Localization.passowrd_placeholder}
             />
             <button
               className="input_visibilty"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             >
               {!showConfirmPassword ? (
-                <u style={{ color: "#1565d8" }}>Show</u>
+                <u style={{ color: "#1565d8" }}>{Localization.show}</u>
               ) : (
-                <u style={{ color: "#1565d8" }}>Hide</u>
+                <u style={{ color: "#1565d8" }}>{Localization.hide}</u>
               )}
             </button>
             {passConfirmMessage && <Validation error={passConfirmMessage} />}
           </div>
           <button className="next_btn mt-10" onClick={nextPage}>
-            Next
+            {Localization.next}
           </button>
           <div className="safe_message mt-3">
             <img src={icon} alt="icon" />
-            <p className="info ml-2">
-              Safe & secure via myKloud blockhain technologies.
-            </p>
+            <p className="info ml-2">{Localization.msg}</p>
           </div>
         </div>
       </div>
@@ -213,4 +210,12 @@ const Register = () => {
   );
 };
 
-export default Register;
+const mapStateToProps = ({ languageReducer }) => ({
+  languageReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

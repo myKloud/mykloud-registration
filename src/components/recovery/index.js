@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import blackEmailImg from "../../images/email1.png";
 import whiteEmailImg from "../../images/email2.png";
@@ -8,11 +9,12 @@ import ReactPhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Input from "../common/input";
 import Validation from "../common/validation";
+import Localization from "./localization";
 
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "./style.scss";
 
-const Recovery = () => {
+const Recovery = (props) => {
   const [method, setMethod] = useState("email");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
@@ -26,13 +28,12 @@ const Recovery = () => {
   const form_validation = {
     email: {
       name: "email",
-      required: "Please enter valid email address",
-      redundant:
-        "Please enter secondary email address, that is not myKloud email",
+      required: Localization.validation.email.required,
+      redundant: Localization.validation.email.redundant,
     },
     number: {
       name: "number",
-      required: "Please enter valid phone number or change the country code",
+      required: Localization.validation.number.required,
     },
   };
 
@@ -92,20 +93,21 @@ const Recovery = () => {
     setMethod(type);
   };
 
+  const { lang } = props.languageReducer;
+  Localization.setLanguage(lang);
+
   return (
     <>
       <div className="form_container recovery_container">
         <div className="form_wrapper">
           <h1 className="form_title mb-1">
-            Welcome, Monica! <span>👋</span>
+            {Localization.title}, Monica! <span>👋</span>
           </h1>
           <p className="form_subtitle mb-8 text-center">
-            Your myKloud account has been created succesfully.
+            {Localization.sub_title}
           </p>
           <div className="form_sub_content">
-            <p className="form_sub_title">
-              For now , let’s select your recovery method
-            </p>
+            <p className="form_sub_title">{Localization.select_recovery}</p>
 
             <div className="button_container mb-5">
               <div
@@ -125,7 +127,7 @@ const Recovery = () => {
                   />
                 </div>
 
-                <p className="text">Email address</p>
+                <p className="text">{Localization.email_address}</p>
               </div>
 
               <div
@@ -145,7 +147,7 @@ const Recovery = () => {
                   />
                 </div>
 
-                <p className="text">Phone number</p>
+                <p className="text">{Localization.phone_number}</p>
               </div>
             </div>
 
@@ -161,7 +163,7 @@ const Recovery = () => {
                       // validate(form_validation.email, e);
                     }}
                     className={`recovery_input ${emailMessage && "validation"}`}
-                    placeholder="Recovery email address"
+                    placeholder={Localization.email_placeholder}
                   />
                   {emailMessage && <Validation error={emailMessage} />}
                 </div>
@@ -194,12 +196,12 @@ const Recovery = () => {
 
             <p className="note mb-8">
               {method === "email"
-                ? "You’ll recieve an email with a confirmation code"
-                : "You’ll recieve an sms with a cofnirmation code"}
+                ? Localization.email_msg
+                : Localization.sms_msg}
             </p>
 
             <button className="next_btn" onClick={nextPage}>
-              Send me code
+              {Localization.send_code}
             </button>
           </div>
         </div>
@@ -208,4 +210,12 @@ const Recovery = () => {
   );
 };
 
-export default Recovery;
+const mapStateToProps = ({ languageReducer }) => ({
+  languageReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recovery);

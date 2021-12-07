@@ -1,15 +1,17 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import img from "../../images/birthday-date.png";
 import Recaptcha from "react-google-recaptcha";
 import { useHistory, useLocation } from "react-router-dom";
 import Input from "../common/input";
 import Validation from "../common/validation";
+import Localization from "./localization";
 
 import MonthPickerWrapper from "../common/monthPickerWrapper";
 
 import "./style.scss";
 
-const ClientInformations = () => {
+const ClientInformations = (props) => {
   const location = useLocation();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -30,29 +32,29 @@ const ClientInformations = () => {
   const form_validation = {
     firstName: {
       name: "firstName",
-      required: "Enter first names",
+      required: Localization.validation.firstName.required,
     },
     lastName: {
       name: "lastName",
-      required: "Enter last name",
+      required: Localization.validation.lastName.required,
     },
     name: {
-      requiredBoth: "Enter first and last names",
+      requiredBoth: Localization.validation.name.requiredBoth,
     },
     month: {
       name: "month",
     },
     year: {
       name: "year",
-      format: "Invalid year format",
+      format: Localization.validation.year.format,
     },
     bithday: {
-      required: "Enter your Date of Birth",
-      notValid: "sorry",
+      required: Localization.validation.bithday.required,
+      notValid: Localization.validation.bithday.notValid,
       minimum: 13,
     },
     captcha: {
-      required: "Check the captcha",
+      required: Localization.validation.captcha.required,
     },
   };
 
@@ -206,11 +208,14 @@ const ClientInformations = () => {
     return true;
   };
 
+  const { lang } = props.languageReducer;
+  Localization.setLanguage(lang);
+
   return (
     <>
       <div className="form_container client_container">
         <div className="form_wrapper">
-          <h1 className="form_title mb-10">Fill in some basic info</h1>
+          <h1 className="form_title mb-10">{Localization.title}</h1>
           <div className="wrapper mb-4">
             <div className="name_container">
               <Input
@@ -221,7 +226,7 @@ const ClientInformations = () => {
                   validate(form_validation.firstName, e);
                 }}
                 autoFocus={true}
-                placeholder="First name"
+                placeholder={Localization.firstname_placeholder}
                 containerClassName="first_name"
                 className={`${firstNameMessage && "validation"}`}
               />
@@ -233,7 +238,7 @@ const ClientInformations = () => {
                   setLastName(e);
                   validate(form_validation.lastName, e);
                 }}
-                placeholder="Last name"
+                placeholder={Localization.lastname_placeholder}
                 // containerClassName="mb-4"
                 className={`${lastNameMessage && "validation"}`}
               />
@@ -241,12 +246,12 @@ const ClientInformations = () => {
             {nameMessage && <Validation error={nameMessage} />}
           </div>
 
-          <p className="form_sub_title">Your birthday</p>
+          <p className="form_sub_title">{Localization.birthday_title}</p>
           <div className="wrapper mb-4">
             <div className="datePicker">
               <MonthPickerWrapper
                 value={month}
-                placeholder="Month"
+                placeholder={Localization.month_placeholder}
                 required={true}
                 disabled={false}
                 onChange={(e) => {
@@ -266,7 +271,7 @@ const ClientInformations = () => {
                 }}
                 onBlur={handleYearDigits}
                 className={`${yearMessage && "validation"}`}
-                placeholder="Year"
+                placeholder={Localization.year_placeholder}
               />
             </div>
 
@@ -275,10 +280,7 @@ const ClientInformations = () => {
 
           <div className="note mb-4">
             <img src={img} alt="birhtday" className="mr-3" />
-            <p className="image_description">
-              Here goe a short sentence taht can goes on two lines describing
-              why we asking for date of birth.
-            </p>
+            <p className="image_description">{Localization.msg}</p>
           </div>
 
           <div className="wrapper mb-4">
@@ -292,17 +294,17 @@ const ClientInformations = () => {
 
           <div className="buttons_container mb-4">
             <p className="pre" onClick={previous}>
-              Previous
+              {Localization.previous}
             </p>
             <button className="next" onClick={nextPage}>
-              Create my account
+              {Localization.create_account}
             </button>
           </div>
           <p className="terms">
-            By clicking "create my account", you agree to the
-            <u className="mx-1">Terms</u>
-            and
-            <u className="mx-1">Privacy Policy</u>
+            {Localization.agree}
+            <u className="mx-1">{Localization.terms}</u>
+            {Localization.and}
+            <u className="mx-1">{Localization.privacy_policy}</u>
           </p>
         </div>
       </div>
@@ -310,4 +312,12 @@ const ClientInformations = () => {
   );
 };
 
-export default ClientInformations;
+const mapStateToProps = ({ languageReducer }) => ({
+  languageReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClientInformations);
