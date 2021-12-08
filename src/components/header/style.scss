@@ -7,7 +7,6 @@
   .mykloud_logo {
     width: 150px;
     height: 54px;
-
     background-image: url(../../images/myKloud_logo.png);
     background-repeat: no-repeat;
     background-size: 150px;
@@ -34,8 +33,7 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 1.75;
-
-    color: $primary_color;
+    color: #1565d8;
     text-align: center;
     cursor: pointer;
   }
@@ -58,6 +56,7 @@
       width: 84px;
       font-size: 14px;
       border: none;
+      text-align: right !important;
     }
   }
 }

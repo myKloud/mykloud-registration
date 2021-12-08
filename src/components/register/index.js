@@ -132,7 +132,7 @@ const Register = (props) => {
           <h1 className="form_title">{Localization.title}</h1>
           <p className="normal_text mb-10">{Localization.sub_title}</p>
 
-          <div className="mb-4">
+          <div className="mb-6">
             <div className="user_name">
               <Input
                 type="text"
@@ -151,14 +151,14 @@ const Register = (props) => {
             </div>
             {userMessage && <Validation error={userMessage} />}
             {!submit ? (
-              <p className="note mt-1">
+              <p className="note mt-2">
                 {Localization.username_validation_general}
               </p>
             ) : (
               ""
             )}
           </div>
-          <div className="mb-4 relative">
+          <div className="mb-5 relative">
             <Input
               type={showPassword ? "text" : "password"}
               value={password}
@@ -206,7 +206,7 @@ const Register = (props) => {
             </button>
             {passConfirmMessage && <Validation error={passConfirmMessage} />}
           </div>
-          <button className="next_btn mt-10" onClick={nextPage}>
+          <button className="next_btn mt-8" onClick={nextPage}>
             {Localization.next}
           </button>
           <div className="safe_message mt-3">
