@@ -16,25 +16,26 @@ function App(props) {
   const history = useHistory();
   const storage = getStorage();
 
-  // const pathChecker = () => {
-  //   const pathname = window.location.pathname;
-  //   const is_valid_pathname = pathname === "/login" || pathname === "/";
-  //   const user_obj = props.userReducer;
+  const pathChecker = () => {
+    const pathname = window.location.pathname;
+    const is_valid_pathname =
+      pathname === "/login" || pathname === "/" || pathname === "/forgetUser";
+    const user_obj = props.userReducer;
 
-  //   if (is_valid_pathname) return;
+    if (is_valid_pathname) return;
 
-  //   if (!storage || !user_obj.isvalid) {
-  //     history.push({
-  //       pathname: "/register",
-  //     });
-  //   } else {
-  //     history.push({
-  //       pathname: `${storage}`,
-  //     });
-  //   }
-  // };
+    if (!storage || !user_obj.isvalid) {
+      history.push({
+        pathname: "/register",
+      });
+    } else {
+      history.push({
+        pathname: `${storage}`,
+      });
+    }
+  };
 
-  // pathChecker();
+  pathChecker();
   return (
     <>
       <div className="app m-8">
