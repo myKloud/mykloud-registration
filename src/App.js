@@ -15,19 +15,19 @@ function App() {
   const history = useHistory();
   const storage = getStorage();
 
-  const pathChecker = () => {
-    if (storage === null || !storage.isvalid) {
-      history.push({
-        pathname: "/register",
-      });
-    } else {
-      history.push({
-        pathname: `${storage}`,
-      });
-    }
-  };
+  // const pathChecker = () => {
+  //   if (storage === null || !storage.isvalid) {
+  //     history.push({
+  //       pathname: "/register",
+  //     });
+  //   } else {
+  //     history.push({
+  //       pathname: `${storage}`,
+  //     });
+  //   }
+  // };
 
-  pathChecker();
+  // pathChecker();
   return (
     <>
       <div className="app m-8">

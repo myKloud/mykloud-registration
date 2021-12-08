@@ -11,24 +11,15 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 import "./style.scss";
 
 const ForgetUserName = () => {
-  const [method, setMethod] = useState("email");
   const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
   const [submit, setSubmit] = useState(false);
   const history = useHistory();
-  const validEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
   const next = () => {
     setSubmit(true);
-    // if (
-    //   (isValidPhoneNumber(`+${number}`) && method !== "email") ||
-    //   (validEmail.test(email) &&
-    //     method === "email" &&
-    //     !(email.slice(-10).toLowerCase() === "mykloud.io"))
-    // )
-    history.push({
-      pathname: "/verification",
-    });
+    // history.push({
+    //   pathname: "/verification",
+    // });
   };
 
   return (
@@ -50,44 +41,6 @@ const ForgetUserName = () => {
               placeholder="Recovery email address or phone number "
             />
           </div>
-
-          {/* {!isValidPhoneNumber(`+${number}`) && method !== "email" && submit ? (
-            <>
-              <div className="error mb-2">
-                <p>
-                  Please enter valid phone number or change the country code
-                </p>
-              </div>
-            </>
-          ) : (
-            ""
-          )}
-
-          {!validEmail.test(email) && method === "email" && submit ? (
-            <>
-              <div className="error mb-2">
-                <p>Please enter valid email address ”name@</p>
-              </div>
-            </>
-          ) : (
-            ""
-          )}
-
-          {validEmail.test(email) &&
-          email.slice(-10).toLowerCase() === "mykloud.io" &&
-          method === "email" &&
-          submit ? (
-            <>
-              <div className="error mb-2">
-                <p>
-                  Please enter secondary email address, that is not myKloud
-                  email
-                </p>
-              </div>
-            </>
-          ) : (
-            ""
-          )} */}
 
           <button className="next_btn" onClick={next}>
             Next
