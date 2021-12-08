@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import "./style.scss";
+import { useHistory } from "react-router-dom";
 import Input from "../common/input";
 import Localization from "./localization";
 
@@ -9,6 +10,15 @@ const Login = (props) => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const history = useHistory();
+
+  const next = () => {
+    if (login === "email") {
+      history.push("/forgetUser");
+    } else {
+      history.push("/forgetPass");
+    }
+  };
 
   const emailLogin = () => {
     return (
@@ -26,7 +36,9 @@ const Login = (props) => {
             />
             <span className="domain">@mykloud.io</span>
           </div>
-          <p className="note mt-3">{Localization.forget_username}</p>
+          <p className="note mt-3" onClick={next}>
+            {Localization.forget_username}
+          </p>
         </div>
         <button className="next_btn" onClick={() => setLogin("password")}>
           {Localization.next}
@@ -59,7 +71,9 @@ const Login = (props) => {
               <u style={{ color: "#1565d8" }}>{Localization.hide}</u>
             )}
           </button>
-          <p className="note mt-3">{Localization.forget_password}</p>
+          <p className="note mt-3" onClick={next}>
+            {Localization.forget_password}
+          </p>
         </div>
         <button className="next_btn">{Localization.login}</button>
       </>

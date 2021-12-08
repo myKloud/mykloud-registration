@@ -9,6 +9,7 @@ import Verification from "./components/codeVerification";
 import Login from "./components/login";
 import Dob from "./components/DOB/";
 import ForgetUserName from "./components/forgetUserName/recovery";
+import ForgetPassword from "./components/forgePassword/recovery";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { getStorage } from "../src/config/storage";
 
@@ -19,7 +20,10 @@ function App(props) {
   const pathChecker = () => {
     const pathname = window.location.pathname;
     const is_valid_pathname =
-      pathname === "/login" || pathname === "/" || pathname === "/forgetUser";
+      pathname === "/login" ||
+      pathname === "/" ||
+      pathname === "/forgetUser" ||
+      pathname === "/forgetPass";
     const user_obj = props.userReducer;
 
     if (is_valid_pathname) return;
@@ -51,6 +55,7 @@ function App(props) {
           <Route exact path="/verification" render={() => <Verification />} />
           <Route exact path="/dob" render={() => <Dob />} />
           <Route exact path="/forgetUser" render={() => <ForgetUserName />} />
+          <Route exact path="/forgetPass" render={() => <ForgetPassword />} />
         </Switch>
       </div>
       <Footer />

@@ -21,9 +21,14 @@ const CodeVerification = (props) => {
 
   const verifyCode = () => {
     removeStorage();
-    history.push({
-      pathname: props.push,
-    });
+    if (props.push) {
+      history.push({
+        pathname: props.push,
+      });
+    }
+    if (props.resetPass) {
+      props.setStage("reset");
+    }
   };
 
   const { lang } = props.languageReducer;

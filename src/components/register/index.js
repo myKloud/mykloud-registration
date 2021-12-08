@@ -183,7 +183,7 @@ const Register = (props) => {
 
             {passMessage && <Validation error={passMessage} />}
           </div>
-          <div className=" relative ">
+          <div className=" relative">
             <Input
               type={showConfirmPassword ? "text" : "password"}
               value={confirmPassword}
