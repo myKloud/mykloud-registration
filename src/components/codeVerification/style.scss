@@ -12,9 +12,11 @@
 
   .character {
     line-height: 80px;
-    font-size: 36px;
-    color: $primary_color;
+    font-size: 25px;
+    font-family: "poppins";
+    color: $text_bold_color;
     border: solid 1px #dcdce7;
+    font-weight: bold;
     border-radius: 6px;
     margin-left: 14px;
   }

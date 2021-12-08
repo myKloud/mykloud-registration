@@ -14,6 +14,12 @@
     color: $primary_color_visa;
   }
 
+  .note {
+    font-family: "Open Sans";
+    font-size: 14px;
+    color: $text_color;
+  }
+
   @media only screen and (max-width: 767px) {
     .form_title {
       margin-bottom: 17px !important;

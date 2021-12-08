@@ -10,13 +10,20 @@ const CodeVerification = (props) => {
   const history = useHistory();
   const pre = () => {
     setStorage("recovery");
-    history.push({
-      pathname: "/recovery",
-    });
+    if (props.setStage) {
+      props.setStage("recovery");
+    } else {
+      history.push({
+        pathname: "/recovery",
+      });
+    }
   };
 
   const verifyCode = () => {
     removeStorage();
+    history.push({
+      pathname: props.push,
+    });
   };
 
   const { lang } = props.languageReducer;
