@@ -8,7 +8,7 @@ import Localization from "./localization";
 
 const Recovery = (props) => {
   const [email, setEmail] = useState("");
-  const [submit, setSubmit] = useState(false);
+  // const [submit, setSubmit] = useState(false);
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [stage, setStage] = useState("recovery");

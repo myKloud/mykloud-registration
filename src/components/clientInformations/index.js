@@ -228,96 +228,98 @@ const ClientInformations = (props) => {
       <div className="form_container client_container">
         <div className="form_wrapper">
           <h1 className="form_title mb-10">{Localization.title}</h1>
-          <div className="wrapper mb-4">
-            <div className="name_container">
-              <Input
-                type="text"
-                value={firstName}
-                onChange={(e) => {
-                  setFirstName(e);
-                  validate(form_validation.firstName, e);
-                }}
-                autoFocus={true}
-                placeholder={Localization.firstname_placeholder}
-                containerClassName="first_name"
-                className={`${firstNameMessage && "validation"}`}
-              />
+          <div className="input_wrapper">
+            <div className="wrapper mb-4">
+              <div className="name_container">
+                <Input
+                  type="text"
+                  value={firstName}
+                  onChange={(e) => {
+                    setFirstName(e);
+                    validate(form_validation.firstName, e);
+                  }}
+                  autoFocus={true}
+                  placeholder={Localization.firstname_placeholder}
+                  containerClassName="first_name"
+                  className={`${firstNameMessage && "validation"}`}
+                />
 
-              <Input
-                type="text"
-                value={lastName}
-                onChange={(e) => {
-                  setLastName(e);
-                  validate(form_validation.lastName, e);
-                }}
-                placeholder={Localization.lastname_placeholder}
-                // containerClassName="mb-4"
-                className={`${lastNameMessage && "validation"}`}
-              />
-            </div>
-            {nameMessage && <Validation error={nameMessage} />}
-          </div>
-
-          <p className="form_sub_title">{Localization.birthday_title}</p>
-          <div className="wrapper mb-4">
-            <div className="datePicker">
-              <MonthPickerWrapper
-                value={month}
-                placeholder={Localization.month_placeholder}
-                required={true}
-                disabled={false}
-                onChange={(e) => {
-                  setMonth(e);
-                  validate(form_validation.month, e);
-                }}
-                containerClassName="mr-4"
-                className={`${monthMessage && "validation"}`}
-              />
-
-              <Input
-                type="number"
-                value={year}
-                onChange={(e) => {
-                  setYear(e);
-                  validate(form_validation.month, e);
-                }}
-                onBlur={handleYearDigits}
-                className={`${yearMessage && "validation"}`}
-                placeholder={Localization.year_placeholder}
-              />
+                <Input
+                  type="text"
+                  value={lastName}
+                  onChange={(e) => {
+                    setLastName(e);
+                    validate(form_validation.lastName, e);
+                  }}
+                  placeholder={Localization.lastname_placeholder}
+                  // containerClassName="mb-4"
+                  className={`${lastNameMessage && "validation"}`}
+                />
+              </div>
+              {nameMessage && <Validation error={nameMessage} />}
             </div>
 
-            {dateOfBirthMessage && <Validation error={dateOfBirthMessage} />}
-          </div>
+            <p className="form_sub_title">{Localization.birthday_title}</p>
+            <div className="wrapper mb-4">
+              <div className="datePicker">
+                <MonthPickerWrapper
+                  value={month}
+                  placeholder={Localization.month_placeholder}
+                  required={true}
+                  disabled={false}
+                  onChange={(e) => {
+                    setMonth(e);
+                    validate(form_validation.month, e);
+                  }}
+                  containerClassName="mr-4"
+                  className={`${monthMessage && "validation"}`}
+                />
 
-          <div className="note mb-4">
-            <img src={img} alt="birhtday" className="mr-3" />
-            <p className="image_description">{Localization.msg}</p>
-          </div>
+                <Input
+                  type="number"
+                  value={year}
+                  onChange={(e) => {
+                    setYear(e);
+                    validate(form_validation.month, e);
+                  }}
+                  onBlur={handleYearDigits}
+                  className={`${yearMessage && "validation"}`}
+                  placeholder={Localization.year_placeholder}
+                />
+              </div>
 
-          <div className="wrapper mb-4">
-            <Recaptcha
-              sitekey={process.env.REACT_APP_SITE_KEY}
-              onChange={verifyCallback}
-              data-size="compact"
-            />
-            {captchaMessage && <Validation error={captchaMessage} />}
-          </div>
+              {dateOfBirthMessage && <Validation error={dateOfBirthMessage} />}
+            </div>
 
-          <div className="buttons_container mb-4">
-            <p className="pre" onClick={previous}>
-              {Localization.previous}
+            <div className="note mb-4">
+              <img src={img} alt="birhtday" className="mr-3" />
+              <p className="image_description">{Localization.msg}</p>
+            </div>
+
+            <div className="wrapper mb-4">
+              <Recaptcha
+                sitekey={process.env.REACT_APP_SITE_KEY}
+                onChange={verifyCallback}
+                data-size="compact"
+              />
+              {captchaMessage && <Validation error={captchaMessage} />}
+            </div>
+
+            <div className="buttons_container mb-4">
+              <p className="pre" onClick={previous}>
+                {Localization.previous}
+              </p>
+              <button className="next" onClick={nextPage}>
+                {Localization.create_account}
+              </button>
+            </div>
+            <p className="terms">
+              {Localization.agree}
+              <u className="mx-1">{Localization.terms}</u>
+              {Localization.and}
+              <u className="mx-1">{Localization.privacy_policy}</u>
             </p>
-            <button className="next" onClick={nextPage}>
-              {Localization.create_account}
-            </button>
           </div>
-          <p className="terms">
-            {Localization.agree}
-            <u className="mx-1">{Localization.terms}</u>
-            {Localization.and}
-            <u className="mx-1">{Localization.privacy_policy}</u>
-          </p>
         </div>
       </div>
     </>

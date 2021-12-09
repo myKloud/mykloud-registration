@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
 import Input from "../common/input";
 import "./style.scss";
 import { connect } from "react-redux";

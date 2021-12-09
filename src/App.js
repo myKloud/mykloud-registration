@@ -1,5 +1,6 @@
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
+import React, { useState } from "react";
 import Header from "./components/header";
 import Register from "./components/register";
 import ClientInformations from "./components/clientInformations";
@@ -16,7 +17,6 @@ import { getStorage, removeStorage } from "../src/config/storage";
 function App(props) {
   const history = useHistory();
   const storage = getStorage();
-  
 
   const pathChecker = () => {
     const pathname = window.location.pathname;
@@ -51,7 +51,7 @@ function App(props) {
         <Header />
         <Switch>
           <Route exact path="/">
-            <Redirect to="/login" />
+            <Redirect to="/register" />
           </Route>
           <Route exact path="/login" render={() => <Login />} />
           <Route exact path="/register" render={() => <Register />} />

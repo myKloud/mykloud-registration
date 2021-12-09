@@ -30,7 +30,7 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
-    color: $primary_color;
+    color: #1565d8;
     cursor: pointer;
   }
 
@@ -48,6 +48,7 @@
   }
 
   .terms {
+    width: 457px;
     font-family: "Open Sans";
     font-size: 13px;
     color: $text_bold_color;
@@ -57,6 +58,7 @@
     font-family: "Open Sans";
     font-size: 13px;
     color: $primary_color;
+    font-weight: 600;
   }
 
   .first_name {
@@ -81,14 +83,39 @@
       font-size: 14px !important;
     }
 
+    .note {
+      padding-right: 3px;
+    }
+
     .image_description {
       font-size: 12px;
+      height: 32px;
+      font-weight: 400;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
     }
     .buttons_container {
       margin-bottom: 0.625rem !important;
     }
     .terms {
+      width: auto;
       text-align: center;
+    }
+    u {
+      text-decoration: underline;
+    }
+
+    .next {
+      width: 205px;
+      height: 56px;
+    }
+
+    .mr-3 {
+      margin-top: 3px;
+      margin-right: 8px;
     }
   }
 }

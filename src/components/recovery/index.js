@@ -47,9 +47,17 @@ const Recovery = (props) => {
       setUserObj(user_obj);
       setStorage("verification");
 
-      history.push({
-        pathname: "/verification",
-      });
+      if (method === "email") {
+        history.push({
+          pathname: "/verification",
+          state: { value: email },
+        });
+      } else {
+        history.push({
+          pathname: "/verification",
+          state: { value: `+${number}` },
+        });
+      }
     }
   };
 
