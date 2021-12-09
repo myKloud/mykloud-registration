@@ -19,7 +19,7 @@ const Login = (props) => {
   const [selectedMail, setSelectedMail] = useState(mail_list[0]);
   const [showPassword, setShowPassword] = useState(false);
   const history = useHistory();
-  //
+
   const nextPage = () => {
     if (login === "email") {
       history.push("/forgetUser");
