@@ -11,7 +11,7 @@ import Dob from "./components/DOB/";
 import ForgetUserName from "./components/forgetUserName/recovery";
 import ForgetPassword from "./components/forgePassword/recovery";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { getStorage } from "../src/config/storage";
+import { getStorage, removeStorage } from "../src/config/storage";
 
 function App(props) {
   const history = useHistory();
@@ -20,11 +20,15 @@ function App(props) {
   const pathChecker = () => {
     const pathname = window.location.pathname;
     const is_valid_pathname =
-      pathname === "/login" ||
       pathname === "/" ||
+      pathname === "/login" ||
       pathname === "/forgetUser" ||
       pathname === "/forgetPass";
     const user_obj = props.userReducer;
+
+    if (!user_obj.isvalid || is_valid_pathname) {
+      removeStorage();
+    }
 
     if (is_valid_pathname) return;
 
