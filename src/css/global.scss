@@ -123,3 +123,29 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+
+.username-dropdown {
+  .css-1s2u09g-control,
+  .css-1pahdxg-control {
+    background-color: transparent;
+    border-color: transparent;
+    border-width: 0;
+    box-shadow: none;
+
+    &:hover {
+      border-color: transparent;
+    }
+  }
+
+  .css-1okebmr-indicatorSeparator {
+    display: none;
+  }
+
+  .css-319lph-ValueContainer {
+    padding: 0;
+  }
+
+  .css-26l3qy-menu {
+    width: 150px;
+  }
+}

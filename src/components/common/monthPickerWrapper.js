@@ -27,9 +27,12 @@ const MonthPickerWrapper = (props) => {
           disabled={props.disabled || false}
           onChange={(month) => setValueHandler(month)}
         />
-        <label className={`form_label ${has_value ? "filled" : ""}`}>
-          {props.placeholder}
-        </label>
+
+        {props.placeholder && (
+          <label className={`form_label ${has_value ? "filled" : ""}`}>
+            {props.placeholder}
+          </label>
+        )}
       </div>
     </>
   );

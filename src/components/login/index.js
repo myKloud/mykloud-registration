@@ -3,16 +3,24 @@ import { connect } from "react-redux";
 import "./style.scss";
 import { useHistory } from "react-router-dom";
 import Input from "../common/input";
+import SelectWrapper from "../common/selectWrapper";
 import Localization from "./localization";
 
 const Login = (props) => {
+  const mail_list = [
+    { value: "@mykmail.io", label: "@mykmail.io" },
+    { value: "@mykloudmail.io", label: "@mykloudmail.io" },
+    { value: "@mkmail.io", label: "@mkmail.io" },
+  ];
+
   const [login, setLogin] = useState("email");
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const [selectedMail, setSelectedMail] = useState(mail_list[0]);
   const [showPassword, setShowPassword] = useState(false);
   const history = useHistory();
 
-  const next = () => {
+  const nextPage = () => {
     if (login === "email") {
       history.push("/forgetUser");
     } else {
@@ -34,9 +42,16 @@ const Login = (props) => {
               onChange={setUser}
               placeholder={Localization.username_placeholder}
             />
-            <span className="domain">@mykloud.io</span>
+            <span className="domain">
+              <SelectWrapper
+                value={selectedMail}
+                options={mail_list}
+                onChange={setSelectedMail}
+                className="username-dropdown"
+              />
+            </span>
           </div>
-          <p className="note mt-3" onClick={next}>
+          <p className="note mt-3" onClick={nextPage}>
             {Localization.forget_username}
           </p>
         </div>
@@ -71,7 +86,7 @@ const Login = (props) => {
               <u style={{ color: "#1565d8" }}>{Localization.hide}</u>
             )}
           </button>
-          <p className="note mt-3" onClick={next}>
+          <p className="note mt-3" onClick={nextPage}>
             {Localization.forget_password}
           </p>
         </div>

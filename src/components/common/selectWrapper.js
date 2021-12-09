@@ -1,34 +1,32 @@
 import React, { useState } from "react";
+import Select from "react-select";
 
-const Input = (props) => {
+const SelectWrapper = (props) => {
   const [has_value, set_value] = useState(false);
 
   const setValueHandler = (e) => {
-    if (e.target.value) set_value(true);
+    if (e.value) set_value(true);
     else set_value(false);
-    props.onChange(e.target.value);
+    props.onChange(e);
   };
 
   return (
     <>
       <div
-        className={`input-container ${
+        className={`select-container ${
           props.containerClassName ? props.containerClassName : ""
         }`}
       >
-        <input
-          type={props.type}
-          className={`form_field ${props.className ? props.className : ""}`}
-          autoFocus={props.autoFocus || false}
-          value={props.value}
+        <Select
+          defaultValue={props.value}
+          // value={props.value}
+          className={`${props.className ? props.className : ""}`}
           onChange={(e) => {
             setValueHandler(e);
           }}
-          onBlur={(e) => {
-            if (props.onBlur) props.onBlur(e.currentTarget.value);
-          }}
+          options={props.options}
+          isSearchable={false}
         />
-
         {props.placeholder && (
           <label
             className={`form_label ${
@@ -43,4 +41,4 @@ const Input = (props) => {
   );
 };
 
-export default Input;
+export default SelectWrapper;

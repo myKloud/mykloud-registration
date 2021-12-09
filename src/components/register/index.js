@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import icon from "../../images/lock 1.svg";
 import { useHistory, useLocation } from "react-router-dom";
 import Input from "../common/input";
+import SelectWrapper from "../common/selectWrapper";
 import Validation from "../common/validation";
 import { setUserObj } from "../../actions/userAction";
 import Localization from "./localization";
@@ -10,11 +11,18 @@ import { setStorage } from "../../config/storage";
 import "./style.scss";
 
 const Register = (props) => {
+  const mail_list = [
+    { value: "@mykmail.io", label: "@mykmail.io" },
+    { value: "@mykloudmail.io", label: "@mykloudmail.io" },
+    { value: "@mkmail.io", label: "@mkmail.io" },
+  ];
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [selectedMail, setSelectedMail] = useState(mail_list[0]);
   const [submit, setSubmit] = useState(false);
 
   const [userMessage, setUserMessage] = useState("");
@@ -110,7 +118,7 @@ const Register = (props) => {
 
     if (is_valid) {
       const user_obj = props.userReducer;
-      user_obj.username = user;
+      user_obj.username = `${user}${selectedMail.value}`;
       user_obj.password = password;
       user_obj.is_valid = true;
       setUserObj(user_obj);
@@ -146,7 +154,12 @@ const Register = (props) => {
                 className={userMessage && "validation"}
               />
               <span className={`domain ${userMessage && "validation"}`}>
-                @mykloud.io
+                <SelectWrapper
+                  value={selectedMail}
+                  options={mail_list}
+                  onChange={setSelectedMail}
+                  className="username-dropdown"
+                />
               </span>
             </div>
             {userMessage && <Validation error={userMessage} />}
