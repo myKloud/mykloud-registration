@@ -13,6 +13,7 @@ const Footer = (props) => {
       window.location = "https://www.linkedin.com/company/mykloud/mycompany/";
     }
   };
+  //
 
   const { lang } = props.languageReducer;
   Localization.setLanguage(lang);
