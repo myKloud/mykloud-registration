@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Input from "../common/input";
 import "./style.scss";
+import { connect } from "react-redux";
+import Localization from "./localization";
 
 const Reset = (props) => {
   const history = useHistory();
@@ -10,16 +12,18 @@ const Reset = (props) => {
     history.push("/login");
   };
 
+  const { lang } = props.languageReducer;
+  Localization.setLanguage(lang);
+
   return (
     <div className="form_container forget_password_form">
       <div className="form_wrapper">
-        <h1 className="form_title mb-7 ">Set up new password</h1>
+        <h1 className="form_title mb-7 ">{Localization.reset_title}</h1>
         <p
           className="form_subtitle mb-7 text-center"
           style={{ width: "385px", marginLeft: "45px" }}
         >
-          Password should be 8 or more characters with a mix of letters, numbers
-          and symbols
+          {Localization.reset_sub_title}
         </p>
         <div className=" relative ">
           <Input
@@ -28,7 +32,7 @@ const Reset = (props) => {
             value={props.newPassword}
             onChange={props.setNewPassword}
             className="recovery_input mb-7"
-            placeholder="Create new password"
+            placeholder={Localization.create_placeholder}
           />
 
           <button
@@ -36,9 +40,9 @@ const Reset = (props) => {
             onClick={() => props.setShowPassword(!props.showPassword)}
           >
             {!props.showPassword ? (
-              <u style={{ color: "#1565d8" }}>show</u>
+              <u style={{ color: "#1565d8" }}>{Localization.show}</u>
             ) : (
-              <u style={{ color: "#1565d8" }}>hide</u>
+              <u style={{ color: "#1565d8" }}>{Localization.hide}</u>
             )}
           </button>
         </div>
@@ -49,7 +53,7 @@ const Reset = (props) => {
             value={props.confirmPassword}
             onChange={props.setConfirmPassword}
             className="recovery_input mb-7"
-            placeholder="Confirm new password"
+            placeholder={Localization.confirm_placeholder}
           />
 
           <button
@@ -59,19 +63,27 @@ const Reset = (props) => {
             }
           >
             {!props.showConfirmPassword ? (
-              <u style={{ color: "#1565d8" }}>show</u>
+              <u style={{ color: "#1565d8" }}>{Localization.show}</u>
             ) : (
-              <u style={{ color: "#1565d8" }}>hide</u>
+              <u style={{ color: "#1565d8" }}>{Localization.hide}</u>
             )}
           </button>
         </div>
 
         <button className="next_btn" onClick={next}>
-          Send me the code
+          {Localization.next}
         </button>
       </div>
     </div>
   );
 };
 
-export default Reset;
+const mapStateToProps = ({ languageReducer }) => ({
+  languageReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Reset);

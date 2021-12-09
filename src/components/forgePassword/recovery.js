@@ -3,8 +3,10 @@ import Input from "../common/input";
 import "./style.scss";
 import Verification from "../codeVerification";
 import Reset from "./reset";
+import { connect } from "react-redux";
+import Localization from "./localization";
 
-const Recovery = () => {
+const Recovery = (props) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -17,13 +19,16 @@ const Recovery = () => {
     setStage("verification");
   };
 
+  const { lang } = props.languageReducer;
+  Localization.setLanguage(lang);
+
   const recovery = () => {
     return (
       <div className="form_container forget_password_form">
         <div className="form_wrapper">
-          <h1 className="form_title mb-7 ">Forgot password</h1>
+          <h1 className="form_title mb-7 ">{Localization.title}</h1>
           <p className="form_subtitle mb-7 text-center">
-            Enter your recovery email or phone number
+            {Localization.recovery_sub_title}
           </p>
 
           <Input
@@ -32,11 +37,11 @@ const Recovery = () => {
             value={email}
             onChange={setEmail}
             className="recovery_input mb-7"
-            placeholder="Recovery email address or phone number"
+            placeholder={Localization.recovery_placeholder}
           />
 
           <button className="next_btn" onClick={next}>
-            Next
+            {Localization.next}
           </button>
         </div>
       </div>
@@ -48,7 +53,7 @@ const Recovery = () => {
       {stage === "recovery" ? recovery() : ""}
 
       {stage === "verification" ? (
-        <Verification resetPass={true} setStage={setStage} />
+        <Verification resetPass={true} setStage={setStage} recovery={email} />
       ) : (
         ""
       )}
@@ -72,4 +77,12 @@ const Recovery = () => {
   );
 };
 
-export default Recovery;
+const mapStateToProps = ({ languageReducer }) => ({
+  languageReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recovery);

@@ -3,8 +3,10 @@ import Input from "../common/input";
 import "./style.scss";
 import Fullname from "./fullname";
 import Verification from "../codeVerification";
+import { connect } from "react-redux";
+import Localization from "./localization";
 
-const Recovery = () => {
+const Recovery = (props) => {
   const [email, setEmail] = useState("");
   const [submit, setSubmit] = useState(false);
   const [first, setFirst] = useState("");
@@ -15,13 +17,16 @@ const Recovery = () => {
     setStage("fullname");
   };
 
+  const { lang } = props.languageReducer;
+  Localization.setLanguage(lang);
+
   const recovery = () => {
     return (
       <div className="form_container forget_user_form">
         <div className="form_wrapper">
-          <h1 className="form_title mb-7 ">Forgot username</h1>
+          <h1 className="form_title mb-7 ">{Localization.title}</h1>
           <p className="form_subtitle mb-7 text-center">
-            Enter your recovery email or phone number
+            {Localization.recovery_sub_title}
           </p>
 
           <Input
@@ -30,11 +35,11 @@ const Recovery = () => {
             value={email}
             onChange={setEmail}
             className="recovery_input mb-7"
-            placeholder="Recovery email address or phone number"
+            placeholder={Localization.recovery_placeholder}
           />
 
           <button className="next_btn" onClick={next}>
-            Next
+            {Localization.next}
           </button>
         </div>
       </div>
@@ -58,7 +63,7 @@ const Recovery = () => {
       )}
 
       {stage === "verification" ? (
-        <Verification push="/login" setStage={setStage} />
+        <Verification push="/login" setStage={setStage} recovery={email} />
       ) : (
         ""
       )}
@@ -66,4 +71,12 @@ const Recovery = () => {
   );
 };
 
-export default Recovery;
+const mapStateToProps = ({ languageReducer }) => ({
+  languageReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recovery);

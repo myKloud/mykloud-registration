@@ -2,24 +2,31 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Input from "../common/input";
 import "./style.scss";
+import { connect } from "react-redux";
+import Localization from "./localization";
 
 const Fullname = (props) => {
   const next = () => {
     props.setStage("verification");
   };
 
+  const { lang } = props.languageReducer;
+  Localization.setLanguage(lang);
+
   return (
     <div className="form_container forget_user_form">
       <div className="form_wrapper">
-        <h1 className="form_title mb-7 ">Forgot username</h1>
-        <p className="form_subtitle mb-7 text-center">Enter your Full Name</p>
+        <h1 className="form_title mb-7 ">{Localization.title}</h1>
+        <p className="form_subtitle mb-7 text-center">
+          {Localization.fullname_sub_title}
+        </p>
         <Input
           type="text"
           autoFocus={true}
           value={props.first}
           onChange={props.setFirst}
           className="recovery_input mb-7"
-          placeholder="First name"
+          placeholder={Localization.firstname_placeholder}
         />
 
         <Input
@@ -27,20 +34,25 @@ const Fullname = (props) => {
           value={props.last}
           onChange={props.setLast}
           className="recovery_input mb-7"
-          placeholder="Last name"
+          placeholder={Localization.lastname_placeholder}
         />
 
-        <p className="note mb-7">
-          You’ll recieve an email with a conformation code if above input is
-          valid
-        </p>
+        <p className="note mb-7">{Localization.fullname_message}</p>
 
         <button className="next_btn" onClick={next}>
-          Send me the code
+          {Localization.fullname_btn}
         </button>
       </div>
     </div>
   );
 };
 
-export default Fullname;
+const mapStateToProps = ({ languageReducer }) => ({
+  languageReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Fullname);

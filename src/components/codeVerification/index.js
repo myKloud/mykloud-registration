@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import VerificationInput from "../common/verificationInput";
 import { useHistory } from "react-router-dom";
@@ -7,6 +7,8 @@ import Localization from "./localization";
 import { removeStorage, setStorage } from "../../config/storage";
 
 const CodeVerification = (props) => {
+  const [recovery, setRecovery] = useState(props.recovery || "01012345678");
+
   const history = useHistory();
   const pre = () => {
     setStorage("recovery");
@@ -39,7 +41,7 @@ const CodeVerification = (props) => {
       <div className="form_container verification_container">
         <div className="form_wrapper">
           <h1 className="form_title mb-8">
-            {`${Localization.title} 01012345678`}
+            {`${Localization.title} ${recovery}`}
           </h1>
 
           <VerificationInput />
