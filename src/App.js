@@ -16,6 +16,7 @@ import { getStorage, removeStorage } from "../src/config/storage";
 function App(props) {
   const history = useHistory();
   const storage = getStorage();
+  
 
   const pathChecker = () => {
     const pathname = window.location.pathname;
