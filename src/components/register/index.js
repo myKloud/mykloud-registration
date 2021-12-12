@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import icon from "../../images/lock 1.svg";
 import { useHistory, useLocation } from "react-router-dom";
 import Input from "../common/input";
+import SelectWrapper from "../common/selectWrapper";
 import Validation from "../common/validation";
 import { setUserObj } from "../../actions/userAction";
 import Localization from "./localization";
@@ -10,11 +11,18 @@ import { setStorage } from "../../config/storage";
 import "./style.scss";
 
 const Register = (props) => {
+  const mail_list = [
+    { value: "@mykmail.io", label: "@mykmail.io" },
+    { value: "@mykloudmail.io", label: "@mykloudmail.io" },
+    { value: "@mkmail.io", label: "@mkmail.io" },
+  ];
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [selectedMail, setSelectedMail] = useState(mail_list[0]);
   const [submit, setSubmit] = useState(false);
 
   const [userMessage, setUserMessage] = useState("");
@@ -84,7 +92,10 @@ const Register = (props) => {
     }
     if (input.name === "confirmPassword") {
       setPassConfirmMessage("");
-      if (password !== value) {
+      if (!value.length) {
+        setPassConfirmMessage(input.required);
+        is_valid = false;
+      } else if (password !== value) {
         setPassConfirmMessage(input.match);
         is_valid = false;
       }
@@ -111,6 +122,7 @@ const Register = (props) => {
     if (is_valid) {
       const user_obj = props.userReducer;
       user_obj.username = user;
+      user_obj.mail = selectedMail.value;
       user_obj.password = password;
       user_obj.is_valid = true;
       setUserObj(user_obj);
@@ -132,86 +144,95 @@ const Register = (props) => {
           <h1 className="form_title">{Localization.title}</h1>
           <p className="normal_text mb-10">{Localization.sub_title}</p>
 
-          <div className="mb-4">
-            <div className="user_name">
-              <Input
-                type="text"
-                autoFocus={true}
-                value={user}
-                onChange={(e) => {
-                  setUser(e);
-                  validate(form_validation.username, e);
-                }}
-                placeholder={Localization.username_placeholder}
-                className={userMessage && "validation"}
-              />
-              <span className={`domain ${userMessage && "validation"}`}>
-                @mykloud.io
-              </span>
+          <div className="input_wrapper">
+            <div className="mb-6">
+              <div className="user_name">
+                <Input
+                  type="text"
+                  autoFocus={true}
+                  value={user}
+                  onChange={(e) => {
+                    setUser(e);
+                    validate(form_validation.username, e);
+                  }}
+                  placeholder={Localization.username_placeholder}
+                  className={userMessage && "validation"}
+                />
+                <span className={`domain ${userMessage && "validation"}`}>
+                  <SelectWrapper
+                    value={selectedMail}
+                    options={mail_list}
+                    onChange={setSelectedMail}
+                    className="username-dropdown"
+                  />
+                </span>
+              </div>
+              {userMessage && <Validation error={userMessage} />}
+              {!submit ? (
+                <p className="note mt-2">
+                  {Localization.username_validation_general}
+                </p>
+              ) : (
+                ""
+              )}
             </div>
-            {userMessage && <Validation error={userMessage} />}
-            {!submit ? (
-              <p className="note mt-1">
-                {Localization.username_validation_general}
-              </p>
-            ) : (
-              ""
-            )}
-          </div>
-          <div className="mb-4 relative">
-            <Input
-              type={showPassword ? "text" : "password"}
-              value={password}
-              onChange={(e) => {
-                setPassword(e);
-                validate(form_validation.password, e);
-              }}
-              className={`extra-padding ${passMessage && "validation"}`}
-              placeholder={Localization.passowrd_placeholder}
-            />
+            <div className="mb-5 relative">
+              <Input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => {
+                  setPassword(e);
+                  validate(form_validation.password, e);
+                }}
+                className={`extra-padding ${passMessage && "validation"}`}
+                placeholder={Localization.passowrd_placeholder}
+              />
 
-            <button
-              className="input_visibilty"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {!showPassword ? (
-                <u style={{ color: "#1565d8" }}>{Localization.show}</u>
-              ) : (
-                <u style={{ color: "#1565d8" }}>{Localization.hide}</u>
-              )}
-            </button>
+              <button
+                className="input_visibilty"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {!showPassword ? (
+                  <u style={{ color: "#1565d8" }}>{Localization.show}</u>
+                ) : (
+                  <u style={{ color: "#1565d8" }}>{Localization.hide}</u>
+                )}
+              </button>
 
-            {passMessage && <Validation error={passMessage} />}
-          </div>
-          <div className=" relative ">
-            <Input
-              type={showConfirmPassword ? "text" : "password"}
-              value={confirmPassword}
-              onChange={(e) => {
-                setConfirmPassword(e);
-                validate(form_validation.confirmPassword, e);
-              }}
-              className={`extra-padding ${passConfirmMessage && "validation"}`}
-              placeholder={Localization.passowrd_placeholder}
-            />
-            <button
-              className="input_visibilty"
-              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            >
-              {!showConfirmPassword ? (
-                <u style={{ color: "#1565d8" }}>{Localization.show}</u>
-              ) : (
-                <u style={{ color: "#1565d8" }}>{Localization.hide}</u>
-              )}
+              {passMessage && <Validation error={passMessage} />}
+            </div>
+            <div className=" relative">
+              <Input
+                type={showConfirmPassword ? "text" : "password"}
+                value={confirmPassword}
+                onChange={(e) => {
+                  setConfirmPassword(e);
+                  validate(form_validation.confirmPassword, e);
+                }}
+                className={`extra-padding ${
+                  passConfirmMessage && "validation"
+                }`}
+                placeholder={Localization.passowrd_placeholder}
+              />
+              <button
+                className="input_visibilty"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {!showConfirmPassword ? (
+                  <u style={{ color: "#1565d8" }}>{Localization.show}</u>
+                ) : (
+                  <u style={{ color: "#1565d8" }}>{Localization.hide}</u>
+                )}
+              </button>
+              {passConfirmMessage && <Validation error={passConfirmMessage} />}
+            </div>
+            <button className="next_btn mt-8" onClick={nextPage}>
+              {Localization.next}
             </button>
-            {passConfirmMessage && <Validation error={passConfirmMessage} />}
-          </div>
-          <button className="next_btn mt-10" onClick={nextPage}>
-            {Localization.next}
-          </button>
-          <div className="safe_message mt-3">
-            <img src={icon} alt="icon" />
-            <p className="info ml-2">{Localization.msg}</p>
+            <div className="safe_message mt-3">
+              <img src={icon} alt="icon" />
+              <p className="info ml-2">{Localization.msg}</p>
+            </div>
           </div>
         </div>
       </div>
