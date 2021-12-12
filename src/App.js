@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import React, { useState } from "react";
+import React from "react";
 import Header from "./components/header";
 import Register from "./components/register";
 import ClientInformations from "./components/clientInformations";

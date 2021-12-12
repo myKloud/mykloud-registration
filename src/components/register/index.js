@@ -121,7 +121,8 @@ const Register = (props) => {
 
     if (is_valid) {
       const user_obj = props.userReducer;
-      user_obj.username = `${user}${selectedMail.value}`;
+      user_obj.username = user;
+      user_obj.mail = selectedMail.value;
       user_obj.password = password;
       user_obj.is_valid = true;
       setUserObj(user_obj);

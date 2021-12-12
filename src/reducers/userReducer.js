@@ -2,6 +2,9 @@ import { USER } from "../actions/types";
 
 const intitalState = {
   username: "",
+  mail: "",
+  month: "",
+  year: "",
   password: "",
   firstname: "",
   lastname: "",

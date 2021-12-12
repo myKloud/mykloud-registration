@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import VerificationInput from "../common/verificationInput";
 import { useHistory, useLocation } from "react-router-dom";

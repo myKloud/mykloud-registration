@@ -89,6 +89,9 @@ const ClientInformations = (props) => {
         const user_obj = props.userReducer;
         user_obj.firstname = firstName;
         user_obj.lastname = lastName;
+        user_obj.month = month;
+        user_obj.year = year;
+
         setUserObj(user_obj);
         setStorage("recovery");
 
