@@ -1,22 +1,35 @@
 @import "../../css/variables.scss";
 
 .verification_container {
-  .form_wrapper {
-    width: 584px !important;
-    margin-bottom: 31px !important;
-  }
-
   .container {
     height: 80px;
   }
 
+  .subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+  }
+
   .character {
-    line-height: 80px;
-    font-size: 36px;
-    color: $primary_color;
+    line-height: 79.9px;
+    font-size: 25px;
+    font-family: "poppins";
+    color: $text_bold_color;
     border: solid 1px #dcdce7;
+    font-weight: bold;
     border-radius: 6px;
     margin-left: 14px;
+  }
+
+  .timer {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 1px;
   }
 
   .character:first-child {
@@ -36,6 +49,7 @@
     font-size: 16px !important;
     color: #1565d8 !important;
     font-weight: 500 !important;
+    cursor: pointer;
   }
 
   .pre {
@@ -72,8 +86,11 @@
       width: 100% !important;
     }
 
-    .form_title {
-      margin-bottom: 1.5rem !important;
+    .subtitle {
+      text-align: left;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 24px !important;
     }
 
     .container {

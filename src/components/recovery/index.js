@@ -20,7 +20,6 @@ const Recovery = (props) => {
   const [method, setMethod] = useState("email");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
-
   const [emailMessage, setEmailMessage] = useState("");
   const [numberMessage, setNumberMessage] = useState("");
 
@@ -41,7 +40,6 @@ const Recovery = (props) => {
 
   const nextPage = () => {
     const is_valid = validateHandler();
-
     if (is_valid) {
       const user_obj = props.userReducer;
       user_obj.method = method;
@@ -49,9 +47,17 @@ const Recovery = (props) => {
       setUserObj(user_obj);
       setStorage("verification");
 
-      history.push({
-        pathname: "/verification",
-      });
+      if (method === "email") {
+        history.push({
+          pathname: "/verification",
+          state: { value: email },
+        });
+      } else {
+        history.push({
+          pathname: "/verification",
+          state: { value: `+${number}` },
+        });
+      }
     }
   };
 
@@ -92,7 +98,7 @@ const Recovery = (props) => {
     const is_valid_email = validate(form_validation.email, email);
     const is_valid_number = validate(form_validation.number, number);
 
-    return is_valid_email && is_valid_number;
+    return is_valid_email || is_valid_number;
   };
 
   const handleSetMethod = (type) => {

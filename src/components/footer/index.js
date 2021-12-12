@@ -26,9 +26,7 @@ const Footer = (props) => {
             <a href="https://twitter.com/" className="mr-8">
               {Localization.terms}
             </a>
-            <a href="https://twitter.com/" className="mr-8">
-              {Localization.privacy}
-            </a>
+            <a href="https://twitter.com/">{Localization.privacy}</a>
           </div>
         </div>
         <div className="second_line mt-8">

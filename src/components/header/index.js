@@ -12,10 +12,10 @@ const Header = (props) => {
   let action = Localization.register;
   let path = "/register";
 
-  if (window.location.pathname !== "/") {
+  if (window.location.pathname !== "/login") {
     description = Localization.account_exist;
     action = Localization.sign_in;
-    path = "/";
+    path = "/login";
   }
 
   const { lang } = props.languageReducer;
