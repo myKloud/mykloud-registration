@@ -1,18 +1,74 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import VerificationInput from "../common/verificationInput";
 import { useHistory, useLocation } from "react-router-dom";
 import "./style.scss";
 import Localization from "./localization";
-import { removeStorage, setStorage } from "../../config/storage";
+import {
+  removeStorage,
+  setStorage,
+  setFirstResend,
+  setSecondResend,
+  setThirdResend,
+  getFirstResend,
+  getSecondResend,
+  getThirdResend,
+  removeResend,
+} from "../../config/storage";
 
 const CodeVerification = (props) => {
   const location = useLocation();
+  const [times, setTimes] = useState(1);
   const recovery = props.recovery || location.state.value || "01012345678";
-  let timer = 60;
-  // const changeTimer = (e) => {
-  //   props.onChange(e - 1);
-  // };
+  const [seconds, setSeconds] = useState(5);
+  const [data, setData] = useState("");
+
+  const resendCode = () => {
+    if (times < 3) {
+      setTimes(() => times + 1);
+    } else {
+      removeResend();
+      setTimes(() => 1);
+      setFirstResend(recovery, "13");
+    }
+
+    setSeconds(5);
+  };
+
+  useEffect(() => {
+    if (!getFirstResend()) {
+      setFirstResend(recovery, "13");
+    } else if (getFirstResend().recoveryData === location.state.value) {
+      if (!getSecondResend()) {
+        setTimes(() => 2);
+      } else if (getSecondResend() && !getThirdResend()) {
+        setTimes(() => 3);
+      } else if (getThirdResend()) {
+        setSeconds(24 - getFirstResend().date);
+        setTimes(() => 4);
+      }
+    } else {
+      setFirstResend(recovery, "13");
+    }
+
+    if (seconds > 0) {
+      const interval = setInterval(() => {
+        setSeconds((seconds) => seconds - 1);
+      }, 1000);
+    }
+    // return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (times === 2) {
+      setSecondResend(recovery, "15");
+    }
+
+    if (times === 3) {
+      setThirdResend(recovery, "18");
+      setSeconds(24 - getFirstResend().date);
+    }
+  }, [times]);
 
   const history = useHistory();
   const pre = () => {
@@ -53,17 +109,28 @@ const CodeVerification = (props) => {
 
             <div className="flex mt-4">
               <p className="info mr-1">{Localization.not_recieve}</p>
-              {true ? (
+              {seconds > 0 ? (
                 <>
-                  <p className="timer">{`Wait for 00:${timer} sec`}</p>
+                  <p className="timer">
+                    {seconds < 10
+                      ? `Wait for 00:0${seconds} sec`
+                      : `Wait for 00:${seconds} sec`}
+                  </p>
                 </>
               ) : (
-                <p className="action">{Localization.resend}</p>
+                <p className="action" onClick={resendCode}>
+                  {Localization.resend}
+                </p>
               )}
             </div>
 
             <div className="flex mt-4">
-              <p className="info mr-1">{Localization.not_your_number}</p>
+              {location.state.method === "email" ? (
+                <p className="info mr-1">{Localization.not_your_email}</p>
+              ) : (
+                <p className="info mr-1">{Localization.not_your_number}</p>
+              )}
+
               <p className="action" onClick={pre}>
                 {Localization.change}
               </p>

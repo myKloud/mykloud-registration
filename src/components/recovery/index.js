@@ -50,7 +50,7 @@ const Recovery = (props) => {
       if (method === "email") {
         history.push({
           pathname: "/verification",
-          state: { value: email },
+          state: { value: email, method: method },
         });
       } else {
         history.push({

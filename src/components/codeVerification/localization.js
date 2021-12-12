@@ -7,6 +7,7 @@ const Localization = new LocalizedStrings({
     not_recieve: "Didn’t recieve a code?",
     resend: "Resend",
     not_your_number: "Not your number?",
+    not_your_email: "Not your email?",
     change: "Change",
 
     previous: "Previous",
