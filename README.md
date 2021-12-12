@@ -47,8 +47,8 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ## docker
 
     - npm install
-    - npm run docker:  create a docker image
-    - npm run react-docker:  run the docker image in localhost:3000
+    - npm run docker  `create a docker image`
+    - npm run react-docker:  `run the docker image`
 
 ## Learn More
 
