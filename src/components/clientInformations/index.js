@@ -85,6 +85,7 @@ const ClientInformations = (props) => {
 
     if (is_valid) {
       const is_valid_dob = dobValidation();
+
       if (is_valid_dob) {
         const user_obj = props.userReducer;
         user_obj.firstname = firstName;
@@ -170,15 +171,28 @@ const ClientInformations = (props) => {
   };
 
   const dobValidation = () => {
-    let is_valid = true;
-
     const current_date = new Date();
-    const current_year = current_date.getFullYear();
-    // const current_month = current_date.getMonth() + 1;
+    const date = current_date.getDate();
+    const hour = current_date.getHours();
+    const minutes = current_date.getMinutes();
+    const seconds = current_date.getSeconds();
+    const miliseonds = current_date.getMilliseconds();
 
-    const year_differance = current_year - year;
+    const dob_date = new Date(
+      year,
+      month,
+      date,
+      hour,
+      minutes,
+      seconds,
+      miliseonds
+    );
 
-    if (year_differance <= form_validation.bithday.minimum) {
+    const diff = current_date.getTime() - dob_date.getTime();
+    const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+
+    let is_valid = true;
+    if (age <= form_validation.bithday.minimum) {
       is_valid = false;
     }
 
