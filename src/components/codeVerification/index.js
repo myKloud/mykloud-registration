@@ -55,9 +55,10 @@ const CodeVerification = (props) => {
         } else if (getThirdResend()) {
           setMin(14);
           setTimes(() => 4);
-        } else {
-          setSecondResend(recovery, "15");
         }
+      } else {
+        debugger;
+        setSecondResend(recovery, "15");
       }
     } else {
       setFirstResend(recovery, "13");
