@@ -135,8 +135,11 @@ const Register = (props) => {
     }
   };
 
-  const { lang } = props.languageReducer;
-  Localization.setLanguage(lang);
+  useEffect(() => {
+    const lang = props.languageReducer.lang;
+    Localization.setLanguage(lang);
+  }, [props.languageReducer.lang]);
+
   return (
     <>
       <div className="form_container register_container">

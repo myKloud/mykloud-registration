@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import blackEmailImg from "../../images/email1.png";
@@ -11,9 +11,10 @@ import "react-phone-input-2/lib/style.css";
 import Input from "../common/input";
 import Validation from "../common/validation";
 import { setUserObj } from "../../actions/userAction";
+import { setOTP } from "../../actions/otpAction";
 import Localization from "./localization";
 import { setStorage } from "../../config/storage";
-
+import { generateOTP } from "../../config/util";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "./style.scss";
 
@@ -45,6 +46,10 @@ const Recovery = (props) => {
       const user_obj = props.userReducer;
       user_obj.method = method;
       user_obj.recovery = method === "email" ? email : number;
+
+      const otp = generateOTP();
+
+      props.dispatch(setOTP(otp));
       setUserObj(user_obj);
       setStorage("verification");
 
@@ -108,8 +113,10 @@ const Recovery = (props) => {
     setMethod(type);
   };
 
-  const { lang } = props.languageReducer;
-  Localization.setLanguage(lang);
+  useEffect(() => {
+    const lang = props.languageReducer.lang;
+    Localization.setLanguage(lang);
+  }, [props.languageReducer.lang]);
 
   return (
     <>
@@ -224,9 +231,10 @@ const Recovery = (props) => {
   );
 };
 
-const mapStateToProps = ({ languageReducer, userReducer }) => ({
+const mapStateToProps = ({ languageReducer, userReducer, otpReducer }) => ({
   languageReducer,
   userReducer,
+  otpReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({

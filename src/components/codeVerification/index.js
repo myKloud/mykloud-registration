@@ -51,14 +51,11 @@ const CodeVerification = (props) => {
         setTimes(() => 2);
       } else if (getSecondResend().recoveryData === location.state.value) {
         if (getSecondResend() && !getThirdResend()) {
-          debugger;
           setTimes(() => 3);
         } else if (getThirdResend()) {
-          debugger;
           setMin(14);
           setTimes(() => 4);
         } else {
-          debugger;
           setSecondResend(recovery, "15");
         }
       }
@@ -71,7 +68,10 @@ const CodeVerification = (props) => {
         setSeconds((seconds) => seconds - 1);
       }, 1000);
     }
-  }, []);
+    // return () => clearInterval(interval);
+    const lang = props.languageReducer.lang;
+    Localization.setLanguage(lang);
+  }, [props.languageReducer.lang, location.state.value]);
 
   useEffect(() => {
     if (times === 2) {
@@ -113,10 +113,12 @@ const CodeVerification = (props) => {
     if (props.resetPass) {
       props.setStage("reset");
     }
-  };
 
-  const { lang } = props.languageReducer;
-  Localization.setLanguage(lang);
+    const otp = props.otpReducer.otp;
+    // TODO
+    if (otp === "verify code from verfication input") {
+    }
+  };
 
   return (
     <>
@@ -175,8 +177,9 @@ const CodeVerification = (props) => {
   );
 };
 
-const mapStateToProps = ({ languageReducer }) => ({
+const mapStateToProps = ({ languageReducer, otpReducer }) => ({
   languageReducer,
+  otpReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
