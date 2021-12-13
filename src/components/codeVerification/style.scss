@@ -81,6 +81,21 @@
     border: solid 1px #445da7;
   }
 
+  .recovery_input::-ms-fill {
+    border: solid 1px #445da7;
+  }
+
+  .error {
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: rgba(235, 18, 18, 0.84);
+  }
+
   @media only screen and (max-width: 767px) {
     .form_wrapper {
       width: 100% !important;

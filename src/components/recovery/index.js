@@ -7,6 +7,7 @@ import blackPhoneImg from "../../images/phone1.png";
 import whitePhoneImg from "../../images/phone2.png";
 import ReactPhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+
 import Input from "../common/input";
 import Validation from "../common/validation";
 import { setUserObj } from "../../actions/userAction";

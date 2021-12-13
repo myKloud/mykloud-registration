@@ -12,7 +12,7 @@ import Dob from "./components/DOB/";
 import ForgetUserName from "./components/forgetUserName/recovery";
 import ForgetPassword from "./components/forgePassword/recovery";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { getStorage, removeStorage } from "../src/config/storage";
+import { getStorage, removeStorage, removeResend } from "../src/config/storage";
 
 function App(props) {
   const history = useHistory();
@@ -29,6 +29,7 @@ function App(props) {
 
     if (!user_obj.isvalid || is_valid_pathname) {
       removeStorage();
+      removeResend();
     }
 
     if (is_valid_pathname) return;

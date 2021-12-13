@@ -20,8 +20,16 @@ const CodeVerification = (props) => {
   const location = useLocation();
   const [times, setTimes] = useState(1);
   const recovery = props.recovery || location.state.value || "01012345678";
-  const [seconds, setSeconds] = useState(5);
+  const [seconds, setSeconds] = useState(59);
   const [data, setData] = useState("");
+  const [min, setMin] = useState(0);
+  const form_validation = {
+    resend: {
+      name: "resend",
+      wait: Localization.validation.resend.wait,
+    },
+  };
+  const [error, setError] = useState(() => form_validation.resend.wait);
 
   const resendCode = () => {
     if (times < 3) {
@@ -31,8 +39,8 @@ const CodeVerification = (props) => {
       setTimes(() => 1);
       setFirstResend(recovery, "13");
     }
-
-    setSeconds(5);
+    setMin(0);
+    setSeconds(59);
   };
 
   useEffect(() => {
@@ -41,22 +49,28 @@ const CodeVerification = (props) => {
     } else if (getFirstResend().recoveryData === location.state.value) {
       if (!getSecondResend()) {
         setTimes(() => 2);
-      } else if (getSecondResend() && !getThirdResend()) {
-        setTimes(() => 3);
-      } else if (getThirdResend()) {
-        setSeconds(24 - getFirstResend().date);
-        setTimes(() => 4);
+      } else if (getSecondResend().recoveryData === location.state.value) {
+        if (getSecondResend() && !getThirdResend()) {
+          debugger;
+          setTimes(() => 3);
+        } else if (getThirdResend()) {
+          debugger;
+          setMin(14);
+          setTimes(() => 4);
+        } else {
+          debugger;
+          setSecondResend(recovery, "15");
+        }
       }
     } else {
       setFirstResend(recovery, "13");
     }
 
     if (seconds > 0) {
-      const interval = setInterval(() => {
+      setInterval(() => {
         setSeconds((seconds) => seconds - 1);
       }, 1000);
     }
-    // return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -66,9 +80,16 @@ const CodeVerification = (props) => {
 
     if (times === 3) {
       setThirdResend(recovery, "18");
-      setSeconds(24 - getFirstResend().date);
+      setMin(14);
     }
   }, [times]);
+
+  useEffect(() => {
+    if (seconds < 0 && min > 0) {
+      setMin((min) => min - 1);
+      setSeconds(59);
+    }
+  }, [seconds]);
 
   const history = useHistory();
   const pre = () => {
@@ -107,20 +128,23 @@ const CodeVerification = (props) => {
           <div className="input_wrapper">
             <VerificationInput />
 
+            {min > 0 ? <p className="mt-4 error">{error}</p> : ""}
+
             <div className="flex mt-4">
               <p className="info mr-1">{Localization.not_recieve}</p>
-              {seconds > 0 ? (
+              {min > 0 || (min === 0 && seconds > 0) ? (
                 <>
                   <p className="timer">
-                    {seconds < 10
-                      ? `Wait for 00:0${seconds} sec`
-                      : `Wait for 00:${seconds} sec`}
+                    Wait for {min < 10 ? `0${min}` : min}:
+                    {seconds < 10 ? `0${seconds}` : seconds} sec
                   </p>
                 </>
               ) : (
-                <p className="action" onClick={resendCode}>
-                  {Localization.resend}
-                </p>
+                <>
+                  <p className="action" onClick={resendCode}>
+                    {Localization.resend}
+                  </p>
+                </>
               )}
             </div>
 
