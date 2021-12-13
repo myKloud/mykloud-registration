@@ -23,6 +23,7 @@ const CodeVerification = (props) => {
   const [seconds, setSeconds] = useState(59);
   const [data, setData] = useState("");
   const [min, setMin] = useState(0);
+  const [code, setCode] = useState("");
   const form_validation = {
     resend: {
       name: "resend",
@@ -57,7 +58,6 @@ const CodeVerification = (props) => {
           setTimes(() => 4);
         }
       } else {
-        debugger;
         setSecondResend(recovery, "15");
       }
     } else {
@@ -117,7 +117,7 @@ const CodeVerification = (props) => {
 
     const otp = props.otpReducer.otp;
     // TODO
-    if (otp === "verify code from verfication input") {
+    if (otp === code) {
     }
   };
 
@@ -129,9 +129,9 @@ const CodeVerification = (props) => {
           <p className="subtitle mb-8">{recovery}</p>
 
           <div className="input_wrapper">
-            <VerificationInput />
+            <VerificationInput setCode={setCode} />
 
-            {min > 0 ? <p className="mt-4 error">{error}</p> : ""}
+            {min > 0 ? <p className=" error">{error}</p> : ""}
 
             <div className="flex mt-4">
               <p className="info mr-1">{Localization.not_recieve}</p>
