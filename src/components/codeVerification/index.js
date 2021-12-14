@@ -15,6 +15,7 @@ import {
   getThirdResend,
   removeResend,
 } from "../../config/storage";
+import { sendOtp, signUp } from "../../services/register";
 
 const CodeVerification = (props) => {
   const location = useLocation();
@@ -31,8 +32,25 @@ const CodeVerification = (props) => {
     },
   };
   const [error, setError] = useState(() => form_validation.resend.wait);
+  const user_obj = props.userReducer;
+  const otp = props.otpReducer;
+
+  const signup = async () => {
+    const x = await signUp({
+      username: user_obj.username,
+      firstName: user_obj.firstname,
+      lastName: user_obj.lastname,
+      password: user_obj.password,
+      recovery: user_obj.recovery,
+    });
+    setData(x);
+  };
 
   const resendCode = () => {
+    sendOtp({
+      value: location.state.value,
+      otp: otp.otp,
+    });
     if (times < 3) {
       setTimes(() => times + 1);
     } else {
@@ -115,9 +133,15 @@ const CodeVerification = (props) => {
       props.setStage("reset");
     }
 
-    const otp = props.otpReducer.otp;
     // TODO
-    if (otp === code) {
+    if (otp.otp == code) {
+      signup()
+        .then((res) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log("err");
+        });
     }
   };
 
@@ -178,8 +202,9 @@ const CodeVerification = (props) => {
   );
 };
 
-const mapStateToProps = ({ languageReducer, otpReducer }) => ({
+const mapStateToProps = ({ languageReducer, userReducer, otpReducer }) => ({
   languageReducer,
+  userReducer,
   otpReducer,
 });
 

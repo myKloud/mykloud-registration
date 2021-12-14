@@ -9,6 +9,7 @@ import { setUserObj } from "../../actions/userAction";
 import Localization from "./localization";
 import { setStorage } from "../../config/storage";
 import "./style.scss";
+import { checkUser } from "../../services/register";
 
 const Register = (props) => {
   const mail_list = [
@@ -24,10 +25,10 @@ const Register = (props) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [selectedMail, setSelectedMail] = useState(mail_list[0]);
   const [submit, setSubmit] = useState(false);
-
   const [userMessage, setUserMessage] = useState("");
   const [passMessage, setPassMessage] = useState("");
   const [passConfirmMessage, setPassConfirmMessage] = useState("");
+  const [is_exist, setIs_exist] = useState(false);
 
   const history = useHistory();
   const location = useLocation();
@@ -38,6 +39,7 @@ const Register = (props) => {
       required: Localization.validation.username.required,
       length: Localization.validation.username.length,
       pattern: Localization.validation.username.pattern,
+      is_exist: Localization.validation.username.is_exist,
     },
 
     password: {
@@ -62,6 +64,10 @@ const Register = (props) => {
     }
   }, [location]);
 
+  useEffect(async () => {
+    setIs_exist(await checkUser(user));
+  }, [user.length > 0]);
+
   const validate = (input, value) => {
     let is_valid = true;
     const validUser = new RegExp("^[a-z0-9.]+[a-z0-9]$");
@@ -76,6 +82,9 @@ const Register = (props) => {
         is_valid = false;
       } else if (!validUser.test(value)) {
         setUserMessage(input.pattern);
+        is_valid = false;
+      } else if (is_exist === true) {
+        setUserMessage(input.is_exist);
         is_valid = false;
       }
     }

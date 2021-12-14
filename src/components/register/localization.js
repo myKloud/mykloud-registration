@@ -23,6 +23,7 @@ const Localization = new LocalizedStrings({
         length: "Your username must be between 4 and 30 characters long",
         pattern:
           "Sorry, only letters (a-z), numbers (0-9) and periods (.) are allowed.",
+        is_exist: "This username is taken. Choose different one or log in",
       },
 
       password: {

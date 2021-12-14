@@ -7,7 +7,6 @@ import blackPhoneImg from "../../images/phone1.png";
 import whitePhoneImg from "../../images/phone2.png";
 import ReactPhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-
 import Input from "../common/input";
 import Validation from "../common/validation";
 import { setUserObj } from "../../actions/userAction";
@@ -17,6 +16,7 @@ import { setStorage } from "../../config/storage";
 import { generateOTP } from "../../config/util";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "./style.scss";
+import { sendOtp } from "../../services/register";
 
 const Recovery = (props) => {
   const [method, setMethod] = useState("email");
@@ -40,7 +40,7 @@ const Recovery = (props) => {
     },
   };
 
-  const nextPage = () => {
+  const nextPage = async () => {
     const is_valid = validateHandler();
     if (is_valid) {
       const user_obj = props.userReducer;
@@ -53,15 +53,20 @@ const Recovery = (props) => {
       setUserObj(user_obj);
       setStorage("verification");
 
-      if (method === "email") {
+      let send = false;
+
+      send = await sendOtp({
+        value: method === "email" ? email : `+${number}`,
+        otp: otp,
+      });
+
+      if (send) {
         history.push({
           pathname: "/verification",
-          state: { value: email, method: method },
-        });
-      } else {
-        history.push({
-          pathname: "/verification",
-          state: { value: `+${number}` },
+          state: {
+            value: method === "email" ? email : `+${number}`,
+            method: method,
+          },
         });
       }
     }
