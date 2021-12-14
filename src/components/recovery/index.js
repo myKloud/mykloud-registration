@@ -69,6 +69,7 @@ const Recovery = (props) => {
 
   const validate = (input, value) => {
     let is_valid = true;
+    const domain = ["mykmail.io", "mykloudmail.io", "mkmail.io"];
 
     if (input.name === "email") {
       setEmailMessage("");
@@ -79,7 +80,9 @@ const Recovery = (props) => {
       } else if (!validEmail.test(email)) {
         setEmailMessage(input.required);
         is_valid = false;
-      } else if (email.slice(-10).toLowerCase() === "mykloud.io") {
+      } else if (
+        domain.includes(email.slice(email.indexOf("@") + 1).toLowerCase())
+      ) {
         setEmailMessage(input.redundant);
         is_valid = false;
       }
