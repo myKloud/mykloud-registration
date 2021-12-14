@@ -7,7 +7,6 @@ import Localization from "./localization";
 const Dob = (props) => {
   useEffect(() => {
     const lang = props.languageReducer.lang;
-    debugger;
     Localization.setLanguage(lang);
   }, [props.languageReducer.lang]);
 
