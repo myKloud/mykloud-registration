@@ -28,7 +28,7 @@ const Register = (props) => {
   const [userMessage, setUserMessage] = useState("");
   const [passMessage, setPassMessage] = useState("");
   const [passConfirmMessage, setPassConfirmMessage] = useState("");
-  const [is_exist, setIs_exist] = useState(false);
+  const [isExist, setIsExist] = useState(false);
 
   const history = useHistory();
   const location = useLocation();
@@ -64,9 +64,17 @@ const Register = (props) => {
     }
   }, [location]);
 
-  useEffect(async () => {
-    setIs_exist(await checkUser(user));
-  }, [user.length > 0]);
+  // useEffect(async () => {
+
+  // }, [user.length > 0]);
+
+  const isUserExist = async (value = user) => {
+    const is_exist = await checkUser(value);
+    setIsExist(is_exist);
+    if (is_exist) {
+      setUserMessage(form_validation.username.is_exist);
+    }
+  };
 
   const validate = (input, value) => {
     let is_valid = true;
@@ -83,8 +91,8 @@ const Register = (props) => {
       } else if (!validUser.test(value)) {
         setUserMessage(input.pattern);
         is_valid = false;
-      } else if (is_exist === true) {
-        setUserMessage(input.is_exist);
+      } else if (isExist) {
+        setUserMessage(form_validation.username.is_exist);
         is_valid = false;
       }
     }
@@ -121,7 +129,12 @@ const Register = (props) => {
       confirmPassword
     );
 
-    return is_valid_username && is_valid_password && is_valid_confirm_password;
+    return (
+      is_valid_username &&
+      is_valid_password &&
+      is_valid_confirm_password &&
+      !isExist
+    );
   };
 
   const nextPage = () => {
@@ -166,6 +179,9 @@ const Register = (props) => {
                   onChange={(e) => {
                     setUser(e);
                     validate(form_validation.username, e);
+                  }}
+                  onBlur={async (e) => {
+                    isUserExist(e);
                   }}
                   placeholder={Localization.username_placeholder}
                   className={userMessage && "validation"}

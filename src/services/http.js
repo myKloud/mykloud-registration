@@ -6,7 +6,12 @@ axios.defaults.baseURL = process.env.REACT_APP_API_URL_TEST;
 axios.interceptors.request.use(
   function (config) {
     // Do something before request is sent
-
+    config.headers = {
+      Authorization:
+        "Basic dXNlcjoxN2M5NjM4Mi0yOTExLTRhOTQtOTZiNC1iYWFjYzQzOGI4NzU=",
+      Accept: "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+    };
     config.timeout = 35000;
     return config;
   },

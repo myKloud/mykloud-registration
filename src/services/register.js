@@ -34,19 +34,9 @@ export async function signUp(informations) {
     password: informations.password,
     recovery: informations.recovery,
   };
-  var username = "user";
-  var password = "eeda6a40-a112-4ccc-a3e2-97f2c5af72db";
-  var basicAuth = "Basic " + window.btoa(username + ":" + password);
-  await http
-    .post(apiEndPoint_signup, info, {
-      headers: { Authorization: +basicAuth },
-    })
-    .then(function (response) {
-      console.log("Authenticated");
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+
+  console.log(info);
+  await http.post(apiEndPoint_signup, info);
 
   return true;
 }
