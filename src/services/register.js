@@ -3,7 +3,7 @@ import http from "./http";
 
 const apiEndPoint_check = `/check`;
 const apiEndPoint_signup = `/signup`;
-const apiEndPoint_send_otp = `/sendOtp`;
+const apiEndPoint_send_otp = `/sendOTP`;
 
 export async function checkUser(username) {
   const info = {
@@ -17,23 +17,21 @@ export async function checkUser(username) {
 
 export async function sendOtp(recovery) {
   const info = {
-    value: recovery.value,
-    otp: recovery.otp,
+    recovery: recovery.value,
+    otp: recovery.otp.toString(),
   };
-  await console.log(info);
-  return true;
-  //   const { headers, data } = await http.post(apiEndPoint_send_otp, info);
-  //   debugger;
-  //   return data;
+  const { data } = await http.post(apiEndPoint_send_otp, info);
+  return data;
 }
 
 export async function signUp(informations) {
+  const { username, firstName, lastName, password, recovery } = informations;
   const info = {
-    username: informations.username,
-    fistName: informations.firstName,
-    lastName: informations.lastName,
-    password: informations.password,
-    recovery: informations.recovery,
+    username,
+    firstName,
+    lastName,
+    password,
+    recovery,
   };
 
   const { data } = await http.post(apiEndPoint_signup, info);
