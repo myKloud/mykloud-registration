@@ -1,16 +1,17 @@
 import { toast } from "react-toastify";
 import http from "./http";
 
+const apiEndPoint_check = `/check`;
 const apiEndPoint_signup = `/signup`;
-const apiEndPoint_send_otp = `/`; // to do
+const apiEndPoint_send_otp = `/sendOtp`;
 
 export async function checkUser(username) {
   const info = {
     username: username,
   };
-  const apiEndPoint_check_user = `/check?username=${username}`; // to do
 
-  const { headers, data } = await http.get(apiEndPoint_check_user, info);
+  const param = `?username=${username}`;
+  const { data } = await http.get(`${apiEndPoint_check}${param}`);
   return data;
 }
 

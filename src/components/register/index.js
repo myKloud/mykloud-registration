@@ -69,10 +69,9 @@ const Register = (props) => {
   // }, [user.length > 0]);
 
   const isUserExist = async (value = user) => {
-    const is_exist = await checkUser(value);
-    console.log(is_exist);
-    setIsExist(is_exist.exists);
-    if (is_exist.exists) {
+    const result = await checkUser(`${value}${selectedMail}`);
+    setIsExist(result.exists);
+    if (result.exists) {
       setUserMessage(form_validation.username.is_exist);
     } else {
       setUserMessage("");
