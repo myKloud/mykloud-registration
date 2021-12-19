@@ -3,15 +3,15 @@ import http from "./http";
 
 const apiEndPoint_signup = `/signup`;
 const apiEndPoint_send_otp = `/`; // to do
-const apiEndPoint_check_user = `/check`; // to do
 
 export async function checkUser(username) {
   const info = {
     username: username,
   };
-  return false;
-  debugger;
-  //   const { headers, data } = await http.post(apiEndPoint_check_user, info);
+  const apiEndPoint_check_user = `/check?username=${username}`; // to do
+
+  const { headers, data } = await http.get(apiEndPoint_check_user, info);
+  return data;
 }
 
 export async function sendOtp(recovery) {

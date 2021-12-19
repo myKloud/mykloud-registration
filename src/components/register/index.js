@@ -70,9 +70,12 @@ const Register = (props) => {
 
   const isUserExist = async (value = user) => {
     const is_exist = await checkUser(value);
-    setIsExist(is_exist);
-    if (is_exist) {
+    console.log(is_exist);
+    setIsExist(is_exist.exists);
+    if (is_exist.exists) {
       setUserMessage(form_validation.username.is_exist);
+    } else {
+      setUserMessage("");
     }
   };
 
