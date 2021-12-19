@@ -132,7 +132,7 @@ const Recovery = (props) => {
         <div className="form_wrapper">
           <h1 className="form_title mb-8">
             {Localization.title}, {props.userReducer.firstname || "client"}!{" "}
-            <span>👋</span>
+            {/* <span>👋</span> */}
           </h1>
 
           <div className="form_sub_content">

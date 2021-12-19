@@ -16,6 +16,9 @@ const Localization = new LocalizedStrings({
       resend: {
         wait: "Please wait 15 min to resent the code.",
       },
+      codeVerify: {
+        error: "Incorrect code, try again.",
+      },
     },
   },
 });

@@ -13,9 +13,10 @@ const Localization = new LocalizedStrings({
     username_validation_general:
       "Only letters (a-z), numbers (0-9) and periods(.) are allowed",
 
-    passowrd_placeholder: "Create password",
+    passowrd_placeholder: "Password",
+    confirm_passowrd_placeholder: "Confirm Password",
 
-    msg: "Safe & secure via myKloud blockhain technologies.",
+    msg: "Safe & secure via myKloud.",
 
     validation: {
       username: {

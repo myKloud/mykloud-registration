@@ -52,11 +52,12 @@ axios.interceptors.response.use(null, (error) => {
 
   return Promise.reject(error);
 });
-
-export default {
+const method = {
   get: axios.get,
   post: axios.post,
   put: axios.put,
   delete: axios.delete,
   CancelToken: axios.CancelToken,
 };
+
+export default method;

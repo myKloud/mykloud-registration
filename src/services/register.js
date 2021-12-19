@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import http from "./http";
 
 const apiEndPoint_check = `/check`;
@@ -6,10 +6,6 @@ const apiEndPoint_signup = `/signup`;
 const apiEndPoint_send_otp = `/sendOTP`;
 
 export async function checkUser(username) {
-  const info = {
-    username: username,
-  };
-
   const param = `?username=${username}`;
   const { data } = await http.get(`${apiEndPoint_check}${param}`);
   return data;
@@ -39,8 +35,6 @@ export async function signUp(informations) {
   return data;
 }
 
-export default {
-  checkUser,
-  sendOtp,
-  signUp,
-};
+const service = { checkUser, sendOtp, signUp };
+
+export default service;

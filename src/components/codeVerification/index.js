@@ -29,8 +29,12 @@ const CodeVerification = (props) => {
       name: "resend",
       wait: Localization.validation.resend.wait,
     },
+    codeVerify: {
+      name: "codeVerify",
+      error: Localization.validation.codeVerify.error,
+    },
   };
-  const [error, setError] = useState(() => form_validation.resend.wait);
+  const [error, setError] = useState("");
   const user_obj = props.userReducer;
   const otp = props.otpReducer;
 
@@ -73,6 +77,7 @@ const CodeVerification = (props) => {
         } else if (getThirdResend()) {
           setMin(14);
           setTimes(() => 4);
+          setError(() => form_validation.resend.wait);
         }
       } else {
         setSecondResend(recovery, "15");
@@ -99,6 +104,7 @@ const CodeVerification = (props) => {
     if (times === 3) {
       setThirdResend(recovery, "18");
       setMin(14);
+      setError(() => form_validation.resend.wait);
     }
   }, [times]);
 
@@ -133,7 +139,8 @@ const CodeVerification = (props) => {
     }
 
     // TODO
-    if (otp.otp == code) {
+    if (`${otp.otp}` === code) {
+      setError("");
       signup()
         .then((res) => {
           console.log(res);
@@ -141,6 +148,8 @@ const CodeVerification = (props) => {
         .catch((err) => {
           console.log("err");
         });
+    } else {
+      setError(() => form_validation.codeVerify.error);
     }
   };
 
@@ -152,9 +161,13 @@ const CodeVerification = (props) => {
           <p className="subtitle mb-8">{recovery}</p>
 
           <div className="input_wrapper">
-            <VerificationInput setCode={setCode} />
+            {error === "Incorrect code, try again." ? (
+              <VerificationInput setCode={setCode} character="errorCharacter" />
+            ) : (
+              <VerificationInput setCode={setCode} />
+            )}
 
-            {min > 0 ? <p className=" error">{error}</p> : ""}
+            {error ? <p className="error">{error}</p> : ""}
 
             <div className="flex mt-4">
               <p className="info mr-1">{Localization.not_recieve}</p>

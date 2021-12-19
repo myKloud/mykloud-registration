@@ -248,7 +248,7 @@ const Register = (props) => {
                 className={`extra-padding ${
                   passConfirmMessage && "validation"
                 }`}
-                placeholder={Localization.passowrd_placeholder}
+                placeholder={Localization.confirm_passowrd_placeholder}
               />
               <button
                 className="input_visibilty"

@@ -11,9 +11,19 @@ const VerificationInput = (props) => {
         onChange={(value) => props.setCode(value)}
         classNames={{
           container: "container",
-          character: "character",
+          character: props.character || "character",
           characterInactive: "character--inactive",
           characterSelected: "character--selected",
+        }}
+        inputProps={{
+          onPaste: (e) => {
+            e.preventDefault();
+            return false;
+          },
+          onCopy: (e) => {
+            e.preventDefault();
+            return false;
+          },
         }}
       />
     </>

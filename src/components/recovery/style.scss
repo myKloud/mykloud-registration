@@ -1,6 +1,10 @@
 @import "../../css/variables.scss";
 
 .recovery_container {
+  h1::after {
+    content: "👋";
+    font-weight: 300;
+  }
   .form_subtitle {
     font-family: "Poppins";
     font-weight: 400;

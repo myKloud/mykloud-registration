@@ -14,7 +14,7 @@ const Localization = new LocalizedStrings({
     msg: "Here goe a short sentence taht can goes on two lines describing why we asking for date of birth.",
 
     previous: "Previous",
-    create_account: "Create my account",
+    create_account: "Next",
 
     agree: 'By clicking "create my account", you agree to the',
     terms: "Terms",

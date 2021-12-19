@@ -41,6 +41,25 @@
     border: 1px solid #445da7;
   }
 
+  .errorCharacter {
+    line-height: 79.9px;
+    font-size: 25px;
+    font-family: "poppins";
+    color: $text_bold_color;
+    border: solid 1px #dcdce7;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-left: 14px;
+  }
+
+  .errorCharacter:first-child {
+    margin-left: 0;
+  }
+
+  .errorCharacter:not(:empty) {
+    border: 1px solid rgba(235, 18, 18, 0.84);
+  }
+
   .info {
     font-size: 16px !important;
     font-family: "open sans" !important;
