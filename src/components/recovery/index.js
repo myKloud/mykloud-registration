@@ -45,7 +45,7 @@ const Recovery = (props) => {
     if (is_valid) {
       const user_obj = props.userReducer;
       user_obj.method = method;
-      user_obj.recovery = method === "email" ? email : number;
+      user_obj.recovery = method === "email" ? email : `+${number}`;
 
       const otp = generateOTP();
 

@@ -3,7 +3,7 @@ import http from "./http";
 
 const apiEndPoint_signup = `/signup`;
 const apiEndPoint_send_otp = `/`; // to do
-const apiEndPoint_check_user = `/`; // to do
+const apiEndPoint_check_user = `/check`; // to do
 
 export async function checkUser(username) {
   const info = {
@@ -35,10 +35,9 @@ export async function signUp(informations) {
     recovery: informations.recovery,
   };
 
-  console.log(info);
-  await http.post(apiEndPoint_signup, info);
+  const { data } = await http.post(apiEndPoint_signup, info);
 
-  return true;
+  return data;
 }
 
 export default {

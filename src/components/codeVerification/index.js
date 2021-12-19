@@ -22,7 +22,6 @@ const CodeVerification = (props) => {
   const [times, setTimes] = useState(1);
   const recovery = props.recovery || location.state.value || "01012345678";
   const [seconds, setSeconds] = useState(59);
-  const [data, setData] = useState("");
   const [min, setMin] = useState(0);
   const [code, setCode] = useState("");
   const form_validation = {
@@ -43,7 +42,7 @@ const CodeVerification = (props) => {
       password: user_obj.password,
       recovery: user_obj.recovery,
     });
-    setData(x);
+    return x;
   };
 
   const resendCode = () => {
@@ -137,7 +136,7 @@ const CodeVerification = (props) => {
     if (otp.otp == code) {
       signup()
         .then((res) => {
-          console.log(data);
+          console.log(res);
         })
         .catch((err) => {
           console.log("err");
