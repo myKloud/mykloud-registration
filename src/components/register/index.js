@@ -68,8 +68,11 @@ const Register = (props) => {
 
   // }, [user.length > 0]);
 
-  const isUserExist = async (value = user) => {
-    const result = await checkUser(`${value}${selectedMail.value}`);
+  const isUserExist = async (value = user, selected = selectedMail) => {
+    if (!value) {
+      return;
+    }
+    const result = await checkUser(`${value}${selected.value}`);
     setIsExist(result.exists);
     if (result.exists) {
       setUserMessage(form_validation.username.is_exist);
@@ -192,7 +195,10 @@ const Register = (props) => {
                   <SelectWrapper
                     value={selectedMail}
                     options={mail_list}
-                    onChange={setSelectedMail}
+                    onChange={(e) => {
+                      setSelectedMail(e);
+                      isUserExist(user, e);
+                    }}
                     className="username-dropdown"
                   />
                 </span>

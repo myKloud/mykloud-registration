@@ -36,7 +36,7 @@ const CodeVerification = (props) => {
 
   const signup = async () => {
     const x = await signUp({
-      username: user_obj.username,
+      username: user_obj.username + user_obj.mail,
       firstName: user_obj.firstname,
       lastName: user_obj.lastname,
       password: user_obj.password,
