@@ -28,16 +28,30 @@
     cursor: pointer;
   }
 
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+
   .timer {
     font-size: 16px;
     font-weight: 500;
     margin-top: 1px;
   }
 
-  .character:first-child {
-    margin-left: 0;
+  // .character:first-child {
+  //   margin-left: 0;
+  //   border: 1px solid #445da7;
+  // }
+  .character--selected {
     border: 1px solid #445da7;
-    caret-color: red;
+  }
+
+  .character--selected::after {
+    content: "|";
+    font-weight: 400;
+    animation: blinker 1.5s linear infinite;
   }
 
   .character:hover {
@@ -46,6 +60,10 @@
 
   .character:not(:empty) {
     border: 1px solid #445da7;
+  }
+
+  .character:not(:empty)::after {
+    content: "";
   }
 
   .errorCharacter {

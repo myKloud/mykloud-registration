@@ -11,7 +11,7 @@ const Localization = new LocalizedStrings({
     change: "Change",
 
     previous: "Previous",
-    verify: "Verify",
+    verify: "Create account",
     validation: {
       resend: {
         wait: "Please wait 15 min to resent the code.",
