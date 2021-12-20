@@ -142,7 +142,7 @@ const Recovery = (props) => {
             <div className="button_container mb-5">
               <div
                 className={
-                  method === "email"
+                  method !== "phone"
                     ? "select_button mr-4 selected"
                     : "select_button mr-4"
                 }
@@ -152,7 +152,7 @@ const Recovery = (props) => {
               >
                 <div className="logo">
                   <img
-                    src={method === "email" ? whiteEmailImg : blackEmailImg}
+                    src={method !== "phone" ? whiteEmailImg : blackEmailImg}
                     alt="email logo"
                     className="image"
                   />
@@ -163,7 +163,7 @@ const Recovery = (props) => {
 
               <div
                 className={
-                  method === "email"
+                  method !== "phone"
                     ? "select_button"
                     : "select_button selected"
                 }
@@ -183,7 +183,7 @@ const Recovery = (props) => {
               </div>
             </div>
 
-            {method === "email" ? (
+            {method !== "phone" ? (
               <>
                 <div className="user_name mb-2">
                   <Input
@@ -227,7 +227,7 @@ const Recovery = (props) => {
             )}
 
             <p className="note mb-8">
-              {method === "email"
+              {method !== "phone"
                 ? Localization.email_msg
                 : Localization.sms_msg}
             </p>
