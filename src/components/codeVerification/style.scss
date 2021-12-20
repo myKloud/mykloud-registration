@@ -66,6 +66,10 @@
     content: "";
   }
 
+  .character--selected:not(:empty)::after {
+    content: "";
+  }
+
   .errorCharacter {
     line-height: 79.9px;
     font-size: 25px;
