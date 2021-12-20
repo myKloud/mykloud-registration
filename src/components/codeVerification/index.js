@@ -120,6 +120,10 @@ const CodeVerification = (props) => {
     setStorage("recovery");
     if (props.setStage) {
       props.setStage("recovery");
+    } else {
+      history.push({
+        pathname: "/recovery",
+      });
     }
   };
 
