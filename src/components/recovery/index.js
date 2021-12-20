@@ -57,7 +57,7 @@ const Recovery = (props) => {
       let send = false;
 
       send = await sendOtp({
-        value: method === "email" ? email : `+${number}`,
+        value: method !== "phone" ? email : `+${number}`,
         otp: otp,
       });
 
@@ -65,7 +65,7 @@ const Recovery = (props) => {
         history.push({
           pathname: "/verification",
           state: {
-            value: method === "email" ? email : `+${number}`,
+            value: method !== "phone" ? email : `+${number}`,
             method: method,
           },
         });
