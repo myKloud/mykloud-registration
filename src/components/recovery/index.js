@@ -24,7 +24,7 @@ const Recovery = (props) => {
   const [emailMessage, setEmailMessage] = useState("");
   const [numberMessage, setNumberMessage] = useState("");
   const user_obj = props.userReducer;
-  const [method, setMethod] = useState(user_obj.method || "email");
+  const [method, setMethod] = useState(user_obj.method);
 
   const history = useHistory();
   const validEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
