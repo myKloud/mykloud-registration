@@ -2,8 +2,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
-axios.defaults.crossDomain = true;
-axios.defaults.withCredentials = true;
+// axios.defaults.crossDomain = true;
+// axios.defaults.withCredentials = true;
 
 axios.interceptors.request.use(
   function (config) {
