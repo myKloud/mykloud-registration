@@ -38,8 +38,8 @@
     cursor: pointer;
   }
   :hover.signin_btn {
-    background-color: $primary_color;
-    color: $primary_color_visa;
+    background-color: rgba(100, 159, 219, 0.1);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   }
 
   @media only screen and (max-width: 767px) {
