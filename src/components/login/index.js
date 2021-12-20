@@ -32,8 +32,8 @@ const Login = (props) => {
     return (
       <>
         <h1 className="form_title">{Localization.title}</h1>
-        <p className="normal_text mb-10">{Localization.username_label}</p>
-        <div className="mb-5">
+        <p className="normal_text mb-5">{Localization.username_label}</p>
+        <div className="mb-5 input_wrapper">
           <div className="user_name">
             <Input
               type="text"
@@ -54,10 +54,11 @@ const Login = (props) => {
           <p className="note mt-3" onClick={nextPage}>
             {Localization.forget_username}
           </p>
+
+          <button className="next_btn" onClick={() => setLogin("password")}>
+            {Localization.next}
+          </button>
         </div>
-        <button className="next_btn" onClick={() => setLogin("password")}>
-          {Localization.next}
-        </button>
       </>
     );
   };
@@ -66,7 +67,7 @@ const Login = (props) => {
     return (
       <>
         <h1 className="form_title">{Localization.welcome_back}</h1>
-        <p className="normal_text mb-10">{`memad@mykloud.io`}</p>
+        <p className="normal_text mb-10">{`${user}${selectedMail.value}`}</p>
         <div className="mb-5 relative">
           <Input
             type={showPassword ? "text" : "password"}

@@ -107,6 +107,7 @@ const ClientInformations = (props) => {
       }
     }
   };
+  const user_obj = props.userReducer;
 
   const validate = (input, value) => {
     let is_valid = true;
@@ -246,7 +247,10 @@ const ClientInformations = (props) => {
     <>
       <div className="form_container client_container">
         <div className="form_wrapper">
-          <h1 className="form_title mb-10">{Localization.title}</h1>
+          <h1 className="form_title">{Localization.title}</h1>
+          <p className="normal_text mb-5">
+            {user_obj.username + user_obj.mail}
+          </p>
           <div className="input_wrapper">
             <div className="wrapper mb-4">
               <div className="name_container">
