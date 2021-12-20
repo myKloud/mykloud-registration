@@ -144,6 +144,9 @@ const CodeVerification = (props) => {
       signup()
         .then((res) => {
           console.log(res);
+          history.push({
+            pathname: "/welcome",
+          });
         })
         .catch((err) => {
           console.log("err");

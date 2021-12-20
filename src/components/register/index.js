@@ -90,7 +90,7 @@ const Register = (props) => {
       if (!value.length) {
         setUserMessage(input.required);
         is_valid = false;
-      } else if (value.length < 4 || value.length > 30) {
+      } else if (value.length < 4 || value.length > 12) {
         setUserMessage(input.length);
         is_valid = false;
       } else if (!validUser.test(value)) {
@@ -110,6 +110,11 @@ const Register = (props) => {
       } else if (value.length < 8) {
         setPassMessage(input.length);
         is_valid = false;
+      } else if (confirmPassword !== value) {
+        setPassConfirmMessage(form_validation.confirmPassword.match);
+        is_valid = false;
+      } else {
+        setPassConfirmMessage("");
       }
     }
     if (input.name === "confirmPassword") {

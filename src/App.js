@@ -13,6 +13,7 @@ import ForgetUserName from "./components/forgetUserName/recovery";
 import ForgetPassword from "./components/forgePassword/recovery";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { getStorage, removeStorage, removeResend } from "../src/config/storage";
+import Welcome from "./components/welcome";
 
 function App(props) {
   const history = useHistory();
@@ -24,7 +25,8 @@ function App(props) {
       pathname === "/" ||
       pathname === "/login" ||
       pathname === "/forgetUser" ||
-      pathname === "/forgetPass";
+      pathname === "/forgetPass" ||
+      pathname === "/welcome";
     const user_obj = props.userReducer;
 
     if (!user_obj.isvalid || is_valid_pathname) {
@@ -60,6 +62,7 @@ function App(props) {
           <Route exact path="/recovery" render={() => <Recovery />} />
           <Route exact path="/verification" render={() => <Verification />} />
           <Route exact path="/dob" render={() => <Dob />} />
+          <Route exact path="/welcome" render={() => <Welcome />} />
           <Route exact path="/forgetUser" render={() => <ForgetUserName />} />
           <Route exact path="/forgetPass" render={() => <ForgetPassword />} />
         </Switch>

@@ -2,7 +2,7 @@ import LocalizedStrings from "react-localization";
 
 const Localization = new LocalizedStrings({
   en: {
-    title: "Fill in some basic info",
+    title: "Welcome to myKloud",
 
     firstname_placeholder: "First name",
     lastname_placeholder: "Last name",
@@ -11,7 +11,7 @@ const Localization = new LocalizedStrings({
     month_placeholder: "Month",
     year_placeholder: "Year",
 
-    msg: "Here goe a short sentence taht can goes on two lines describing why we asking for date of birth.",
+    msg: "By law, we are required to verify your age, but we do NOT use or sell this information",
 
     previous: "Previous",
     create_account: "Next",
@@ -39,7 +39,7 @@ const Localization = new LocalizedStrings({
         notValid: "sorry",
       },
       captcha: {
-        required: "I am not a Robot",
+        required: "Please verify that you are a human",
       },
     },
   },

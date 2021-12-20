@@ -22,10 +22,10 @@ const MonthPickerWrapper = (props) => {
           classes={`select-months form_field ${
             props.className ? props.className : ""
           }`}
-          caps
+          caps={false}
           required={props.required || false}
           disabled={props.disabled || false}
-          onChange={(month) => setValueHandler(month)}
+          onChange={(month) => setValueHandler(month - 1 + 2 + "")}
         />
 
         {props.placeholder && (

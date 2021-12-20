@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 @media only screen and (max-width: 1440px) {
 }
 
@@ -49,7 +51,16 @@
     .form_field {
       font-family: "Open Sans" !important;
       font-size: 14px !important;
-      font-weight: 600 !important;
+      font-weight: 500 !important;
+      padding-top: 14px !important;
+    }
+    &:focus-within .form_label {
+      transform: translate(0, 9px) scale(0.8) !important;
+      color: $placeholder;
+    }
+
+    .filled {
+      transform: translate(0, 9px) scale(0.8) !important;
     }
   }
 }
