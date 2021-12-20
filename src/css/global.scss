@@ -136,6 +136,7 @@ body {
     border-color: transparent;
     border-width: 0;
     box-shadow: none;
+    cursor: pointer;
 
     &:hover {
       border-color: transparent;
@@ -152,5 +153,10 @@ body {
 
   .css-26l3qy-menu {
     width: 150px;
+    cursor: pointer;
+
+    .css-4ljt47-MenuList > div {
+      cursor: pointer;
+    }
   }
 }
