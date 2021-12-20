@@ -12,7 +12,7 @@ const Welcome = (props) => {
 
   return (
     <>
-      <div className="grid justify-items-center mt-32 mb-28 ">
+      <div className="grid justify-items-center mt-32 mb-28 welcome_container">
         <img src={blockImg} alt="block" className="block_img" />
         <h1 className="title">{Localization.title}</h1>
         <p className="sub_title mt-4 mb-2">{Localization.sub_title}</p>

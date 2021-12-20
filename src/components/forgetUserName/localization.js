@@ -13,7 +13,7 @@ const Localization = new LocalizedStrings({
     lastname_placeholder: "Last name",
 
     fullname_message:
-      "You’ll recieve an email with a conformation code if above input is valid",
+      "You’ll receive an email with a conformation code if above input is valid",
 
     fullname_btn: "Send me the code",
 

@@ -19,11 +19,12 @@ import "./style.scss";
 import { sendOtp } from "../../services/register";
 
 const Recovery = (props) => {
-  const [method, setMethod] = useState("email");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
   const [emailMessage, setEmailMessage] = useState("");
   const [numberMessage, setNumberMessage] = useState("");
+  const user_obj = props.userReducer;
+  const [method, setMethod] = useState(user_obj.method || "email");
 
   const history = useHistory();
   const validEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
@@ -149,10 +150,11 @@ const Recovery = (props) => {
                   handleSetMethod("email");
                 }}
               >
-                <div className={method === "email" ? "logo white_img" : "logo"}>
+                <div className="logo">
                   <img
                     src={method === "email" ? whiteEmailImg : blackEmailImg}
                     alt="email logo"
+                    className="image"
                   />
                 </div>
 
@@ -169,10 +171,11 @@ const Recovery = (props) => {
                   handleSetMethod("phone");
                 }}
               >
-                <div className={method === "email" ? "logo" : "logo white_img"}>
+                <div className="logo">
                   <img
                     src={method === "email" ? blackPhoneImg : whitePhoneImg}
                     alt="phone"
+                    className="image"
                   />
                 </div>
 

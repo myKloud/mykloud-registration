@@ -29,6 +29,12 @@ function App(props) {
       pathname === "/welcome";
     const user_obj = props.userReducer;
 
+    if (storage && storage === "dob") {
+      return history.push({
+        pathname: `${storage}`,
+      });
+    }
+
     if (!user_obj.isvalid || is_valid_pathname) {
       removeStorage();
       removeResend();

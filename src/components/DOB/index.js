@@ -12,7 +12,7 @@ const Dob = (props) => {
 
   return (
     <>
-      <div className="grid justify-items-center mt-56 mb-28 ">
+      <div className="grid justify-items-center mt-56 mb-28 dob_container">
         <img src={blockImg} alt="block" className="block_img" />
         <h1 className="title mt-7">{Localization.title}</h1>
         <p className="sub_title mt-4 mb-4">

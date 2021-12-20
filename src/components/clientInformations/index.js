@@ -181,7 +181,7 @@ const ClientInformations = (props) => {
 
     const dob_date = new Date(
       year,
-      month,
+      month - 1,
       date,
       hour,
       minutes,
@@ -190,7 +190,7 @@ const ClientInformations = (props) => {
     );
 
     const diff = current_date.getTime() - dob_date.getTime();
-    const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+    const age = diff / (1000 * 60 * 60 * 24 * 365.25);
 
     let is_valid = true;
     if (age <= form_validation.bithday.minimum) {
