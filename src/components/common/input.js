@@ -27,6 +27,7 @@ const Input = (props) => {
           onBlur={(e) => {
             if (props.onBlur) props.onBlur(e.currentTarget.value);
           }}
+          maxlength="128"
         />
 
         {props.placeholder && (

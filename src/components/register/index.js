@@ -84,6 +84,8 @@ const Register = (props) => {
   const validate = (input, value) => {
     let is_valid = true;
     const validUser = new RegExp("^[a-z0-9.]+[a-z0-9]$");
+    const validPass =
+      /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9!@#$%^&*]{8,128}$/;
 
     if (input.name === "username") {
       setUserMessage("");
@@ -107,7 +109,7 @@ const Register = (props) => {
       if (!value.length) {
         setPassMessage(input.required);
         is_valid = false;
-      } else if (value.length < 8) {
+      } else if (!validPass.test(value)) {
         setPassMessage(input.length);
         is_valid = false;
       } else if (confirmPassword !== value) {
