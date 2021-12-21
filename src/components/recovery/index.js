@@ -200,7 +200,7 @@ const Recovery = (props) => {
                     autoFocus={true}
                     value={email}
                     onChange={(e) => {
-                      setEmail(e);
+                      setEmail(e.toLowerCase());
                       // validate(form_validation.email, e);
                     }}
                     className={`recovery_input ${emailMessage && "validation"}`}
@@ -236,9 +236,10 @@ const Recovery = (props) => {
             )}
 
             <p className="note mb-8">
-              {method !== "phone"
+              {method !== "phone" && !emailMessage
                 ? Localization.email_msg
-                : Localization.sms_msg}
+                : ""}
+              {method === "phone" && !numberMessage ? Localization.sms_msg : ""}
             </p>
 
             <button className="next_btn" onClick={nextPage}>

@@ -75,6 +75,12 @@
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   }
 
+  .password-mask {
+    -webkit-text-security: disc;
+    -moz-webkit-text-security: disc;
+    -moz-text-security: disc;
+  }
+
   .safe_message {
     display: flex;
     justify-content: center;

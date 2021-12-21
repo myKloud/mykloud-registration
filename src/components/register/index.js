@@ -221,13 +221,15 @@ const Register = (props) => {
             </div>
             <div className="mb-5 relative">
               <Input
-                type={showPassword ? "text" : "password"}
+                type={"text"}
                 value={password}
                 onChange={(e) => {
                   setPassword(e);
                   validate(form_validation.password, e);
                 }}
-                className={`extra-padding ${passMessage && "validation"}`}
+                className={`extra-padding ${passMessage && "validation"} ${
+                  !showPassword && "password-mask"
+                }`}
                 placeholder={Localization.passowrd_placeholder}
               />
 
@@ -246,7 +248,7 @@ const Register = (props) => {
             </div>
             <div className=" relative">
               <Input
-                type={showConfirmPassword ? "text" : "password"}
+                type={"text"}
                 value={confirmPassword}
                 onChange={(e) => {
                   setConfirmPassword(e);
@@ -254,7 +256,7 @@ const Register = (props) => {
                 }}
                 className={`extra-padding ${
                   passConfirmMessage && "validation"
-                }`}
+                } ${!showConfirmPassword && "password-mask"}`}
                 placeholder={Localization.confirm_passowrd_placeholder}
               />
               <button

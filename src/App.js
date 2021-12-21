@@ -36,16 +36,22 @@ function App(props) {
     }
 
     if (storage && storage === "welcome") {
-      if (location.pathname === "/login") {
+      if (location.pathname === "/verification") {
+        window.location.pathname = "/register";
         removeStorage();
-        return history.push("/login");
-      } else if (location.pathname === "/register") {
-        removeStorage();
-        return history.push("/register");
-      } else if (location.pathname === "/verification") {
-        removeStorage();
-        return history.push("/register");
+        return;
       }
+      if (location.pathname === "/login") {
+        window.location.pathname = "/login";
+        removeStorage();
+        return;
+      }
+      if (location.pathname === "/register") {
+        window.location.pathname = "/register";
+        removeStorage();
+        return;
+      }
+
       return history.push({
         pathname: `${storage}`,
       });

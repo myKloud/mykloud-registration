@@ -8,7 +8,7 @@
 
   .subtitle {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500 !important;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
@@ -22,7 +22,7 @@
     font-family: "poppins";
     color: $text_bold_color;
     border: solid 1px #dcdce7;
-    font-weight: bold;
+    font-weight: 500;
     border-radius: 6px;
     margin-left: 14px;
     cursor: pointer;
@@ -157,7 +157,7 @@
     .subtitle {
       text-align: left;
       font-size: 20px;
-      font-weight: bold;
+      font-weight: 500 !important;
       margin-bottom: 24px !important;
     }
 
@@ -198,6 +198,10 @@
     .verify {
       width: 143px;
       height: 56px;
+    }
+
+    .timer {
+      font-size: 14px;
     }
   }
 }
