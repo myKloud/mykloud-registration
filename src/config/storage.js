@@ -9,6 +9,7 @@ export function setStorage(value) {
 }
 
 export function removeStorage() {
+  removeResend();
   return localStorage.removeItem(name);
 }
 

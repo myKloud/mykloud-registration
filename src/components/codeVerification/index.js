@@ -20,7 +20,8 @@ import { sendOtp, signUp } from "../../services/register";
 const CodeVerification = (props) => {
   const location = useLocation();
   const [times, setTimes] = useState(1);
-  const recovery = props.recovery || location.state.value || "01012345678";
+  const user_obj = props.userReducer;
+  const recovery = props.recovery || user_obj.recovery || "01012345678";
   const [seconds, setSeconds] = useState(59);
   const [min, setMin] = useState(0);
   const [code, setCode] = useState("");
@@ -35,7 +36,7 @@ const CodeVerification = (props) => {
     },
   };
   const [error, setError] = useState("");
-  const user_obj = props.userReducer;
+
   const otp = props.otpReducer;
 
   const signup = async () => {
@@ -75,9 +76,13 @@ const CodeVerification = (props) => {
         if (getSecondResend() && !getThirdResend()) {
           setTimes(() => 3);
         } else if (getThirdResend()) {
-          setMin(14);
-          setTimes(() => 4);
-          setError(() => form_validation.resend.wait);
+          if (getThirdResend().recoveryData !== location.state.value) {
+            setTimes(() => 3);
+          } else {
+            setMin(14);
+            setTimes(() => 4);
+            setError(() => form_validation.resend.wait);
+          }
         }
       } else {
         setSecondResend(recovery, "15");
@@ -94,7 +99,7 @@ const CodeVerification = (props) => {
     // return () => clearInterval(interval);
     const lang = props.languageReducer.lang;
     Localization.setLanguage(lang);
-  }, [props.languageReducer.lang, location.state.value]);
+  }, [props.languageReducer.lang, user_obj.recovery]);
 
   useEffect(() => {
     if (times === 2) {
@@ -140,6 +145,7 @@ const CodeVerification = (props) => {
 
     // TODO
     if (`${otp.otp}` === code) {
+      setStorage("welcome");
       setError("");
       signup()
         .then((res) => {
@@ -165,9 +171,13 @@ const CodeVerification = (props) => {
 
           <div className="input_wrapper">
             {error === "Incorrect code, try again." ? (
-              <VerificationInput setCode={setCode} character="errorCharacter" />
+              <VerificationInput
+                setCode={setCode}
+                character="errorCharacter"
+                setError={setError}
+              />
             ) : (
-              <VerificationInput setCode={setCode} />
+              <VerificationInput setCode={setCode} setError={setError} />
             )}
 
             {error ? <p className="error">{error}</p> : ""}
@@ -191,7 +201,7 @@ const CodeVerification = (props) => {
             </div>
 
             <div className="flex mt-4">
-              {location.state.method === "email" ? (
+              {user_obj.method === "email" ? (
                 <p className="info mr-1">{Localization.not_your_email}</p>
               ) : (
                 <p className="info mr-1">{Localization.not_your_number}</p>

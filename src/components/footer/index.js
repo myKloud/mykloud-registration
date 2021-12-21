@@ -8,9 +8,12 @@ import Localization from "./localization";
 const Footer = (props) => {
   const generateLink = (name) => {
     if (name === "twitter") {
-      window.location = "https://twitter.com/mykloudplatform";
+      window.open("https://twitter.com/mykloudplatform", "_blank");
     } else if (name === "linked") {
-      window.location = "https://www.linkedin.com/company/mykloud/mycompany/";
+      window.open(
+        "https://www.linkedin.com/company/mykloud/mycompany/",
+        "_blank"
+      );
     }
   };
 
@@ -25,10 +28,10 @@ const Footer = (props) => {
         <div className="first_line">
           <div className="footer_logo" />
           <div className="link_container">
-            <a href="https://twitter.com/" className="mr-8">
+            <a href="" className="mr-8">
               {Localization.terms}
             </a>
-            <a href="https://twitter.com/">{Localization.privacy}</a>
+            <a href="">{Localization.privacy}</a>
           </div>
         </div>
         <div className="second_line mt-8">

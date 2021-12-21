@@ -8,7 +8,10 @@ const VerificationInput = (props) => {
         removeDefaultStyles
         length={5}
         placeholder={""}
-        onChange={(value) => props.setCode(value)}
+        onChange={(value) => {
+          props.setCode(value);
+          props.setError(() => "");
+        }}
         classNames={{
           container: "container",
           character: props.character || "character",

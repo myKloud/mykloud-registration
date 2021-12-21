@@ -12,7 +12,7 @@ import Validation from "../common/validation";
 import { setUserObj } from "../../actions/userAction";
 import { setOTP } from "../../actions/otpAction";
 import Localization from "./localization";
-import { setStorage } from "../../config/storage";
+import { setStorage, getThirdResend } from "../../config/storage";
 import { generateOTP } from "../../config/util";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "./style.scss";
@@ -46,30 +46,39 @@ const Recovery = (props) => {
     if (is_valid) {
       const user_obj = props.userReducer;
       user_obj.method = method;
-      user_obj.recovery = method === "email" ? email : `+${number}`;
+      user_obj.recovery = method !== "phone" ? email : `+${number}`;
 
       const otp = generateOTP();
 
       props.dispatch(setOTP(otp));
-      setUserObj(user_obj);
+      await setUserObj(user_obj);
       setStorage("verification");
 
       let send = false;
-
-      send = await sendOtp({
-        value: method !== "phone" ? email : `+${number}`,
-        otp: otp,
-      });
-
-      if (send) {
-        history.push({
-          pathname: "/verification",
-          state: {
+      if (getThirdResend()) {
+        if (getThirdResend().recoveryData == user_obj.recovery) {
+        } else {
+          send = await sendOtp({
             value: method !== "phone" ? email : `+${number}`,
-            method: method,
-          },
+            otp: otp,
+          });
+        }
+      } else {
+        send = await sendOtp({
+          value: method !== "phone" ? email : `+${number}`,
+          otp: otp,
         });
       }
+
+      // if (send) {
+      history.push({
+        pathname: "/verification",
+        state: {
+          value: method !== "phone" ? email : `+${number}`,
+          method: method,
+        },
+      });
+      // }
     }
   };
 

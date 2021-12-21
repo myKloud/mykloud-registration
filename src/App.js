@@ -1,6 +1,6 @@
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
-import React from "react";
+import { React, useEffect } from "react";
 import Header from "./components/header";
 import Register from "./components/register";
 import ClientInformations from "./components/clientInformations";
@@ -12,21 +12,21 @@ import Dob from "./components/DOB/";
 import ForgetUserName from "./components/forgetUserName/recovery";
 import ForgetPassword from "./components/forgePassword/recovery";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { getStorage, removeStorage, removeResend } from "../src/config/storage";
+import { getStorage, removeStorage } from "../src/config/storage";
 import Welcome from "./components/welcome";
 
 function App(props) {
   const history = useHistory();
   const storage = getStorage();
+  const location = useLocation();
 
-  const pathChecker = () => {
+  const pathChecker = async () => {
     const pathname = window.location.pathname;
     const is_valid_pathname =
       pathname === "/" ||
       pathname === "/login" ||
       pathname === "/forgetUser" ||
-      pathname === "/forgetPass" ||
-      pathname === "/welcome";
+      pathname === "/forgetPass";
     const user_obj = props.userReducer;
 
     if (storage && storage === "dob") {
@@ -35,11 +35,25 @@ function App(props) {
       });
     }
 
-    if (!user_obj.isvalid || is_valid_pathname) {
-      removeStorage();
-      removeResend();
+    if (storage && storage === "welcome") {
+      if (location.pathname === "/login") {
+        removeStorage();
+        return history.push("/login");
+      } else if (location.pathname === "/register") {
+        removeStorage();
+        return history.push("/register");
+      } else if (location.pathname === "/verification") {
+        removeStorage();
+        return history.push("/register");
+      }
+      return history.push({
+        pathname: `${storage}`,
+      });
     }
 
+    if (!user_obj.isvalid || is_valid_pathname) {
+      removeStorage();
+    }
     if (is_valid_pathname) return;
 
     if (!storage || !user_obj.isvalid) {
@@ -53,7 +67,9 @@ function App(props) {
     }
   };
 
-  pathChecker();
+  useEffect(() => {
+    pathChecker();
+  }, [location.pathname === "/dob" || location.pathname === "/welcome"]);
   return (
     <>
       <div className="app m-8">
