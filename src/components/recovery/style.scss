@@ -5,6 +5,12 @@
     content: "👋";
     font-weight: 300;
   }
+
+  .error {
+    margin-bottom: 19px;
+    height: 19px;
+  }
+
   .form_subtitle {
     font-family: "Poppins";
     font-weight: 400;
@@ -80,9 +86,11 @@
   }
 
   .note {
+    height: 19px;
     font-size: 14px;
     font-family: "open Sans";
     color: #45536c;
+    margin-bottom: 22px !important;
   }
 
   .next_btn {
@@ -110,12 +118,30 @@
   .phone_input:focus {
     border: solid 1px #445da7;
   }
+
+  .phone_input:enabled {
+    border: solid 1px #445da7;
+  }
+
+  .phone_input:enabled + .country_dropdown {
+    border: solid 1px #445da7;
+  }
+
   .phone_input:focus + .country_dropdown {
     border: solid 1px #445da7;
   }
 
   @media only screen and (max-width: 767px) {
     .form_title {
+      margin-bottom: 20px !important;
+    }
+
+    .error {
+      margin-bottom: 18px;
+      height: 18px;
+    }
+
+    .button_container {
       margin-bottom: 20px !important;
     }
 
@@ -150,6 +176,8 @@
 
     .text {
       font-size: 14px;
+      font-family: "open sans";
+      height: 19px;
     }
     .recovery_input {
       font-size: 12px;

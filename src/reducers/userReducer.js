@@ -11,6 +11,8 @@ const intitalState = {
   method: "",
   recovery: "",
   isvalid: false,
+  min: 0,
+  seconds: 0,
 };
 
 const UserReducer = (state = intitalState, action) => {

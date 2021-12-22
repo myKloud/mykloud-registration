@@ -154,3 +154,13 @@
 
 @media only screen and (max-width: 375px) {
 }
+
+@media only screen and (max-width: 344px) {
+  .form_sub_title {
+    height: auto !important;
+  }
+
+  .form_title {
+    height: auto !important;
+  }
+}

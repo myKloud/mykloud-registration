@@ -12,12 +12,13 @@ import Validation from "../common/validation";
 import { setUserObj } from "../../actions/userAction";
 import { setOTP } from "../../actions/otpAction";
 import Localization from "./localization";
-import { setStorage, getThirdResend } from "../../config/storage";
+import { setStorage, getResend } from "../../config/storage";
 import { generateOTP } from "../../config/util";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "./style.scss";
 import { sendOtp } from "../../services/register";
 
+let interval;
 const Recovery = (props) => {
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
@@ -25,6 +26,9 @@ const Recovery = (props) => {
   const [numberMessage, setNumberMessage] = useState("");
   const user_obj = props.userReducer;
   const [method, setMethod] = useState(user_obj.method);
+  const [seconds, setSeconds] = useState(0);
+  const [min, setMin] = useState(0);
+  const [isTimer, setIsTimer] = useState(false);
 
   const history = useHistory();
   const validEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
@@ -41,6 +45,36 @@ const Recovery = (props) => {
     },
   };
 
+  console.log(seconds);
+
+  useEffect(() => {
+    const lang = props.languageReducer.lang;
+    Localization.setLanguage(lang);
+  }, [props.languageReducer.lang]);
+
+  useEffect(() => {
+    const resendStorage = getResend();
+    if (resendStorage === "third" && seconds === 0 && min === 0) {
+      setMin(1);
+      setSeconds(0);
+    }
+
+    interval = setInterval(() => {
+      setIsTimer(true);
+      setSeconds((seconds) => seconds - 1);
+    }, 1000);
+  }, []);
+
+  useEffect(() => {
+    if (seconds < 0 && min > 0) {
+      setMin((min) => min - 1);
+      setSeconds(59);
+    }
+    if (seconds === 0 && min === 0 && isTimer) {
+      clearInterval(interval);
+    }
+  }, [seconds, min]);
+
   const nextPage = async () => {
     const is_valid = validateHandler();
     if (is_valid) {
@@ -55,8 +89,12 @@ const Recovery = (props) => {
       setStorage("verification");
 
       let send = false;
-      if (getThirdResend()) {
-        if (getThirdResend().recoveryData == user_obj.recovery) {
+      if (getResend()) {
+        if (getResend() === "third") {
+          if (min === 0 && seconds === 0) {
+            setMin(15);
+            setSeconds(0);
+          }
         } else {
           send = await sendOtp({
             value: method !== "phone" ? email : `+${number}`,
@@ -131,11 +169,6 @@ const Recovery = (props) => {
     setMethod(type);
   };
 
-  useEffect(() => {
-    const lang = props.languageReducer.lang;
-    Localization.setLanguage(lang);
-  }, [props.languageReducer.lang]);
-
   return (
     <>
       <div className="form_container recovery_container">
@@ -148,7 +181,7 @@ const Recovery = (props) => {
           <div className="form_sub_content">
             <p className="form_sub_title">{Localization.select_recovery}</p>
 
-            <div className="button_container mb-5">
+            <div className="button_container mb-7">
               <div
                 className={
                   method !== "phone"
@@ -216,12 +249,15 @@ const Recovery = (props) => {
                     inputExtraProps={{
                       name: "phone",
                       required: true,
-                      autoFocus: true,
+                    }}
+                    inputComponent={{
+                      autofocus: true,
                     }}
                     inputClass={`phone_input ${numberMessage && "validation"}`}
                     buttonClass={`country_dropdown ${
                       numberMessage && "validation"
                     }`}
+                    autoFocus={true}
                     value={number}
                     onChange={(e) => {
                       setNumber(e);
@@ -235,16 +271,29 @@ const Recovery = (props) => {
               </>
             )}
 
-            <p className="note mb-8">
-              {method !== "phone" && !emailMessage
-                ? Localization.email_msg
-                : ""}
-              {method === "phone" && !numberMessage ? Localization.sms_msg : ""}
-            </p>
+            {method !== "phone" && !emailMessage ? (
+              <p className="note mb-8">{Localization.email_msg}</p>
+            ) : (
+              ""
+            )}
+            {method === "phone" && !numberMessage ? (
+              <p className="note mb-8">{Localization.sms_msg}</p>
+            ) : (
+              ""
+            )}
 
-            <button className="next_btn" onClick={nextPage}>
-              {Localization.send_code}
-            </button>
+            {min > 0 || (min === 0 && seconds > 0) ? (
+              <>
+                <p className="timer">
+                  Wait for {min < 10 ? `0${min}` : min}:
+                  {seconds < 10 ? `0${seconds}` : seconds} sec
+                </p>
+              </>
+            ) : (
+              <button className="next_btn" onClick={nextPage}>
+                {Localization.send_code}
+              </button>
+            )}
           </div>
         </div>
       </div>

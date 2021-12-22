@@ -7,12 +7,8 @@ import Localization from "./localization";
 import {
   removeStorage,
   setStorage,
-  setFirstResend,
-  setSecondResend,
-  setThirdResend,
-  getFirstResend,
-  getSecondResend,
-  getThirdResend,
+  setResend,
+  getResend,
   removeResend,
 } from "../../config/storage";
 import { sendOtp, signUp } from "../../services/register";
@@ -55,40 +51,25 @@ const CodeVerification = (props) => {
       value: location.state.value,
       otp: otp.otp,
     });
-    if (times < 3) {
-      setTimes(() => times + 1);
-    } else {
-      removeResend();
-      setTimes(() => 1);
-      setFirstResend(recovery, "13");
-    }
+
+    setTimes(() => times + 1);
     setMin(0);
     setSeconds(59);
   };
 
   useEffect(() => {
-    if (!getFirstResend()) {
-      setFirstResend(recovery, "13");
-    } else if (getFirstResend().recoveryData === location.state.value) {
-      if (!getSecondResend()) {
+    if (getResend()) {
+      if (getResend() === "third") {
+        setMin(14);
+        setTimes(() => 3);
+        setError(() => form_validation.resend.wait);
+      } else if (getResend() === "second") {
+        setTimes(() => 3);
+      } else if (getResend() === "first") {
         setTimes(() => 2);
-      } else if (getSecondResend().recoveryData === location.state.value) {
-        if (getSecondResend() && !getThirdResend()) {
-          setTimes(() => 3);
-        } else if (getThirdResend()) {
-          if (getThirdResend().recoveryData !== location.state.value) {
-            setTimes(() => 3);
-          } else {
-            setMin(14);
-            setTimes(() => 4);
-            setError(() => form_validation.resend.wait);
-          }
-        }
-      } else {
-        setSecondResend(recovery, "15");
       }
     } else {
-      setFirstResend(recovery, "13");
+      setResend("first");
     }
 
     if (seconds > 0) {
@@ -103,11 +84,11 @@ const CodeVerification = (props) => {
 
   useEffect(() => {
     if (times === 2) {
-      setSecondResend(recovery, "15");
+      setResend("second");
     }
 
-    if (times === 3) {
-      setThirdResend(recovery, "18");
+    if (times >= 3) {
+      setResend("third");
       setMin(14);
       setError(() => form_validation.resend.wait);
     }

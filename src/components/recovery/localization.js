@@ -17,7 +17,7 @@ const Localization = new LocalizedStrings({
 
     validation: {
       email: {
-        required: "Please enter valid email address",
+        required: "Please enter valid email address ”name@",
         redundant:
           "Please enter secondary email address, that is not myKloud email",
       },
