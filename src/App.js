@@ -41,13 +41,13 @@ function App(props) {
         removeStorage();
         return;
       }
-      if (location.pathname === "/login") {
-        window.location.pathname = "/login";
+      if (location.pathname === "/register") {
+        window.location.pathname = "/register";
         removeStorage();
         return;
       }
-      if (location.pathname === "/register") {
-        window.location.pathname = "/register";
+      if (location.pathname === "/login") {
+        window.location.pathname = "/login";
         removeStorage();
         return;
       }

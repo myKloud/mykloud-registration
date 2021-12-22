@@ -275,7 +275,7 @@ const Register = (props) => {
               {Localization.next}
             </button>
             <div className="safe_message mt-3">
-              <img src={icon} alt="icon" />
+              <img src={icon} alt="icon" className="icon" />
               <p className="info ml-2">{Localization.msg}</p>
             </div>
           </div>

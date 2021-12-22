@@ -35,15 +35,15 @@
   }
 
   .timer {
+    height: 20px;
     font-size: 16px;
     font-weight: 500;
     margin-top: 1px;
   }
 
-  // .character:first-child {
-  //   margin-left: 0;
-  //   border: 1px solid #445da7;
-  // }
+  .character:first-child {
+    margin-left: 0;
+  }
   .character--selected {
     border: 1px solid #445da7;
   }
@@ -64,6 +64,7 @@
 
   .character:not(:empty)::after {
     content: "";
+    color: red !important;
   }
 
   .character--selected:not(:empty)::after {
@@ -76,7 +77,7 @@
     font-family: "poppins";
     color: $text_bold_color;
     border: solid 1px #dcdce7;
-    font-weight: bold;
+    font-weight: 500;
     border-radius: 6px;
     margin-left: 14px;
   }
@@ -90,11 +91,13 @@
   }
 
   .info {
+    height: 20px;
     font-size: 16px !important;
     font-family: "open sans" !important;
   }
 
   .action {
+    height: 20px;
     font-size: 16px !important;
     color: #1565d8 !important;
     font-weight: 500 !important;
@@ -102,6 +105,8 @@
   }
 
   .pre {
+    height: 20px;
+    margin-top: 22px;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;

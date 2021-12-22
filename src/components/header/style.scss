@@ -48,9 +48,15 @@
   @media only screen and (max-width: 767px) {
     .mykloud_logo {
       background-image: url(../../images/app-logo.png);
-      background-size: 45px;
+      background-size: 32px;
+      width: 32.5px;
+      height: 32px;
     }
 
+    .signin_btn {
+      width: 48px !important;
+      height: 20px;
+    }
     .right_text {
       display: none;
     }

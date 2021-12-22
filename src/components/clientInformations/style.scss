@@ -13,9 +13,10 @@
   }
 
   .note {
+    height: 67px !important;
     display: flex;
     align-items: flex-start;
-    padding: 16px;
+    padding: 16px 17px 13px 16px;
     background-color: #e2f4ff;
     border-radius: 6px;
   }
@@ -25,6 +26,7 @@
     line-height: 1.56;
     color: $text_color;
     text-align: center;
+    height: 27px;
   }
 
   .image_description {
@@ -47,6 +49,10 @@
     cursor: pointer;
   }
 
+  .form_sub_title {
+    height: 24px !important;
+  }
+
   .next {
     width: 220px;
     height: 64px;
@@ -66,6 +72,7 @@
 
   .terms {
     width: 457px;
+    height: 18px;
     font-family: "Open Sans";
     font-size: 13px;
     color: $text_bold_color;
@@ -92,19 +99,27 @@
       }
     }
 
+    .form_sub_title {
+      font-size: 14px !important;
+      height: 21px !important;
+    }
+
     .normal_text {
       text-align: left;
       font-size: 14px;
       margin-bottom: 20px !important;
       margin-top: 4px !important;
+      height: 21px;
     }
 
     .pre {
       font-size: 14px !important;
+      height: 20px;
     }
 
     .note {
       padding-right: 3px;
+      height: 64px;
     }
 
     .image_description {
@@ -123,6 +138,7 @@
     .terms {
       width: auto;
       text-align: center;
+      height: 36px;
     }
     u {
       text-decoration: underline;
