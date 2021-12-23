@@ -131,6 +131,18 @@
     border: solid 1px #445da7;
   }
 
+  .timer {
+    width: 100%;
+    cursor: default;
+    height: 64px;
+    border-radius: 6px;
+    background-color: rgba(27, 115, 209, 0.3);
+    font-size: 16px;
+    font-family: "Poppins";
+    font-weight: 500;
+    color: #1b1616;
+  }
+
   @media only screen and (max-width: 767px) {
     .form_title {
       margin-bottom: 20px !important;

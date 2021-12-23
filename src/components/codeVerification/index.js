@@ -13,14 +13,16 @@ import {
 } from "../../config/storage";
 import { sendOtp, signUp } from "../../services/register";
 
+let interval;
 const CodeVerification = (props) => {
   const location = useLocation();
   const [times, setTimes] = useState(1);
   const user_obj = props.userReducer;
   const recovery = props.recovery || user_obj.recovery || "01012345678";
-  const [seconds, setSeconds] = useState(59);
+  const [seconds, setSeconds] = useState(0);
   const [min, setMin] = useState(0);
   const [code, setCode] = useState("");
+  const [isTimer, setIsTimer] = useState(false);
   const form_validation = {
     resend: {
       name: "resend",
@@ -48,67 +50,86 @@ const CodeVerification = (props) => {
 
   const resendCode = () => {
     sendOtp({
-      value: location.state.value,
+      value: user_obj.recovery,
       otp: otp.otp,
     });
 
-    setTimes(() => times + 1);
-    setMin(0);
-    setSeconds(59);
+    interval = setInterval(() => {
+      setIsTimer(true);
+      setSeconds((seconds) => seconds - 1);
+    }, 1000);
+
+    if (getResend() === "first") {
+      setResend("second");
+      setMin(1);
+      setSeconds(0);
+    }
+
+    if (getResend() === "second") {
+      setResend("third");
+      setMin(2);
+      setSeconds(0);
+      setError(() => form_validation.resend.wait);
+    }
+
+    if (getResend() === "third") {
+      setMin(2);
+      setSeconds(0);
+      setError(() => form_validation.resend.wait);
+    }
   };
 
   useEffect(() => {
-    if (getResend()) {
-      if (getResend() === "third") {
-        setMin(14);
-        setTimes(() => 3);
-        setError(() => form_validation.resend.wait);
-      } else if (getResend() === "second") {
-        setTimes(() => 3);
-      } else if (getResend() === "first") {
-        setTimes(() => 2);
-      }
-    } else {
-      setResend("first");
-    }
-
-    if (seconds > 0) {
-      setInterval(() => {
-        setSeconds((seconds) => seconds - 1);
-      }, 1000);
-    }
-    // return () => clearInterval(interval);
     const lang = props.languageReducer.lang;
     Localization.setLanguage(lang);
   }, [props.languageReducer.lang, user_obj.recovery]);
 
   useEffect(() => {
-    if (times === 2) {
-      setResend("second");
+    if (getResend() === "first") {
+      setMin(1);
+      setSeconds(0);
     }
 
-    if (times >= 3) {
-      setResend("third");
-      setMin(14);
+    if (getResend() === "second") {
+      setMin(1);
+      setSeconds(0);
+    }
+
+    if (getResend() === "third") {
+      setMin(2);
+      setSeconds(0);
       setError(() => form_validation.resend.wait);
     }
-  }, [times]);
+
+    interval = setInterval(() => {
+      setIsTimer(true);
+      setSeconds((seconds) => seconds - 1);
+    }, 1000);
+  }, []);
 
   useEffect(() => {
     if (seconds < 0 && min > 0) {
       setMin((min) => min - 1);
       setSeconds(59);
     }
-  }, [seconds]);
+
+    if (seconds === 0 && min === 0 && isTimer) {
+      clearInterval(interval);
+    }
+  }, [seconds, min]);
 
   const history = useHistory();
   const pre = () => {
-    setStorage("recovery");
     if (props.setStage) {
       props.setStage("recovery");
     } else {
+      setStorage("recovery");
       history.push({
         pathname: "/recovery",
+        state: {
+          min: min,
+          seconds: seconds,
+        },
       });
     }
   };

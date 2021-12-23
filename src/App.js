@@ -74,6 +74,12 @@ function App(props) {
   };
 
   useEffect(() => {
+    window.addEventListener("popstate", () => {
+      history.go(1);
+    });
+  }, []);
+
+  useEffect(() => {
     pathChecker();
   }, [location.pathname === "/dob" || location.pathname === "/welcome"]);
   return (

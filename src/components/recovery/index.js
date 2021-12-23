@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import blackEmailImg from "../../images/email1.png";
 import whiteEmailImg from "../../images/email2.png";
 import blackPhoneImg from "../../images/phone1.png";
@@ -12,7 +12,7 @@ import Validation from "../common/validation";
 import { setUserObj } from "../../actions/userAction";
 import { setOTP } from "../../actions/otpAction";
 import Localization from "./localization";
-import { setStorage, getResend } from "../../config/storage";
+import { setStorage, getResend, setResend } from "../../config/storage";
 import { generateOTP } from "../../config/util";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "./style.scss";
@@ -20,6 +20,7 @@ import { sendOtp } from "../../services/register";
 
 let interval;
 const Recovery = (props) => {
+  const location = useLocation();
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
   const [emailMessage, setEmailMessage] = useState("");
@@ -45,8 +46,6 @@ const Recovery = (props) => {
     },
   };
 
-  console.log(seconds);
-
   useEffect(() => {
     const lang = props.languageReducer.lang;
     Localization.setLanguage(lang);
@@ -54,9 +53,22 @@ const Recovery = (props) => {
 
   useEffect(() => {
     const resendStorage = getResend();
-    if (resendStorage === "third" && seconds === 0 && min === 0) {
-      setMin(1);
-      setSeconds(0);
+    if (location.state) {
+      let locationMin = location.state.min;
+      let locationSeconds = location.state.seconds;
+      if (locationSeconds > 0) {
+        setSeconds(locationSeconds);
+      }
+
+      if (locationMin !== 0) {
+        setMin(locationMin);
+      }
+    } else {
+      if (resendStorage === "third") {
+        debugger;
+        setMin(5);
+        setSeconds(5);
+      }
     }
 
     interval = setInterval(() => {
@@ -89,23 +101,20 @@ const Recovery = (props) => {
       setStorage("verification");
 
       let send = false;
+
+      send = await sendOtp({
+        value: method !== "phone" ? email : `+${number}`,
+        otp: otp,
+      });
+
       if (getResend()) {
-        if (getResend() === "third") {
-          if (min === 0 && seconds === 0) {
-            setMin(15);
-            setSeconds(0);
-          }
-        } else {
-          send = await sendOtp({
-            value: method !== "phone" ? email : `+${number}`,
-            otp: otp,
-          });
+        if (getResend() === "second") {
+          setResend("third");
+        } else if (getResend() === "first") {
+          setResend("second");
         }
       } else {
-        send = await sendOtp({
-          value: method !== "phone" ? email : `+${number}`,
-          otp: otp,
-        });
+        setResend("first");
       }
 
       // if (send) {
@@ -284,10 +293,10 @@ const Recovery = (props) => {
 
             {min > 0 || (min === 0 && seconds > 0) ? (
               <>
-                <p className="timer">
+                <button className="timer">
                   Wait for {min < 10 ? `0${min}` : min}:
-                  {seconds < 10 ? `0${seconds}` : seconds} sec
-                </p>
+                  {seconds < 10 ? `0${seconds}` : seconds} min to Send the Code
+                </button>
               </>
             ) : (
               <button className="next_btn" onClick={nextPage}>
