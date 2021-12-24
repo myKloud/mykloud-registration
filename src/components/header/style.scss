@@ -21,6 +21,7 @@
   }
 
   .right_side {
+    width: 338.25px;
     display: flex;
     align-items: center;
   }
@@ -61,8 +62,12 @@
       height: 32px;
     }
 
+    .right_side {
+      width: auto;
+    }
+
     .signin_btn {
-      width: 48px !important;
+      width: auto !important;
       height: 20px;
     }
     .right_text {

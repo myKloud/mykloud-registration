@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import VerificationInput from "../common/verificationInput";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./style.scss";
 import Localization from "./localization";
 import {
@@ -9,13 +9,11 @@ import {
   setStorage,
   setResend,
   getResend,
-  removeResend,
 } from "../../config/storage";
 import { sendOtp, signUp } from "../../services/register";
 
 let interval;
 const CodeVerification = (props) => {
-  const location = useLocation();
   const user_obj = props.userReducer;
   const recovery = props.recovery || user_obj.recovery || "01012345678";
   const [seconds, setSeconds] = useState(0);
