@@ -84,8 +84,8 @@ function App(props) {
   }, [location.pathname === "/dob" || location.pathname === "/welcome"]);
   return (
     <>
+      <Header />
       <div className="app m-8">
-        <Header />
         <Switch>
           <Route exact path="/">
             <Redirect to="/register" />

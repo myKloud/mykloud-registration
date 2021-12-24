@@ -16,7 +16,6 @@ import { sendOtp, signUp } from "../../services/register";
 let interval;
 const CodeVerification = (props) => {
   const location = useLocation();
-  const [times, setTimes] = useState(1);
   const user_obj = props.userReducer;
   const recovery = props.recovery || user_obj.recovery || "01012345678";
   const [seconds, setSeconds] = useState(0);
@@ -36,6 +35,8 @@ const CodeVerification = (props) => {
   const [error, setError] = useState("");
 
   const otp = props.otpReducer;
+  let reduxMin = user_obj.min;
+  let reduxSeconds = user_obj.seconds;
 
   const signup = async () => {
     const x = await signUp({
@@ -63,17 +64,13 @@ const CodeVerification = (props) => {
       setResend("second");
       setMin(1);
       setSeconds(0);
-    }
-
-    if (getResend() === "second") {
+    } else if (getResend() === "second") {
       setResend("third");
-      setMin(2);
+      setMin(15);
       setSeconds(0);
       setError(() => form_validation.resend.wait);
-    }
-
-    if (getResend() === "third") {
-      setMin(2);
+    } else if (getResend() === "third") {
+      setMin(15);
       setSeconds(0);
       setError(() => form_validation.resend.wait);
     }
@@ -85,18 +82,29 @@ const CodeVerification = (props) => {
   }, [props.languageReducer.lang, user_obj.recovery]);
 
   useEffect(() => {
-    if (getResend() === "first") {
-      setMin(1);
-      setSeconds(0);
+    if (reduxMin !== 0) {
+      setMin(reduxMin);
     }
 
-    if (getResend() === "second") {
+    if (reduxSeconds !== 0) {
+      setSeconds(reduxSeconds);
+    }
+    if (getResend() === "first" && reduxMin === 0 && reduxSeconds === 0) {
       setMin(1);
       setSeconds(0);
-    }
-
-    if (getResend() === "third") {
-      setMin(2);
+    } else if (
+      getResend() === "second" &&
+      reduxMin === 0 &&
+      reduxSeconds === 0
+    ) {
+      setMin(1);
+      setSeconds(0);
+    } else if (
+      getResend() === "third" &&
+      reduxMin === 0 &&
+      reduxSeconds === 0
+    ) {
+      setMin(15);
       setSeconds(0);
       setError(() => form_validation.resend.wait);
     }
@@ -118,12 +126,23 @@ const CodeVerification = (props) => {
     }
   }, [seconds, min]);
 
+  useEffect(() => {
+    user_obj.min = min;
+  }, [min]);
+
+  useEffect(() => {
+    user_obj.seconds = seconds;
+  }, [seconds]);
+
   const history = useHistory();
+
   const pre = () => {
     if (props.setStage) {
       props.setStage("recovery");
     } else {
       setStorage("recovery");
+      user_obj.min = 0;
+      user_obj.seconds = 0;
       history.push({
         pathname: "/recovery",
         state: {

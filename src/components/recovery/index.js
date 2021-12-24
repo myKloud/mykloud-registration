@@ -46,6 +46,9 @@ const Recovery = (props) => {
     },
   };
 
+  let reduxMin = user_obj.min;
+  let reduxSeconds = user_obj.seconds;
+
   useEffect(() => {
     const lang = props.languageReducer.lang;
     Localization.setLanguage(lang);
@@ -53,7 +56,14 @@ const Recovery = (props) => {
 
   useEffect(() => {
     const resendStorage = getResend();
-    if (location.state) {
+    if (reduxMin !== 0) {
+      setMin(reduxMin);
+    }
+
+    if (reduxSeconds !== 0) {
+      setSeconds(reduxSeconds);
+    }
+    if (location.state && reduxMin === 0 && reduxSeconds === 0) {
       let locationMin = location.state.min;
       let locationSeconds = location.state.seconds;
       if (locationSeconds > 0) {
@@ -64,10 +74,9 @@ const Recovery = (props) => {
         setMin(locationMin);
       }
     } else {
-      if (resendStorage === "third") {
-        debugger;
-        setMin(5);
-        setSeconds(5);
+      if (resendStorage === "third" && reduxMin === 0 && reduxSeconds === 0) {
+        setMin(15);
+        setSeconds(0);
       }
     }
 
@@ -86,6 +95,14 @@ const Recovery = (props) => {
       clearInterval(interval);
     }
   }, [seconds, min]);
+
+  useEffect(() => {
+    user_obj.min = min;
+  }, [min]);
+
+  useEffect(() => {
+    user_obj.seconds = seconds;
+  }, [seconds]);
 
   const nextPage = async () => {
     const is_valid = validateHandler();

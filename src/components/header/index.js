@@ -25,7 +25,7 @@ const Header = (props) => {
 
   return (
     <>
-      <div className="header_container mb-8">
+      <div className="header_container">
         <div className="left_side">
           <div className="mykloud_logo" onClick={redirect_url} />
         </div>
