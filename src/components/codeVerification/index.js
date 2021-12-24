@@ -86,24 +86,19 @@ const CodeVerification = (props) => {
       setMin(reduxMin);
     }
 
-    if (reduxSeconds !== 0) {
+    if (reduxSeconds > 0) {
       setSeconds(reduxSeconds);
     }
     if (getResend() === "first" && reduxMin === 0 && reduxSeconds === 0) {
       setMin(1);
       setSeconds(0);
-    } else if (
-      getResend() === "second" &&
-      reduxMin === 0 &&
-      reduxSeconds === 0
-    ) {
+    }
+    if (getResend() === "second" && reduxMin === 0 && reduxSeconds === 0) {
       setMin(1);
       setSeconds(0);
-    } else if (
-      getResend() === "third" &&
-      reduxMin === 0 &&
-      reduxSeconds === 0
-    ) {
+    }
+
+    if (getResend() === "third" && reduxMin === 0 && reduxSeconds === 0) {
       setMin(15);
       setSeconds(0);
       setError(() => form_validation.resend.wait);
@@ -131,7 +126,9 @@ const CodeVerification = (props) => {
   }, [min]);
 
   useEffect(() => {
-    user_obj.seconds = seconds;
+    if (seconds > 0) {
+      user_obj.seconds = seconds;
+    }
   }, [seconds]);
 
   const history = useHistory();

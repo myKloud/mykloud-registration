@@ -60,7 +60,7 @@ const Recovery = (props) => {
       setMin(reduxMin);
     }
 
-    if (reduxSeconds !== 0) {
+    if (reduxSeconds > 0) {
       setSeconds(reduxSeconds);
     }
     if (location.state && reduxMin === 0 && reduxSeconds === 0) {
@@ -101,7 +101,9 @@ const Recovery = (props) => {
   }, [min]);
 
   useEffect(() => {
-    user_obj.seconds = seconds;
+    if (seconds >= 0) {
+      user_obj.seconds = seconds;
+    }
   }, [seconds]);
 
   const nextPage = async () => {
