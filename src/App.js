@@ -8,11 +8,11 @@ import Recovery from "./components/recovery";
 import Footer from "./components/footer";
 import Verification from "./components/codeVerification";
 import Login from "./components/login";
-import Dob from "./components/DOB/";
+import Dob from "./components/DOB";
 import ForgetUserName from "./components/forgetUserName/recovery";
 import ForgetPassword from "./components/forgePassword/recovery";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { getStorage, removeStorage } from "../src/config/storage";
+import { getStorage, removeStorage } from "./config/storage";
 import Welcome from "./components/welcome";
 import pathChecker from "./pathChecker.js";
 
