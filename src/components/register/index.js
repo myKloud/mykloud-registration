@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import icon from "../../images/lock 1.svg";
+import icon from "../../assets/images/lock 1.svg";
 import { useHistory, useLocation } from "react-router-dom";
 import Input from "../common/input";
 import SelectWrapper from "../common/selectWrapper";
 import Validation from "../common/validation";
 import { setUserObj } from "../../actions/userAction";
 import Localization from "./localization";
-import { setStorage } from "../../config/storage";
+import { setStorage } from "../../shared/storage";
 import "./style.scss";
 import { checkUser } from "../../services/register";
 

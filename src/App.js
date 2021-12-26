@@ -3,7 +3,7 @@ import pathChecker from "./pathChecker.js";
 import { useHistory, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 import { React, useEffect } from "react";
-import { getStorage, removeStorage } from "./config/storage";
+import { getStorage, removeStorage } from "./shared/storage";
 
 function App(props) {
   const history = useHistory();
@@ -18,7 +18,9 @@ function App(props) {
   }, []);
 
   useEffect(() => {
+
     pathChecker(userObj, history, storage, removeStorage, location);
+
   }, [location.pathname === "/dob" || location.pathname === "/welcome"]);
 
   return (
