@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
-import blackEmailImg from "../../images/email1.png";
-import whiteEmailImg from "../../images/email2.png";
-import blackPhoneImg from "../../images/phone1.png";
-import whitePhoneImg from "../../images/phone2.png";
+import blackEmailImg from "../../assets/images/email1.png";
+import whiteEmailImg from "../../assets/images/email2.png";
+import blackPhoneImg from "../../assets/images/phone1.png";
+import whitePhoneImg from "../../assets/images/phone2.png";
 import ReactPhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Input from "../common/input";

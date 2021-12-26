@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import "./style.scss";
-import twitter from "../../images/twitter.png";
-import linked from "../../images/linked in.png";
+import twitter from "../../assets/images/twitter.png";
+import linked from "../../assets/images/linked in.png";
 import Localization from "./localization";
 
 const Footer = (props) => {

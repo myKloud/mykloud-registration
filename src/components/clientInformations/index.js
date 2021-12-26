@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import img from "../../images/birthday-date.png";
+import img from "../../assets/images/birthday-date.png";
 import Recaptcha from "react-google-recaptcha";
 import { useHistory, useLocation } from "react-router-dom";
 import Input from "../common/input";

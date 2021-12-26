@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import "./style.scss";
-import blockImg from "../../images/myKloud_icon.png";
+import blockImg from "../../assets/images/myKloud_icon.png";
 import Localization from "./localization";
 
 const Welcome = (props) => {
