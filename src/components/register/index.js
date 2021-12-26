@@ -7,7 +7,7 @@ import SelectWrapper from "../common/selectWrapper";
 import Validation from "../common/validation";
 import { setUserObj } from "../../actions/userAction";
 import Localization from "./localization";
-import { setStorage } from "../../config/storage";
+import { setStorage } from "../../shared/storage";
 import "./style.scss";
 import { checkUser } from "../../services/register";
 

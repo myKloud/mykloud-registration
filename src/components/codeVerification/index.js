@@ -9,7 +9,7 @@ import {
   setStorage,
   setResend,
   getResend,
-} from "../../config/storage";
+} from "../../shared/storage";
 import { sendOtp, signUp } from "../../services/register";
 
 let interval;
