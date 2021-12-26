@@ -14,74 +14,24 @@ import ForgetPassword from "./components/forgePassword/recovery";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { getStorage, removeStorage } from "../src/config/storage";
 import Welcome from "./components/welcome";
+import pathChecker from "./pathChecker.js";
 
 function App(props) {
-  const history = useHistory();
-  const storage = getStorage();
-  const location = useLocation();
-
-  const pathChecker = async () => {
-    const pathname = window.location.pathname;
-    const is_valid_pathname =
-      pathname === "/" ||
-      pathname === "/login" ||
-      pathname === "/forgetUser" ||
-      pathname === "/forgetPass";
-    const user_obj = props.userReducer;
-
-    if (storage && storage === "dob") {
-      return history.push({
-        pathname: `${storage}`,
-      });
-    }
-
-    if (storage && storage === "welcome") {
-      if (location.pathname === "/verification") {
-        window.location.pathname = "/register";
-        removeStorage();
-        return;
-      }
-      if (location.pathname === "/register") {
-        window.location.pathname = "/register";
-        removeStorage();
-        return;
-      }
-      if (location.pathname === "/login") {
-        window.location.pathname = "/login";
-        removeStorage();
-        return;
-      }
-
-      return history.push({
-        pathname: `${storage}`,
-      });
-    }
-
-    if (!user_obj.isvalid || is_valid_pathname) {
-      removeStorage();
-    }
-    if (is_valid_pathname) return;
-
-    if (!storage || !user_obj.isvalid) {
-      history.push({
-        pathname: "/register",
-      });
-    } else {
-      history.push({
-        pathname: `${storage}`,
-      });
-    }
-  };
+  const HISTORY = useHistory();
+  const STORAGE = getStorage();
+  const LOCATION = useLocation();
+  const USER_OBJ = props.userReducer;
 
   useEffect(() => {
     window.addEventListener("popstate", () => {
-      history.go(1);
+      HISTORY.go(1);
     });
   }, []);
 
   useEffect(() => {
-    pathChecker();
-  }, [location.pathname === "/dob" || location.pathname === "/welcome"]);
+    pathChecker(USER_OBJ, HISTORY, STORAGE, removeStorage);
+  }, [LOCATION.pathname === "/dob" || LOCATION.pathname === "/welcome"]);
+
   return (
     <>
       <Header />
