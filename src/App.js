@@ -6,20 +6,20 @@ import { React, useEffect } from "react";
 import { getStorage, removeStorage } from "./config/storage";
 
 function App(props) {
-  const HISTORY = useHistory();
-  const STORAGE = getStorage();
-  const LOCATION = useLocation();
-  const USER_OBJ = props.userReducer;
+  const history = useHistory();
+  const storage = getStorage();
+  const location = useLocation();
+  const userObj = props.userReducer;
 
   useEffect(() => {
     window.addEventListener("popstate", () => {
-      HISTORY.go(1);
+      history.go(1);
     });
   }, []);
 
   useEffect(() => {
-    pathChecker(USER_OBJ, HISTORY, STORAGE, removeStorage);
-  }, [LOCATION.pathname === "/dob" || LOCATION.pathname === "/welcome"]);
+    pathChecker(userObj, history, storage, removeStorage, location);
+  }, [location.pathname === "/dob" || location.pathname === "/welcome"]);
 
   return (
     <>

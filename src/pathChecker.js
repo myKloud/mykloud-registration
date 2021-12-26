@@ -1,4 +1,4 @@
-const pathChecker = (user_obj, history, storage, removeStorage) => {
+const pathChecker = (userObj, history, storage, removeStorage, location) => {
   const pathname = window.location.pathname;
   const is_valid_pathname =
     pathname === "/" ||
@@ -34,12 +34,12 @@ const pathChecker = (user_obj, history, storage, removeStorage) => {
     });
   }
 
-  if (!user_obj.isvalid || is_valid_pathname) {
+  if (!userObj.isvalid || is_valid_pathname) {
     removeStorage();
   }
   if (is_valid_pathname) return;
 
-  if (!storage || !user_obj.isvalid) {
+  if (!storage || !userObj.isvalid) {
     history.push({
       pathname: "/register",
     });
