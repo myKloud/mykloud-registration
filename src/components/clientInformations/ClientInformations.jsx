@@ -6,7 +6,7 @@ import previous from "./previous";
 import nextPage from "./nextPage";
 import validate from "./validate";
 import dobValidation from "./dobValidation";
-import "./style.scss";
+import "./ClientInformations.scss";
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import Recaptcha from "react-google-recaptcha";
