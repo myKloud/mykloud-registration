@@ -9,7 +9,7 @@ const validateHandler = (
   confirmPassword,
   isExist
 ) => {
-  const isValid_username = validate(
+  const isValidUsername = validate(
     formValidation.username,
     user,
     setUserMessage,
@@ -20,7 +20,7 @@ const validateHandler = (
     confirmPassword,
     isExist
   );
-  const isValid_password = validate(
+  const isValidPassword = validate(
     formValidation.password,
     password,
     setUserMessage,
@@ -31,7 +31,7 @@ const validateHandler = (
     confirmPassword,
     isExist
   );
-  const isValid_confirm_password = validate(
+  const isValidConfirmPassword = validate(
     formValidation.confirmPassword,
     confirmPassword,
     setUserMessage,
@@ -44,7 +44,7 @@ const validateHandler = (
   );
 
   return (
-    isValid_username && isValid_password && isValid_confirm_password && !isExist
+    isValidUsername && isValidPassword && isValidConfirmPassword && !isExist
   );
 };
 

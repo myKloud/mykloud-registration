@@ -6,6 +6,7 @@ import previous from "./previous";
 import nextPage from "./nextPage";
 import validate from "./validate";
 import dobValidation from "./dobValidation";
+import formValidation from "./formValidation";
 import "./ClientInformations.scss";
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
@@ -31,34 +32,6 @@ const ClientInformations = (props) => {
   const [yearMessage, setYearMessage] = useState("");
   const [dateOfBirthMessage, setDateOfBirthMessage] = useState("");
   const [captchaMessage, setCaptchaMessage] = useState("");
-  const formValidation = {
-    firstName: {
-      name: "firstName",
-      required: Localization.validation.firstName.required,
-    },
-    lastName: {
-      name: "lastName",
-      required: Localization.validation.lastName.required,
-    },
-    name: {
-      requiredBoth: Localization.validation.name.requiredBoth,
-    },
-    month: {
-      name: "month",
-    },
-    year: {
-      name: "year",
-      format: Localization.validation.year.format,
-    },
-    birthDay: {
-      required: Localization.validation.birthDay.required,
-      notValid: Localization.validation.birthDay.notValid,
-      minimum: 13,
-    },
-    captcha: {
-      required: Localization.validation.captcha.required,
-    },
-  };
 
   const verifyCallback = (response) => {
     if (response) {
