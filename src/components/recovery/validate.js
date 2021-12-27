@@ -7,7 +7,6 @@ const validate = (input, value, setEmailMessage, setNumberMessage) => {
 
   if (input.name === "email") {
     setEmailMessage("");
-
     if (!value.length) {
       setEmailMessage(input.required);
       isValid = false;

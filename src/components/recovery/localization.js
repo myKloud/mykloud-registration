@@ -20,9 +20,11 @@ const Localization = new LocalizedStrings({
         required: "Please enter valid email address ”name@",
         redundant:
           "Please enter secondary email address, that is not myKloud email",
+        isExist: "User with this email already exists.",
       },
       number: {
         required: "Please enter valid phone number or change the country code",
+        isExist: "User with this phone number already exists.",
       },
     },
   },

@@ -1,4 +1,4 @@
-import { sendOtp } from "../../services/register";
+import { sendOtp, checkRecovery } from "../../services/register";
 import { generateOTP } from "../../shared/util";
 import { setOTP } from "../../actions/otpAction";
 import { setStorage, getResend, setResend } from "../../shared/storage";
@@ -11,43 +11,56 @@ const nextPage = async (
   email,
   number,
   props,
-  history
+  history,
+  setEmailMessage,
+  setNumberMessage,
+  formValidation
 ) => {
   const isValid = validateHandler();
   if (isValid) {
     userObj.method = method;
     userObj.recovery = method !== "phone" ? email : `+${number}`;
-
     const otp = generateOTP();
-
     props.dispatch(setOTP(otp));
     await setUserObj(userObj);
     setStorage("verification");
-
     let send = false;
+    let check = false;
 
-    send = await sendOtp({
-      value: method !== "phone" ? email : `+${number}`,
-      otp: otp,
-    });
+    check = await checkRecovery(method !== "phone" ? email : `+${number}`);
 
-    if (getResend()) {
+    if (!check.exists) {
+      send = await sendOtp({
+        value: method !== "phone" ? email : `+${number}`,
+        otp: otp,
+      });
+    } else {
+      if (method !== "phone") {
+        setEmailMessage(formValidation.email.isExist);
+      } else {
+        setNumberMessage(formValidation.number.isExist);
+      }
+    }
+
+    if (getResend() && send.status === 200) {
       if (getResend() === "second") {
         setResend("third");
       } else if (getResend() === "first") {
         setResend("second");
       }
-    } else {
+    } else if (send.status === 200) {
       setResend("first");
     }
 
-    history.push({
-      pathname: "/verification",
-      state: {
-        value: method !== "phone" ? email : `+${number}`,
-        method: method,
-      },
-    });
+    if (!check.exists) {
+      history.push({
+        pathname: "/verification",
+        state: {
+          value: method !== "phone" ? email : `+${number}`,
+          method: method,
+        },
+      });
+    }
   }
 };
 

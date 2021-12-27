@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
-import nextPage from "./nextPage";
-import validate from "./validate";
-import formValidation from "./formValidation";
-import Input from "../common/input";
-import Validation from "../common/validation";
-import Localization from "./localization";
-import {getResend } from "../../shared/storage";
 import blackEmailImg from "../../assets/images/email1.png";
 import whiteEmailImg from "../../assets/images/email2.png";
 import blackPhoneImg from "../../assets/images/phone1.png";
 import whitePhoneImg from "../../assets/images/phone2.png";
-import "./Recovery.scss";
 import ReactPhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import Input from "../common/input";
+import Validation from "../common/validation";
+import Localization from "./localization";
+import {  getResend } from "../../shared/storage";
+import "./Recovery.scss";
+import nextPage from "./nextPage"
+import formValidation from "./formValidation"
+import validate from "./validate"
 
 let interval;
 const Recovery = (props) => {
@@ -39,11 +39,11 @@ const Recovery = (props) => {
 
   useEffect(() => {
     const resendStorage = getResend();
-    if (reduxMin !== 0) {
+    if (reduxMin >= 0) {
       setMin(reduxMin);
     }
 
-    if (reduxSeconds > 0) {
+    if (reduxSeconds >= 0) {
       setSeconds(reduxSeconds);
     }
     if (location.state && reduxMin === 0 && reduxSeconds === 0) {
@@ -88,10 +88,11 @@ const Recovery = (props) => {
     }
   }, [seconds]);
 
+
   const validateHandler = () => {
     const isValidEmail = validate(formValidation.email, email ,
         setEmailMessage,
-        setNumberMessage);
+        setNumberMessage  );
     const isValidNumber = validate(formValidation.number, number ,
         setEmailMessage,
         setNumberMessage);
@@ -104,6 +105,8 @@ const Recovery = (props) => {
     setEmailMessage("");
     setMethod(type);
   };
+
+
 
   return (
     <>
@@ -223,7 +226,7 @@ const Recovery = (props) => {
                 </button>
               </>
             ) : (
-              <button className="next_btn" onClick={() => nextPage(validateHandler, userObj , method , email , number , props, history)}>
+              <button className="next_btn" onClick={() => nextPage(validateHandler, userObj , method , email , number , props, history , setEmailMessage , setNumberMessage , formValidation)}>
                 {Localization.send_code}
               </button>
             )}
