@@ -76,9 +76,17 @@ const Recovery = (props) => {
     if (seconds === 0 && min === 0 && isTimer) {
       clearInterval(interval);
     }
-    userObj.min = min;
-    userObj.seconds = seconds;
   }, [seconds, min]);
+
+  useEffect(() => {
+    userObj.min = min;
+  }, [min]);
+
+  useEffect(() => {
+    if (seconds >= 0) {
+      userObj.seconds = seconds;
+    }
+  }, [seconds]);
 
   const validateHandler = () => {
     const isValidEmail = validate(formValidation.email, email ,

@@ -3,7 +3,7 @@ import Register from "./components/register";
 import ClientInformations from "./components/clientInformations";
 import Recovery from "./components/recovery";
 import Footer from "./components/footer";
-import Verification from "./components/codeVerification";
+import Verification from "./components/verification";
 import Login from "./components/login";
 import Dob from "./components/DOB";
 import ForgetUserName from "./components/forgetUserName/recovery";
