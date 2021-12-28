@@ -1,6 +1,7 @@
 // To push the user to next page
+import { cache } from "../../services/register";
 
-const nextPage = (
+const nextPage = async (
   setSubmit,
   validateHandler,
   userObj,
@@ -38,6 +39,9 @@ const nextPage = (
     userObj.isValid = true;
     setUserObj(userObj);
     setStorage("info");
+
+    const addCache = await cache(`${userObj.username}${userObj.mail}`);
+    console.log(addCache);
 
     history.push({
       pathname: "/info",
