@@ -27,14 +27,10 @@ const validate = (
         setLastNameMessage(input.required);
         setNameMessage(formValidation.name.requiredBoth);
       }
-
       isValid = false;
-    } else if (value.length) {
-      if (!lastName.length) {
-        setLastNameMessage(input.required);
-        setNameMessage(formValidation.name.requiredBoth);
-        isValid = false;
-      }
+    } else if (!lastName.length) {
+      setLastNameMessage(formValidation.lastName.required);
+      setNameMessage(formValidation.lastName.required);
     }
   }
 
@@ -50,14 +46,10 @@ const validate = (
         setFirstNameMessage(input.required);
         setNameMessage(formValidation.name.requiredBoth);
       }
-
       isValid = false;
-    } else if (value.length) {
-      if (!firstName.length) {
-        setFirstNameMessage(input.required);
-        setNameMessage(formValidation.name.requiredBoth);
-        isValid = false;
-      }
+    } else if (!firstName.length) {
+      setFirstNameMessage(formValidation.firstName.required);
+      setNameMessage(formValidation.firstName.required);
     }
   }
 

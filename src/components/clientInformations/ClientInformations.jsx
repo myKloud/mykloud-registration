@@ -32,6 +32,7 @@ const ClientInformations = (props) => {
   const [yearMessage, setYearMessage] = useState("");
   const [dateOfBirthMessage, setDateOfBirthMessage] = useState("");
   const [captchaMessage, setCaptchaMessage] = useState("");
+  const [submit , setSubmit] = useState(false);
 
   const verifyCallback = (response) => {
     if (response) {
@@ -144,6 +145,7 @@ const ClientInformations = (props) => {
                   value={firstName}
                   onChange={(e) => {
                     setFirstName(e);
+                    if (submit){
                     validate(
                       formValidation.firstName,
                       e,
@@ -157,6 +159,7 @@ const ClientInformations = (props) => {
                       setYearMessage,
                       formValidation
                     );
+                  }
                   }}
                   autoFocus={true}
                   placeholder={Localization.firstname_placeholder}
@@ -169,6 +172,7 @@ const ClientInformations = (props) => {
                   value={lastName}
                   onChange={(e) => {
                     setLastName(e);
+                    if (submit){
                     validate(
                       formValidation.lastName,
                       e,
@@ -181,7 +185,7 @@ const ClientInformations = (props) => {
                       lastName,
                       setYearMessage,
                       formValidation
-                    );
+                    );}
                   }}
                   placeholder={Localization.lastname_placeholder}
                   className={`${lastNameMessage && "validation"}`}
@@ -200,6 +204,7 @@ const ClientInformations = (props) => {
                   disabled={false}
                   onChange={(e) => {
                     setMonth(e);
+                    if (submit){
                     validate(
                       formValidation.month,
                       e,
@@ -212,7 +217,7 @@ const ClientInformations = (props) => {
                       lastName,
                       setYearMessage,
                       formValidation
-                    );
+                    );}
                   }}
                   containerClassName="mr-4"
                   className={`${monthMessage && "validation"}`}
@@ -223,6 +228,7 @@ const ClientInformations = (props) => {
                   value={year}
                   onChange={(e) => {
                     setYear(e);
+                    if (submit){
                     validate(
                       formValidation.year,
                       e,
@@ -235,7 +241,7 @@ const ClientInformations = (props) => {
                       lastName,
                       setYearMessage,
                       formValidation
-                    );
+                    );}
                   }}
                   onBlur={handleYearDigits}
                   className={`${yearMessage && "validation"}`}
@@ -269,7 +275,8 @@ const ClientInformations = (props) => {
               </p>
               <button
                 className="next"
-                onClick={() =>
+                onClick={() =>{
+                  setSubmit(true)
                   nextPage(
                     validateHandler,
                     dobValidation,
@@ -283,6 +290,7 @@ const ClientInformations = (props) => {
                     year,
                     formValidation
                   )
+                }
                 }
               >
                 {Localization.create_account}

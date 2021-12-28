@@ -37,7 +37,7 @@ const Recovery = (props) => {
     Localization.setLanguage(lang);
   }, [props.languageReducer.lang]);
 
-  useEffect(() => {
+  const checkResend = ()=>{
     const resendStorage = getResend();
     if (reduxMin >= 0) {
       setMin(reduxMin);
@@ -66,16 +66,26 @@ const Recovery = (props) => {
       setIsTimer(true);
       setSeconds((seconds) => seconds - 1);
     }, 1000);
+  }
+  
+  useEffect(() => {
+    checkResend()
   }, []);
 
+  
+
   useEffect(() => {
-    if (seconds < 0 && min > 0) {
-      setMin((min) => min - 1);
-      setSeconds(59);
+    const changeTimer =()=> {
+      if (seconds < 0 && min > 0) {
+        setMin((min) => min - 1);
+        setSeconds(59);
+      }
+      if (seconds === 0 && min === 0 && isTimer) {
+        clearInterval(interval);
+      }
     }
-    if (seconds === 0 && min === 0 && isTimer) {
-      clearInterval(interval);
-    }
+    
+    changeTimer()
   }, [seconds, min]);
 
   useEffect(() => {

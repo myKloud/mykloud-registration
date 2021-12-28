@@ -15,13 +15,11 @@ function App(props) {
     window.addEventListener("popstate", () => {
       history.go(1);
     });
-  }, []);
+  }, [history]);
 
   useEffect(() => {
-
     pathChecker(userObj, history, storage, removeStorage, location);
-
-  }, [location.pathname === "/dob" || location.pathname === "/welcome"]);
+  }, []);
 
   return (
     <>

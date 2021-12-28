@@ -15,7 +15,7 @@ import resendCode from "./resendCode"
 let interval;
 const Verification = (props) => {
   const userObj = props.userReducer;
-  const recovery = props.recovery || userObj.recovery || "01012345678";
+  const recovery = userObj.recovery || props.recovery  || "01012345678";
   const [seconds, setSeconds] = useState(0);
   const [min, setMin] = useState(0);
   const [code, setCode] = useState("");
@@ -31,7 +31,7 @@ const Verification = (props) => {
     Localization.setLanguage(lang);
   }, [props.languageReducer.lang, userObj.recovery]);
 
-  useEffect(() => {
+  const checkResend = ()=>{
     if (reduxMin !== 0) {
       setMin(reduxMin);
     }
@@ -59,6 +59,10 @@ const Verification = (props) => {
       setIsTimer(true);
       setSeconds((seconds) => seconds - 1);
     }, 1000);
+  }
+
+  useEffect(() => {
+    checkResend()
   }, []);
 
   useEffect(() => {
