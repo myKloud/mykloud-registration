@@ -30,9 +30,9 @@ const Localization = new LocalizedStrings({
       password: {
         required: "Enter password",
         length:
-          "Use 8 or more characters with a mix of letters, numbers & symbols",
+          "Use 8 or more characters with a mix of at least one capital letter, number & symbol",
         pattern:
-          "Use 8 or more characters with a mix of letters, numbers & symbols",
+          "Use 8 or more characters with a mix of at least one capital letter, number & symbol",
       },
 
       confirmPassword: {
