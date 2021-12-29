@@ -1,6 +1,4 @@
 import { sendOtp, checkRecovery } from "../../services/register";
-import { generateOTP } from "../../shared/util";
-import { setOTP } from "../../actions/otpAction";
 import { setStorage, getResend, setResend } from "../../shared/storage";
 import { setUserObj } from "../../actions/userAction";
 
@@ -20,8 +18,6 @@ const nextPage = async (
   if (isValid) {
     userObj.method = method;
     userObj.recovery = method !== "phone" ? email : `+${number}`;
-    const otp = generateOTP();
-    props.dispatch(setOTP(otp));
     await setUserObj(userObj);
     setStorage("verification");
     let send = false;
@@ -32,7 +28,7 @@ const nextPage = async (
     if (!check.exists) {
       send = await sendOtp({
         value: method !== "phone" ? email : `+${number}`,
-        otp: otp,
+        type: method !== "phone" ? 0 : 1,
       });
     } else {
       if (method !== "phone") {
@@ -47,9 +43,9 @@ const nextPage = async (
         setResend("third");
       } else if (getResend() === "first") {
         setResend("second");
+      } else {
+        setResend("first");
       }
-    } else if (send.status === 200) {
-      setResend("first");
     }
 
     if (!check.exists) {

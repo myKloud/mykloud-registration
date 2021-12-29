@@ -1,5 +1,5 @@
-import { removeStorage, setStorage } from "../../shared/storage";
-import { signUp } from "../../services/register";
+import { setStorage } from "../../shared/storage";
+import { signUp, verifyOtp } from "../../services/register";
 
 const register = async (userObj) => {
   const response = await signUp({
@@ -12,6 +12,11 @@ const register = async (userObj) => {
   return response;
 };
 
+const verify = async (recovery, code) => {
+  const response = await verifyOtp({ value: recovery, otp: code });
+  return response;
+};
+
 const verifyCode = (
   history,
   code,
@@ -21,7 +26,6 @@ const verifyCode = (
   formValidation,
   userObj
 ) => {
-  removeStorage();
   if (props.push) {
     history.push({
       pathname: props.push,
@@ -32,7 +36,7 @@ const verifyCode = (
   }
 
   // TODO
-  if (`${otp.otp}` === code) {
+  if (verify(userObj.recovery, code) === "validated successfully") {
     setStorage("welcome");
     setError("");
     register(userObj)

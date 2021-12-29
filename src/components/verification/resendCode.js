@@ -3,7 +3,6 @@ import { sendOtp } from "../../services/register";
 
 const resendCode = (
   userObj,
-  otp,
   setIsTimer,
   setSeconds,
   setMin,
@@ -13,7 +12,7 @@ const resendCode = (
 ) => {
   sendOtp({
     value: userObj.recovery,
-    otp: otp.otp,
+    type: userObj.method !== "phone" ? 0 : 1,
   });
 
   interval = setInterval(() => {
