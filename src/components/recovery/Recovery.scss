@@ -1,6 +1,16 @@
 @import "../../css/variables.scss";
 
 .recovery_container {
+  h1::after {
+    content: "👋";
+    font-weight: 300;
+  }
+
+  .error {
+    margin-bottom: 19px;
+    height: 19px;
+  }
+
   .form_subtitle {
     font-family: "Poppins";
     font-weight: 400;
@@ -15,7 +25,7 @@
   }
   .form_sub_title {
     margin-bottom: 1rem !important;
-    font-weight: 700 !important;
+    font-weight: 500 !important;
   }
 
   .button_container {
@@ -32,28 +42,20 @@
     align-items: center;
     color: $text_bold_color;
     box-shadow: 0 4px 14px 1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
   }
 
   .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 36px;
     height: 36px;
-    border-radius: 4px;
     margin-right: 0.8125rem;
-    border: solid 2px;
   }
   .selected {
     box-shadow: 0 4px 14px 1px rgba(27, 115, 209, 0.12);
     background-color: #f5f9ff;
     border: solid 1px $primary_color;
     color: $primary_color;
-  }
-
-  .white_img {
-    background-color: $primary_color;
-    border: solid 2px $primary_color;
+    cursor: default;
   }
 
   .text {
@@ -86,9 +88,11 @@
   }
 
   .note {
+    height: 19px;
     font-size: 14px;
     font-family: "open Sans";
     color: #45536c;
+    margin-bottom: 22px !important;
   }
 
   .next_btn {
@@ -98,6 +102,10 @@
     background-color: $primary_color;
     font-size: 16px;
     color: $primary_color_visa;
+  }
+
+  .next_btn:hover {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   }
 
   ::placeholder {
@@ -112,11 +120,45 @@
   .phone_input:focus {
     border: solid 1px #445da7;
   }
+
+  .phone_input:enabled {
+    border: solid 1px #445da7;
+  }
+
+  .phone_input:enabled + .country_dropdown {
+    border: solid 1px #445da7;
+  }
+
   .phone_input:focus + .country_dropdown {
     border: solid 1px #445da7;
   }
 
+  .timer {
+    width: 100%;
+    cursor: default;
+    height: 64px;
+    border-radius: 6px;
+    background-color: rgba(27, 115, 209, 0.3);
+    font-size: 16px;
+    font-family: "Poppins";
+    font-weight: 500;
+    color: #1b1616;
+  }
+
   @media only screen and (max-width: 767px) {
+    .form_title {
+      margin-bottom: 20px !important;
+    }
+
+    .error {
+      margin-bottom: 18px;
+      height: 18px;
+    }
+
+    .button_container {
+      margin-bottom: 20px !important;
+    }
+
     .form_subtitle {
       text-align: left;
       line-height: normal;
@@ -134,6 +176,7 @@
 
     .select_button {
       height: 56px;
+      box-shadow: 0 4px 14px 1px rgba(0, 0, 0, 0.04) !important;
     }
     .mr-4 {
       margin-right: 10px;
@@ -147,6 +190,8 @@
 
     .text {
       font-size: 14px;
+      font-family: "open sans";
+      height: 19px;
     }
     .recovery_input {
       font-size: 12px;
@@ -159,10 +204,20 @@
     .note {
       font-size: 13px;
       margin-bottom: 20px;
+      height: 18px;
     }
 
     .next_btn {
       height: 56px;
+    }
+
+    .timer {
+      height: 56px;
+    }
+
+    .selected {
+      background-color: #e2f4ff;
+      box-shadow: 0 4px 14px 1px rgba(0, 0, 0, 0.04) !important;
     }
   }
 }

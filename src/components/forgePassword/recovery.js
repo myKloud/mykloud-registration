@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Input from "../common/input";
 import "./style.scss";
-import Verification from "../codeVerification";
+import Verification from "../verification";
 import Reset from "./reset";
 import { connect } from "react-redux";
 import Localization from "./localization";
@@ -19,8 +19,10 @@ const Recovery = (props) => {
     setStage("verification");
   };
 
-  const { lang } = props.languageReducer;
-  Localization.setLanguage(lang);
+  useEffect(() => {
+    const lang = props.languageReducer.lang;
+    Localization.setLanguage(lang);
+  }, [props.languageReducer.lang]);
 
   const recovery = () => {
     return (

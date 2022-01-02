@@ -5,6 +5,12 @@
     line-height: 1.56;
     color: #45536c;
     text-align: center;
+    height: 27px;
+  }
+
+  .icon {
+    height: 14px;
+    margin-top: 2.37px;
   }
 
   .user_name {
@@ -34,6 +40,7 @@
     justify-content: center;
     align-items: center;
     padding: 0 8px;
+    cursor: pointer;
   }
   .note {
     font-family: "Open Sans";
@@ -48,7 +55,6 @@
     right: 10px;
     top: 5px;
     padding: 10px;
-    color: $primary_color;
     background-color: $primary_color_visa;
     text-align: left;
     border: none;
@@ -70,15 +76,26 @@
     color: $primary_color_visa;
   }
 
+  .next_btn:hover {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  .password-mask {
+    -webkit-text-security: disc;
+    -moz-webkit-text-security: disc;
+    -moz-text-security: disc;
+  }
+
   .safe_message {
     display: flex;
     justify-content: center;
   }
 
   .info {
+    height: 16px;
     font-family: "Open Sans";
     font-size: 12px;
-
+    font-weight: normal;
     text-align: center;
     color: $text_color;
   }
@@ -95,7 +112,8 @@
       text-align: left;
       font-size: 14px;
       margin-bottom: 1.5rem !important;
-      color: black;
+      color: #1b1616;
+      height: 21px;
     }
 
     .next_btn {
@@ -107,9 +125,11 @@
     .domain {
       font-weight: normal;
       background-color: #e2f4ff;
+      font-weight: 500 !important;
     }
 
     .note {
+      height: 16px;
       width: 324px;
       font-size: 12px;
     }

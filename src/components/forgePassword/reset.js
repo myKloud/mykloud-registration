@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Input from "../common/input";
 import "./style.scss";
@@ -12,8 +12,10 @@ const Reset = (props) => {
     history.push("/login");
   };
 
-  const { lang } = props.languageReducer;
-  Localization.setLanguage(lang);
+  useEffect(() => {
+    const lang = props.languageReducer.lang;
+    Localization.setLanguage(lang);
+  }, [props.languageReducer.lang]);
 
   return (
     <div className="form_container forget_password_form">

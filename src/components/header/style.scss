@@ -1,19 +1,27 @@
 @import "../../css/variables.scss";
-
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+}
 .header_container {
   display: flex;
   justify-content: space-between;
+  margin-left: 56px !important;
+  margin-right: 56px !important;
+  margin-top: 34px !important;
+  margin-bottom: 20px !important;
 
   .mykloud_logo {
     width: 150px;
     height: 54px;
-    background-image: url(../../images/myKloud_logo.png);
+    background-image: url(../../assets/images/myKloud_logo.png);
     background-repeat: no-repeat;
     background-size: 150px;
     cursor: pointer;
   }
 
   .right_side {
+    width: 338.25px;
     display: flex;
     align-items: center;
   }
@@ -38,21 +46,36 @@
     cursor: pointer;
   }
   :hover.signin_btn {
-    background-color: $primary_color;
-    color: $primary_color_visa;
+    background-color: rgba(100, 159, 219, 0.1);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   }
 
   @media only screen and (max-width: 767px) {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+    margin-bottom: -7px !important;
+
     .mykloud_logo {
-      background-image: url(../../images/app-logo.png);
-      background-size: 45px;
+      background-image: url(../../assets/images/app-logo.png);
+      background-size: 32px;
+      width: 32.5px;
+      height: 32px;
     }
 
+    .right_side {
+      width: auto;
+    }
+
+    .signin_btn {
+      width: auto !important;
+      height: 20px;
+    }
     .right_text {
       display: none;
     }
 
     .signin_btn {
+      appearance: none !important;
       width: 84px;
       font-size: 14px;
       border: none;
@@ -61,6 +84,7 @@
     .signin_btn:hover {
       background-color: white !important;
       color: #1565d8 !important;
+      box-shadow: none !important;
     }
   }
 }

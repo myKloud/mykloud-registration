@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Input from "../common/input";
 import "./style.scss";
 import { connect } from "react-redux";
@@ -9,8 +9,10 @@ const Fullname = (props) => {
     props.setStage("verification");
   };
 
-  const { lang } = props.languageReducer;
-  Localization.setLanguage(lang);
+  useEffect(() => {
+    const lang = props.languageReducer.lang;
+    Localization.setLanguage(lang);
+  }, [props.languageReducer.lang]);
 
   return (
     <div className="form_container forget_user_form">
