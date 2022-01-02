@@ -3,11 +3,12 @@
 .verification_container {
   .container {
     height: 80px;
+    margin-bottom: 15px;
   }
 
   .subtitle {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500 !important;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
@@ -21,12 +22,20 @@
     font-family: "poppins";
     color: $text_bold_color;
     border: solid 1px #dcdce7;
-    font-weight: bold;
+    font-weight: 500;
     border-radius: 6px;
     margin-left: 14px;
+    cursor: pointer;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
   }
 
   .timer {
+    height: 20px;
     font-size: 16px;
     font-weight: 500;
     margin-top: 1px;
@@ -35,17 +44,60 @@
   .character:first-child {
     margin-left: 0;
   }
-
   .character--selected {
     border: 1px solid #445da7;
   }
 
+  .character--selected::after {
+    content: "|";
+    font-weight: 400;
+    animation: blinker 1.5s linear infinite;
+  }
+
+  .character:hover {
+    border: 1px solid #445da7;
+  }
+
+  .character:not(:empty) {
+    border: 1px solid #445da7;
+  }
+
+  .character:not(:empty)::after {
+    content: "";
+    color: red !important;
+  }
+
+  .character--selected:not(:empty)::after {
+    content: "";
+  }
+
+  .errorCharacter {
+    line-height: 79.9px;
+    font-size: 25px;
+    font-family: "poppins";
+    color: $text_bold_color;
+    border: solid 1px #dcdce7;
+    font-weight: 500;
+    border-radius: 6px;
+    margin-left: 14px;
+  }
+
+  .errorCharacter:first-child {
+    margin-left: 0;
+  }
+
+  .errorCharacter:not(:empty) {
+    border: 1px solid rgba(235, 18, 18, 0.84);
+  }
+
   .info {
+    height: 20px;
     font-size: 16px !important;
     font-family: "open sans" !important;
   }
 
   .action {
+    height: 20px;
     font-size: 16px !important;
     color: #1565d8 !important;
     font-weight: 500 !important;
@@ -53,6 +105,8 @@
   }
 
   .pre {
+    height: 20px;
+    margin-top: 22px;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
@@ -72,6 +126,10 @@
     cursor: pointer;
   }
 
+  .verify:hover {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  }
+
   ::placeholder {
     color: #8692a6;
     font-weight: 400;
@@ -81,15 +139,30 @@
     border: solid 1px #445da7;
   }
 
+  .error {
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: rgba(235, 18, 18, 0.84);
+  }
+
   @media only screen and (max-width: 767px) {
     .form_wrapper {
       width: 100% !important;
     }
 
+    .error {
+      font-size: 12px;
+    }
+
     .subtitle {
       text-align: left;
       font-size: 20px;
-      font-weight: bold;
+      font-weight: 500 !important;
       margin-bottom: 24px !important;
     }
 
@@ -98,6 +171,13 @@
     }
 
     .character {
+      cursor: pointer;
+      line-height: 56px;
+      font-size: 16px;
+      margin-left: 8px;
+    }
+
+    .errorCharacter {
       cursor: pointer;
       line-height: 56px;
       font-size: 16px;
@@ -123,6 +203,10 @@
     .verify {
       width: 143px;
       height: 56px;
+    }
+
+    .timer {
+      font-size: 14px;
     }
   }
 }

@@ -1,7 +1,7 @@
 @import "./variables.scss";
 
 body {
-  background-image: url("../images/back.png");
+  background-image: url("../assets/images/back.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: $text_bold_color;
@@ -38,22 +38,24 @@ body {
   }
 
   .input_wrapper {
-    padding-left: 27px;
-    padding-right: 27px;
+    padding-left: 26px;
+    padding-right: 26px;
   }
 
   .form_title {
     color: $text_bold_color;
     font-size: 32px;
-    font-weight: bold;
+    font-weight: 500;
     text-align: center;
+    height: 48px;
   }
 
   .form_sub_title {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     color: $text_bold_color;
     margin-bottom: 0.5rem;
+    height: 27px;
   }
 
   .input-container {
@@ -71,10 +73,10 @@ body {
       background-color: white;
       font-family: "Poppins";
       font-size: 18px;
-      font-weight: 600;
+      font-weight: 500;
       color: $text_bold_color;
       outline: none;
-      padding-top: 7px;
+      padding-top: 10px;
 
       &:focus {
         border: solid 1px #445da7;
@@ -96,12 +98,12 @@ body {
     }
 
     &:focus-within .form_label {
-      transform: translate(0, 5px) scale(0.8);
+      transform: translate(0, 8px) scale(0.8);
       color: $placeholder;
     }
 
     .filled {
-      transform: translate(0, 5px) scale(0.8);
+      transform: translate(0, 8px) scale(0.8);
     }
   }
 }
@@ -136,6 +138,7 @@ body {
     border-color: transparent;
     border-width: 0;
     box-shadow: none;
+    cursor: pointer;
 
     &:hover {
       border-color: transparent;
@@ -152,5 +155,10 @@ body {
 
   .css-26l3qy-menu {
     width: 150px;
+    cursor: pointer;
+
+    .css-4ljt47-MenuList > div {
+      cursor: pointer;
+    }
   }
 }
