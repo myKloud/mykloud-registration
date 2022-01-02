@@ -25,24 +25,25 @@ export async function sendOtp(recovery) {
     recoveryType: recovery.type,
   };
   const { data } = await http.post(apiEndPointSendOtp, info);
-  console.log(data);
   return data;
 }
 
 export async function verifyOtp(recovery) {
-  const param = `?recovery=${recovery.value}&otp=${recovery.otp}`;
+  const param = `?recovery=${recovery.value}&code=${recovery.otp}`;
   const { data } = await http.get(`${apiEndPointVerifyOtp}${param}`);
   return data.message;
 }
 
 export async function signUp(informations) {
-  const { username, firstName, lastName, password, recovery } = informations;
+  const { username, firstName, lastName, password, recovery, recoveryType } =
+    informations;
   const info = {
     username,
     firstName,
     lastName,
     password,
     recovery,
+    recoveryType,
   };
 
   const { data } = await http.post(apiEndPointSignup, info);

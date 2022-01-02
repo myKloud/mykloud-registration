@@ -8,9 +8,9 @@ import formValidation from "./formValidation";
 import verifyCode from "./verifyCode";
 import previous from "./previous";
 import {
-  getResend,
+   setResend, getResend 
 } from "../../shared/storage";
-import resendCode from "./resendCode"
+import { sendOtp } from "../../services/register";
 
 let interval;
 const Verification = (props) => {
@@ -25,6 +25,35 @@ const Verification = (props) => {
   const otp = props.otpReducer;
   let reduxMin = userObj.min;
   let reduxSeconds = userObj.seconds;
+
+
+
+const resendCode = () => {
+  sendOtp({
+    value: userObj.recovery,
+    type: userObj.method !== "phone" ? 0 : 1,
+  });
+
+  interval = setInterval(() => {
+    setIsTimer(true);
+    setSeconds((seconds) => seconds - 1);
+  }, 1000);
+
+  if (getResend() === "first") {
+    setResend("second");
+    setMin(1);
+    setSeconds(0);
+  } else if (getResend() === "second") {
+    setResend("third");
+    setMin(15);
+    setSeconds(0);
+    setError(() => formValidation.resend.wait);
+  } else if (getResend() === "third") {
+    setMin(15);
+    setSeconds(0);
+    setError(() => formValidation.resend.wait);
+  }
+};
 
   useEffect(() => {
     const lang = props.languageReducer.lang;
@@ -117,7 +146,7 @@ const Verification = (props) => {
                 </>
               ) : (
                 <>
-                  <p className="action" onClick={() => resendCode(userObj , otp , setIsTimer , setSeconds ,setMin , setError , formValidation , interval)}>
+                  <p className="action" onClick={() => resendCode()}>
                     {Localization.resend}
                   </p>
                 </>

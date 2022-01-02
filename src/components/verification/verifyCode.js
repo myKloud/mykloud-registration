@@ -8,6 +8,7 @@ const register = async (userObj) => {
     lastName: userObj.lastname,
     password: userObj.password,
     recovery: userObj.recovery,
+    recoveryType: userObj.method === "email" ? 1 : 0,
   });
   return response;
 };
@@ -17,7 +18,7 @@ const verify = async (recovery, code) => {
   return response;
 };
 
-const verifyCode = (
+const verifyCode = async (
   history,
   code,
   props,
@@ -26,6 +27,8 @@ const verifyCode = (
   formValidation,
   userObj
 ) => {
+  let check = await verify(userObj.recovery, code);
+
   if (props.push) {
     history.push({
       pathname: props.push,
@@ -35,7 +38,7 @@ const verifyCode = (
     props.setStage("reset");
   }
 
-  if (verify(userObj.recovery, code) === "validated successfully") {
+  if (check === "Valid OTP") {
     setStorage("welcome");
     setError("");
     register(userObj)

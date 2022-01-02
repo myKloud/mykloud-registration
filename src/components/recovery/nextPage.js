@@ -41,14 +41,14 @@ const nextPage = async (
       }
     }
 
-    if (getResend() && send.status === 200) {
+    if (getResend()) {
       if (getResend() === "second") {
         setResend("third");
       } else if (getResend() === "first") {
         setResend("second");
-      } else {
-        setResend("first");
       }
+    } else {
+      setResend("first");
     }
 
     if (!check.exists) {
