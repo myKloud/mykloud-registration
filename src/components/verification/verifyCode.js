@@ -8,7 +8,7 @@ const register = async (userObj) => {
     lastName: userObj.lastname,
     password: userObj.password,
     recovery: userObj.recovery,
-    recoveryType: userObj.method === "email" ? 1 : 0,
+    recoveryType: userObj.method === "phone" ? 0 : 1,
   });
   return response;
 };

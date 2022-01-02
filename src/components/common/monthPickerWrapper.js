@@ -26,11 +26,7 @@ const MonthPickerWrapper = (props) => {
           required={props.required || false}
           disabled={props.disabled || false}
           onChange={(month) => {
-            if (month) {
-              setValueHandler(month - 1 + 2 + "");
-            } else {
-              setValueHandler(month);
-            }
+            setValueHandler(month);
           }}
         />
 

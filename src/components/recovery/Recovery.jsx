@@ -17,8 +17,11 @@ import formValidation from "./formValidation"
 import validate from "./validate"
 
 let interval;
+
 const Recovery = (props) => {
   const location = useLocation();
+  let minutes = 15; 
+  let sec = 59;
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
   const [emailMessage, setEmailMessage] = useState("");
@@ -57,7 +60,7 @@ const Recovery = (props) => {
       }
     } else {
       if (resendStorage === "third" && reduxMin === 0 && reduxSeconds === 0) {
-        setMin(15);
+        setMin(minutes);
         setSeconds(0);
       }
     }
@@ -78,7 +81,7 @@ const Recovery = (props) => {
     const changeTimer =()=> {
       if (seconds < 0 && min > 0) {
         setMin((min) => min - 1);
-        setSeconds(59);
+        setSeconds(sec);
       }
       if (seconds === 0 && min === 0 && isTimer) {
         clearInterval(interval);
@@ -123,7 +126,7 @@ const Recovery = (props) => {
       <div className="form_container recovery_container">
         <div className="form_wrapper">
           <h1 className="form_title mb-8">
-            {Localization.title}, {props.userReducer.firstname || "client"}!{" "}
+            {Localization.title}, {props.userReducer.firstname || "client"}!
           </h1>
 
           <div className="form_sub_content">

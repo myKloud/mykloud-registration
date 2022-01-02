@@ -14,8 +14,10 @@ import { sendOtp } from "../../services/register";
 
 let interval;
 const Verification = (props) => {
+  let minutes = 15; 
+  let sec = 59;
   const userObj = props.userReducer;
-  const recovery = userObj.recovery || props.recovery  || "01012345678";
+  const recovery = userObj.recovery || props.recovery ;
   const [seconds, setSeconds] = useState(0);
   const [min, setMin] = useState(0);
   const [code, setCode] = useState("");
@@ -45,11 +47,11 @@ const resendCode = () => {
     setSeconds(0);
   } else if (getResend() === "second") {
     setResend("third");
-    setMin(15);
+    setMin(minutes);
     setSeconds(0);
     setError(() => formValidation.resend.wait);
   } else if (getResend() === "third") {
-    setMin(15);
+    setMin(minutes);
     setSeconds(0);
     setError(() => formValidation.resend.wait);
   }
@@ -79,7 +81,7 @@ const resendCode = () => {
     }
 
     if (getResend() === "third" ) {
-      setMin(15);
+      setMin(minutes);
       setSeconds(0);
       setError(() => formValidation.resend.wait);
     }
@@ -97,7 +99,7 @@ const resendCode = () => {
   useEffect(() => {
     if (seconds < 0 && min > 0) {
       setMin((min) => min - 1);
-      setSeconds(59);
+      setSeconds(sec);
     }
 
     if (seconds === 0 && min === 0 && isTimer) {
