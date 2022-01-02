@@ -23,7 +23,10 @@ const nextPage = async (
     let send = false;
     let check = false;
 
-    check = await checkRecovery(method !== "phone" ? email : `%2B${number}`);
+    check = await checkRecovery({
+      value: method !== "phone" ? email : `%2B${number}`,
+      type: method !== "phone" ? 0 : 1,
+    });
 
     if (!check.exists) {
       send = await sendOtp({

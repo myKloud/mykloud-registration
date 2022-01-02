@@ -35,7 +35,6 @@ const verifyCode = (
     props.setStage("reset");
   }
 
-  // TODO
   if (verify(userObj.recovery, code) === "validated successfully") {
     setStorage("welcome");
     setError("");

@@ -41,7 +41,6 @@ const nextPage = async (
     setStorage("info");
 
     const addCache = await cache(`${userObj.username}${userObj.mail}`);
-    console.log(addCache);
 
     history.push({
       pathname: "/info",

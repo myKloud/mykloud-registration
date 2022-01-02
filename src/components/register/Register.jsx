@@ -74,6 +74,7 @@ const Register = (props) => {
                       password , 
                       confirmPassword, 
                       isExist);
+                      setUserMessage("");
                   }}
                   onBlur={ (e) => {
                     isUserExist(e ,
@@ -123,6 +124,17 @@ const Register = (props) => {
                     password , 
                     confirmPassword, 
                     isExist);
+                    setPassMessage("")
+                    setPassConfirmMessage("")
+                }}
+                onBlur={ (e) => {
+                  validate(formValidation.password, e , setUserMessage,
+                    setPassMessage,
+                    formValidation,
+                    setPassConfirmMessage,
+                    password , 
+                    confirmPassword, 
+                    isExist);
                 }}
                 className={`extra-padding ${passMessage && "validation"} ${
                   !showPassword && "password-mask"
@@ -156,7 +168,18 @@ const Register = (props) => {
                     password , 
                     confirmPassword, 
                     isExist);
+                    setPassConfirmMessage("")
                 }}
+                onBlur={ (e) => {
+                  validate(formValidation.confirmPassword, e , setUserMessage,
+                    setPassMessage,
+                    formValidation,
+                    setPassConfirmMessage,
+                    password , 
+                    confirmPassword, 
+                    isExist);
+                }}
+
                 className={`extra-padding ${
                   passConfirmMessage && "validation"
                 } ${!showConfirmPassword && "password-mask"}`}

@@ -1,12 +1,12 @@
 // import { toast } from "react-toastify";
 import http from "./http";
 import FingerprintJS from "@fingerprintjs/fingerprintjs";
-const apiEndPointCheck = `/check`;
+const apiEndPointCheck = `/exists`;
 const apiEndPointSignup = `/signup`;
-const apiEndPointSendOtp = `/sendOTP`;
-const apiEndPointVerifyOtp = `/verify`;
-const apiEndPointCheckRecovery = `/checkRecovery`;
-const apiEndPointCache = `/cache`;
+const apiEndPointSendOtp = `/otp`;
+const apiEndPointVerifyOtp = `/verifyOtp`;
+const apiEndPointCheckRecovery = `exists`;
+const apiEndPointCache = `/cacheUsername`;
 const fpPromise = FingerprintJS.load();
 
 export async function checkUser(username) {
@@ -25,6 +25,7 @@ export async function sendOtp(recovery) {
     recoveryType: recovery.type,
   };
   const { data } = await http.post(apiEndPointSendOtp, info);
+  console.log(data);
   return data;
 }
 
@@ -50,7 +51,7 @@ export async function signUp(informations) {
 }
 
 export async function checkRecovery(value) {
-  const param = `?recovery=${value}`;
+  const param = `?recovery=${value.value}&recoveryType=${value.type}`;
   const { data } = await http.get(`${apiEndPointCheckRecovery}${param}`);
   return data;
 }
@@ -63,7 +64,9 @@ export async function cache(username) {
   const { data } = await http.post(`${apiEndPointCache}`, {
     username: username,
     fingerprint: result.visitorId,
+    expirationTime: 20,
   });
+  console.log(data);
   return data;
 }
 
