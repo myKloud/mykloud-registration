@@ -3,18 +3,18 @@ import LocalizedStrings from "react-localization";
 const Localization = new LocalizedStrings({
   en: {
     title: "Create your myKloud account",
-    sub_title: "Single access to all myKloud applications.",
+    subTitle: "Single access to all myKloud applications.",
 
     show: "show",
     hide: "hide",
     next: "Next",
 
-    username_placeholder: "Username",
+    usernamePlaceholder: "Username",
     username_validation_general:
       "Only letters (a-z), numbers (0-9) and periods(.) are allowed",
 
-    passowrd_placeholder: "Password",
-    confirm_passowrd_placeholder: "Confirm Password",
+    passowrdPlaceholder: "Password",
+    confirmPassowrdPlaceholder: "Confirm Password",
 
     msg: "Safe & secure via myKloud.",
 
@@ -24,15 +24,15 @@ const Localization = new LocalizedStrings({
         length: "Your username must be between 4 and 12 characters long",
         pattern:
           "Sorry, only letters (a-z), numbers (0-9) and periods (.) are allowed.",
-        is_exist: "This username is taken. Choose different one or log in",
+        isExist: "This username is taken. Choose different one or log in",
       },
 
       password: {
         required: "Enter password",
         length:
-          "Use 8 or more characters with a mix of letters, numbers & symbols",
+          "Use 8 or more characters with a mix of at least one capital letter, number & symbol",
         pattern:
-          "Use 8 or more characters with a mix of letters, numbers & symbols",
+          "Use 8 or more characters with a mix of at least one capital letter, number & symbol",
       },
 
       confirmPassword: {

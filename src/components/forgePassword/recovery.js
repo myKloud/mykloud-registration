@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Input from "../common/input";
 import "./style.scss";
-import Verification from "../codeVerification";
+import Verification from "../verification";
 import Reset from "./reset";
 import { connect } from "react-redux";
 import Localization from "./localization";

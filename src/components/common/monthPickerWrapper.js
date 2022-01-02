@@ -25,7 +25,9 @@ const MonthPickerWrapper = (props) => {
           caps={false}
           required={props.required || false}
           disabled={props.disabled || false}
-          onChange={(month) => setValueHandler(month - 1 + 2 + "")}
+          onChange={(month) => {
+            setValueHandler(month);
+          }}
         />
 
         {props.placeholder && (

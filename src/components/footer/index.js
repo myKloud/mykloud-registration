@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import "./style.scss";
-import twitter from "../../images/twitter.png";
-import linked from "../../images/linked in.png";
+import twitter from "../../assets/images/twitter.png";
+import linked from "../../assets/images/linkedin.png";
 import Localization from "./localization";
 
 const Footer = (props) => {
@@ -28,10 +28,12 @@ const Footer = (props) => {
         <div className="first_line">
           <div className="footer_logo" />
           <div className="link_container">
-            <a href="" className="mr-8">
+            <a href="https://twitter.com/mykloudplatform" className="mr-8">
               {Localization.terms}
             </a>
-            <a href="">{Localization.privacy}</a>
+            <a href="https://twitter.com/mykloudplatform">
+              {Localization.privacy}
+            </a>
           </div>
         </div>
         <div className="second_line mt-8">

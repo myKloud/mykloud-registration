@@ -1,10 +1,10 @@
 import React from "react";
-import Recovery from "./Recovery";
+import Verification from "./Verification";
 
 const Index = (props) => {
   return (
     <>
-      <Recovery props={props} />
+      <Verification props={props} />
     </>
   );
 };

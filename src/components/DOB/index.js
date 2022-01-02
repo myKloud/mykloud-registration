@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import "./style.scss";
-import blockImg from "../../images/block-user 1.png";
+import blockImg from "../../assets/images/block-user.png";
 import Localization from "./localization";
 
 const Dob = (props) => {
