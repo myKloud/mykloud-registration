@@ -1,72 +1,76 @@
 @import "../../css/variables.scss";
 
-.title {
-  width: 618px;
-  font-family: "Poppins";
-  font-size: 32px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-}
-
-.sub_title {
-  width: 354px;
-  font-family: "open sans";
-  font-size: 18px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: $text_bold_color;
-}
-
-.sub_title2 {
-  width: 331px;
-  color: $text_color;
-  font-family: "open sans";
-  font-size: 14px;
-  font-weight: 400;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-}
-
-u {
-  color: $primary_color;
-  cursor: pointer;
-}
-
-@media only screen and (max-width: 767px) {
-  .block_img {
-    width: 61px;
-    height: 61px;
-  }
+.dob_container {
   .title {
-    width: 336px;
-    font-size: 20px;
+    width: 618px;
+    font-family: "Poppins";
+    font-size: 32px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
   }
 
   .sub_title {
-    font-family: "Poppins";
-    font-size: 14px;
-    width: 295px;
-    font-weight: 400;
+    width: 354px;
+    font-family: "open sans";
+    font-size: 18px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: $text_bold_color;
   }
 
   .sub_title2 {
-    width: 284px;
-    font-family: "Poppins";
-    font-size: 12px;
+    width: 331px;
+    color: $text_color;
+    font-family: "open sans";
+    font-size: 14px;
     font-weight: 400;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
   }
+
   u {
-    text-decoration: none;
+    color: $primary_color;
+    cursor: pointer;
+  }
+
+  @media only screen and (max-width: 767px) {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .block_img {
+      width: 61px;
+      height: 61px;
+    }
+    .title {
+      width: 336px;
+      font-size: 20px;
+    }
+
+    .sub_title {
+      font-family: "Poppins";
+      font-size: 14px;
+      width: 295px;
+      font-weight: 400;
+    }
+
+    .sub_title2 {
+      width: 284px;
+      font-family: "Poppins";
+      font-size: 12px;
+      font-weight: 400;
+    }
+    u {
+      text-decoration: none;
+    }
   }
 }

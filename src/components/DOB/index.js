@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import "./style.scss";
-import blockImg from "../../images/block-user 1.png";
+import blockImg from "../../assets/images/block-user.png";
 import Localization from "./localization";
 
 const Dob = (props) => {
-  const { lang } = props.languageReducer;
-  Localization.setLanguage(lang);
+  useEffect(() => {
+    const lang = props.languageReducer.lang;
+    Localization.setLanguage(lang);
+  }, [props.languageReducer.lang]);
 
   return (
     <>
-      <div className="grid justify-items-center mt-56 mb-28 ">
+      <div className="grid justify-items-center  dob_container">
         <img src={blockImg} alt="block" className="block_img" />
         <h1 className="title mt-7">{Localization.title}</h1>
         <p className="sub_title mt-4 mb-4">
