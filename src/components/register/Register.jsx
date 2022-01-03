@@ -83,6 +83,14 @@ const Register = (props) => {
                       setIsExist,
                       setUserMessage,
                       formValidation);
+            
+                      validate(formValidation.username, e , setUserMessage,
+                        setPassMessage,
+                        formValidation,
+                        setPassConfirmMessage,
+                        password , 
+                        confirmPassword, 
+                        isExist);
                   }}
                   placeholder={Localization.usernamePlaceholder}
                   className={userMessage && "validation"}
