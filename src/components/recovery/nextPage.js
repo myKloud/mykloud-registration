@@ -33,22 +33,21 @@ const nextPage = async (
         value: method !== "phone" ? email : `+${number}`,
         type: method !== "phone" ? 0 : 1,
       });
+      if (getResend()) {
+        if (getResend() === "second") {
+          setResend("third");
+        } else if (getResend() === "first") {
+          setResend("second");
+        }
+      } else {
+        setResend("first");
+      }
     } else {
       if (method !== "phone") {
         setEmailMessage(formValidation.email.isExist);
       } else {
         setNumberMessage(formValidation.number.isExist);
       }
-    }
-
-    if (getResend()) {
-      if (getResend() === "second") {
-        setResend("third");
-      } else if (getResend() === "first") {
-        setResend("second");
-      }
-    } else {
-      setResend("first");
     }
 
     if (!check.exists) {
