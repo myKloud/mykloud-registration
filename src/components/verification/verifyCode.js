@@ -45,9 +45,10 @@ const register = async (userObj) => {
     return hash.slice(29);
   };
 
+  const pass = await computeKeyPassword(userObj.password, salt.slice(0 , 24));
   const response = await signUp({
     Type: 1,
-    Passphrase: computeKeyPassword(userObj.password, salt.slice(24)),
+    Passphrase: pass,
     Username: userObj.username,
     Payload: {
       "wMwCK-P-vMy.0J1i":

@@ -2,9 +2,9 @@
 import http from "./http";
 import FingerprintJS from "@fingerprintjs/fingerprintjs";
 const apiEndPointCheck = `/exists`;
-const apiEndPointSignup = `/signup`;
+const apiEndPointSignup = `/api/v4/users`;
 const apiEndPointSendOtp = `/otp`;
-const apiEndPointVerifyOtp = `/verifyOtp`;
+const apiEndPointVerifyOtp = `/otp`;
 const apiEndPointCheckRecovery = `exists`;
 const apiEndPointCache = `/cacheUsername`;
 const fpPromise = FingerprintJS.load();
@@ -35,15 +35,10 @@ export async function verifyOtp(recovery) {
 }
 
 export async function signUp(informations) {
-  const { username, firstName, lastName, password, recovery, recoveryType } =
+  const {Type ,  Username, Payload , Auth , FirstName, LastName, Passphrase, Recovery, RecoveryType   } =
     informations;
   const info = {
-    username,
-    firstName,
-    lastName,
-    password,
-    recovery,
-    recoveryType,
+    Type ,  Username, Payload , Auth , FirstName, LastName, Passphrase, Recovery, RecoveryType
   };
 
   const { data } = await http.post(apiEndPointSignup, info);
