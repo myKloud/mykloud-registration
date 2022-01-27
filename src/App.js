@@ -4,6 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 import { React, useEffect } from "react";
 import { getStorage, removeStorage } from "./shared/storage";
+
 function App(props) {
   const history = useHistory();
   const storage = getStorage();
