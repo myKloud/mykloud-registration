@@ -14,7 +14,7 @@ const validate = (
   let isValid = true;
   const validUser = new RegExp("^[a-z0-9.]+[a-z0-9]$");
   const validPass =
-    /^(?=.*[0-9])(?=.*[!@#$%^&*%()_+.,/;'"\\ ])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9!@#$%^&*%()_+.,/;'"\\ ]{8,128}$/;
+    /^(?=.*[0-9])(?=.*[!@#$%^&*%()-_+.,/;'"\\ ])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9!@#$%^&*%()-_+.,/;'"\\ ]{8,128}$/;
 
   if (input.name === "username") {
     setUserMessage("");
