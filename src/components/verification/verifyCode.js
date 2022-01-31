@@ -6,7 +6,7 @@ import {
   encodeBase64,
   decodeBase64,
 } from "pmcrypto";
-var bcrypt = require("bcryptjs");
+import  bcrypt from "bcryptjs" ;
 
 const register = async (userObj) => {
   const rfc5054 = {
